@@ -15,6 +15,9 @@ export const metadata: Metadata = {
 	},
 	description: site.description,
 	authors: [{ name: site.name, url: site.url }],
+	// Points the tab icon at `public/favicon.svg`. Without a declared icon the
+	// browser goes looking for `/favicon.ico` on every page load and 404s.
+	icons: { icon: "/favicon.svg" },
 	alternates: {
 		canonical: "/",
 		types: { "application/rss+xml": "/feed.xml" },

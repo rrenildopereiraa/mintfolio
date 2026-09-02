@@ -1,4 +1,5 @@
 import { ArrowRight, Download, MapPin } from "iconoir-react";
+import Image from "next/image";
 import Link from "next/link";
 import { experience } from "../content/experience.ts";
 import { projects } from "../content/projects.ts";
@@ -134,6 +135,21 @@ export default async function Home() {
 					<div className="p-r p-5 br-lg bw-1 bs-s bc-border bg-surface o-h">
 						<GridBackdrop height="h-40" bleed={false} />
 						<div className="p-r zi-10">
+							{/* Dropped entirely when `site.avatar` is an empty string, which
+							    is how the config offers to leave the photo out. */}
+							{site.avatar && (
+								<Image
+									src={site.avatar}
+									alt={site.name}
+									width={56}
+									height={56}
+									className="d-b mb-4 w-14 h-14 br-9999 bw-1 bs-s bc-border"
+									// Yumma has no object-fit utility, and without it a photo
+									// that isn't square gets squashed rather than cropped.
+									style={{ objectFit: "cover" }}
+								/>
+							)}
+
 							<p className="m-0 fs-xs ls-2 tt-u c-text-dim" style={MONO_STYLE}>
 								Contact
 							</p>
