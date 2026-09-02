@@ -1,0 +1,45 @@
+export const meta = {
+	title: "Local-first is mostly a data modelling problem",
+	description:
+		"The sync engine is the easy half. Deciding what a conflict means is the rest of it.",
+	date: "2025-04-22",
+	published: true,
+};
+
+Every local-first project I have worked on started with a conversation about CRDTs and ended with a conversation about the domain.
+
+The library question gets settled in an afternoon. There are several good ones, they mostly work, and picking between them is a smaller decision than it feels like while you are making it. Then you sit down to model the data, and the actual problem starts.
+
+## The problem is that "conflict" is a business question
+
+Two people edit the same record offline. The engine can merge fields, take the last write, or hand you both versions. What it cannot tell you is which of those is *correct*, because that depends entirely on what the record means.
+
+Consider three fields on the same object:
+
+```ts
+type Task = {
+  title: string;      // last write wins is fine
+  assignee: UserId;   // last write wins is actively wrong
+  tags: string[];     // union, almost always
+};
+```
+
+`title` is a single author's text, so taking the most recent edit is a reasonable guess. `assignee` is a coordination decision, and silently resolving it means someone believes work is assigned to them when it is not. `tags` are additive, so merging both sides is nearly always what everyone wanted.
+
+One record, three different correct answers. No library can pick them for you.
+
+## What worked
+
+We stopped asking "which CRDT" and started asking, for every field: **if two people change this on a plane, what should the person on the ground see?**
+
+That produced three categories.
+
+Fields where merging is obvious got merged automatically. Fields where the last edit is fine got last-write-wins and a quiet note in the activity log. Fields where a conflict means two humans disagree got surfaced in the interface as exactly that: a disagreement, with both versions and a name attached to each.
+
+The last category is small, maybe five fields out of sixty. It is also the only category where we ship an interface, and it is where all the design time went.
+
+## The part I would tell myself earlier
+
+Offline support is not a feature you add to a data model. It is a property of the data model, and if you bolt it on afterwards you will spend the time anyway, just later and in a worse mood.
+
+Start with the plane question. The library can wait.

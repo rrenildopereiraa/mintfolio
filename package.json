@@ -1,0 +1,42 @@
+{
+	"name": "mintfolio",
+	"description": "A modern developer portfolio, blog and CV template.",
+	"private": true,
+	"version": "1.0.0",
+	"license": "MIT",
+	"type": "module",
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "biome check --write .",
+		"validate": "yummacss-canon"
+	},
+	"dependencies": {
+		"@base-ui/react": "^1.7.0",
+		"@fontsource-variable/jetbrains-mono": "^5.3.0",
+		"@fontsource-variable/manrope": "^5.3.0",
+		"@mdx-js/loader": "^3.1.1",
+		"@mdx-js/react": "^3.1.1",
+		"@next/mdx": "^16.3.0",
+		"@react-pdf/renderer": "^4.6.1",
+		"iconoir-react": "^7.11.1",
+		"next": "^16.3.0",
+		"react": "^19.2.8",
+		"react-dom": "^19.2.8"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.5.2",
+		"@shikijs/rehype": "^4.4.2",
+		"@types/mdx": "^2.0.14",
+		"@types/node": "^24.13.3",
+		"@types/react": "^19.2.17",
+		"@types/react-dom": "^19.2.3",
+		"@yummacss/canon": "^3.29.2",
+		"@yummacss/postcss": "^3.29.2",
+		"remark-gfm": "^4.0.1",
+		"shiki": "^4.4.2",
+		"typescript": "~6.0.2",
+		"yummacss": "^3.29.2"
+	}
+}
