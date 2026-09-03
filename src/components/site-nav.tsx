@@ -1,15 +1,14 @@
 import Link from "next/link";
 import { site } from "../../site.config.ts";
 import { MONO_STYLE } from "../lib/fonts.ts";
-import { ThemeToggle } from "./theme-toggle.tsx";
 
 /**
  * The header.
  *
  * On phones the links move to a second row rather than hiding behind a menu
  * button: there are three of them, they fit, and a hamburger for three links
- * is a tap nobody should have to make. The wordmark and the theme toggle stay
- * on the top row at every width.
+ * is a tap nobody should have to make. The wordmark stays on the top row at
+ * every width.
  */
 export function SiteNav() {
 	return (
@@ -17,11 +16,11 @@ export function SiteNav() {
 			<div className="d-f ai-c jc-sb g-4">
 				<Link
 					href="/"
-					className="d-if ai-c g-2 td-none c-text fv:os-s fv:oo-2 fv:oc-accent"
+					className="d-if ai-c g-2 td-none c-zinc-9 fv:os-s fv:oo-2 fv:oc-mint"
 				>
 					<span
 						aria-hidden="true"
-						className="d-b w-2 h-2 br-9999 bg-accent fs-0"
+						className="d-b w-2 h-2 br-9999 bg-mint fs-0"
 					/>
 					<span className="fw-700 ls-1 fs-sm">{site.name}</span>
 				</Link>
@@ -32,14 +31,13 @@ export function SiteNav() {
 							<Link
 								key={item.href}
 								href={item.href}
-								className="px-3 py-2 br-md fs-xs td-none c-text-dim h:c-text h:bg-surface-2 tp-a tdu-150 fv:os-s fv:oo-2 fv:oc-accent"
+								className="px-3 py-2 br-md fs-xs td-none c-slate h:c-zinc-9 h:bg-silver-1 tp-a tdu-150 fv:os-s fv:oo-2 fv:oc-mint"
 								style={MONO_STYLE}
 							>
 								{item.label}
 							</Link>
 						))}
 					</nav>
-					<ThemeToggle />
 				</div>
 			</div>
 
@@ -49,7 +47,7 @@ export function SiteNav() {
 					<Link
 						key={item.href}
 						href={item.href}
-						className="px-3 py-2 br-md fs-xs td-none c-text-dim h:c-text h:bg-surface-2 tp-a tdu-150 fv:os-s fv:oo-2 fv:oc-accent"
+						className="px-3 py-2 br-md fs-xs td-none c-slate h:c-zinc-9 h:bg-silver-1 tp-a tdu-150 fv:os-s fv:oo-2 fv:oc-mint"
 						style={MONO_STYLE}
 					>
 						{item.label}

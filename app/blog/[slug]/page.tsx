@@ -59,30 +59,30 @@ export default async function PostPage({ params }: Params) {
 			<article className="max-w-160 pt-16 @sm:pt-20">
 				<Link
 					href="/blog"
-					className="d-if ai-c g-2 fs-xs td-none c-text-dim h:c-accent tp-c tdu-150"
+					className="d-if ai-c g-2 fs-xs td-none c-slate h:c-mint-7 tp-c tdu-150"
 					style={MONO_STYLE}
 				>
 					<ArrowLeft width={13} height={13} strokeWidth={2.2} />
 					Blog
 				</Link>
 
-				<h1 className="mt-6 mb-0 fw-800 ls-2 fs-3xl lh-2 tw-b c-text">
+				<h1 className="mt-6 mb-0 fw-800 ls-2 fs-3xl lh-2 tw-b c-zinc-9">
 					{post.title}
 				</h1>
 
-				<div className="d-f ai-c g-3 mt-4 pb-8 bbw-1 bs-s bc-border">
+				<div className="d-f ai-c g-3 mt-4 pb-8 bbw-1 bs-s bc-silver-2">
 					<time
 						dateTime={post.date}
-						className="fs-xs c-text-dim"
+						className="fs-xs c-slate"
 						style={MONO_STYLE}
 					>
 						{formatPostDate(post.date)}
 					</time>
 					<span
 						aria-hidden="true"
-						className="d-b w-1 h-1 br-9999 bg-border-strong"
+						className="d-b w-1 h-1 br-9999 bg-silver-3"
 					/>
-					<span className="fs-xs c-text-dim" style={MONO_STYLE}>
+					<span className="fs-xs c-slate" style={MONO_STYLE}>
 						{site.name}
 					</span>
 				</div>

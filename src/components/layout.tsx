@@ -27,7 +27,7 @@ export function Layout({
 	backdrop?: string;
 }) {
 	return (
-		<div className="p-r min-h-dvh o-h bg-page c-text s::bg-accent/25">
+		<div className="p-r min-h-dvh o-h bg-white c-zinc-9 s::bg-mint/25">
 			{backdrop && <GridBackdrop height={backdrop} />}
 
 			<div className="p-r zi-10 max-w-232 mx-auto px-5 pb-20 @sm:px-8 @sm:pb-28">
@@ -63,14 +63,14 @@ export function SectionHeading({
 		<div className="d-f fd-c g-4 mb-8 @sm:fd-r @sm:ai-fe @sm:jc-sb">
 			<div>
 				<div className="d-f ai-c g-2">
-					<span aria-hidden="true" className="d-b w-2 h-2 br-9999 bg-accent" />
-					<span className="fs-xs fw-500 ls-3 tt-u c-accent" style={MONO_STYLE}>
+					<span aria-hidden="true" className="d-b w-2 h-2 br-9999 bg-mint" />
+					<span className="fs-xs fw-500 ls-3 tt-u c-mint-7" style={MONO_STYLE}>
 						{label}
 					</span>
 				</div>
-				<h2 className="mt-3 mb-0 fw-700 ls-1 fs-xxl lh-2 c-text">{title}</h2>
+				<h2 className="mt-3 mb-0 fw-700 ls-1 fs-xxl lh-2 c-zinc-9">{title}</h2>
 				{description && (
-					<p className="mt-2 mb-0 max-w-160 fs-sm lh-5 c-text-dim">
+					<p className="mt-2 mb-0 max-w-160 fs-sm lh-5 c-slate">
 						{description}
 					</p>
 				)}

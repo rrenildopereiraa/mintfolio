@@ -1,71 +1,66 @@
-/**
- * The Work section on the home page.
- *
- * Order matters: the list renders top to bottom. Mark the two or three you
- * actually want people to look at as `featured` and they get the wider card.
- * Anything without a `href` renders as a card without a link, which is useful
- * for closed-source work you can still describe.
- */
+import type { ProjectMark } from "../src/components/icons.tsx";
 
+/**
+ * The Projects section.
+ *
+ * Order is the order on the page. Each project carries a `mark`, which is the
+ * small shape shown beside its name and inside its preview card. Three plain
+ * shapes ship with the template; replace them with your own SVG in
+ * `src/components/icons.tsx` and nothing else has to change.
+ */
 export type Project = {
 	name: string;
 	/** One sentence. What it is, not how it was built. */
 	description: string;
-	/** Where the card links. Omit for work you can't link to. */
+	/** Shown in the preview card. A little more room than the sentence above. */
+	summary: string;
+	/** Where the row links. Omit for work you cannot link to. */
 	href?: string;
-	/** Shown next to the link, e.g. "github.com/you/thing". */
+	/** Shown as the chip on the row, e.g. "github.com/you/thing". */
 	label?: string;
-	/** A handful of tags. Three or four keeps the cards even. */
-	stack: string[];
-	/** Gives the project a full-width card at the top of the grid. */
-	featured?: boolean;
+	/** `circle`, `square` or `triangle`. */
+	mark: ProjectMark;
 	/** Free text: "2024", "2023 – 2024", "Ongoing". */
-	period?: string;
+	period: string;
+	/** A handful of tags, shown in the preview card. */
+	stack: string[];
 };
 
 export const projects: Project[] = [
 	{
-		name: "Halcyon",
+		name: "Project A",
 		description:
 			"A task runner for monorepos that keeps its cache honest. Rebuilds only what actually changed, and tells you why when it disagrees with you.",
-		href: "https://github.com/iriscalderon/halcyon",
-		label: "github.com/iriscalderon/halcyon",
-		stack: ["Go", "TypeScript", "CLI"],
-		featured: true,
+		summary:
+			"Cuts a cold monorepo build from eleven minutes to under three, and explains every cache decision it makes.",
+		href: "https://github.com/iriscalderon/project-a",
+		label: "github.com/project-a",
+		mark: "circle",
 		period: "Ongoing",
+		stack: ["Go", "TypeScript", "CLI"],
 	},
 	{
-		name: "Tidepool",
+		name: "Project B",
 		description:
 			"A local-first sync engine for React apps that have to survive a train tunnel. Conflict resolution you can read and reason about.",
-		href: "https://github.com/iriscalderon/tidepool",
-		label: "github.com/iriscalderon/tidepool",
-		stack: ["TypeScript", "IndexedDB", "CRDT"],
+		summary:
+			"Offline-first storage with a conflict model you can actually explain to the rest of the team.",
+		href: "https://github.com/iriscalderon/project-b",
+		label: "github.com/project-b",
+		mark: "square",
 		period: "2024",
+		stack: ["TypeScript", "IndexedDB", "CRDT"],
 	},
 	{
-		name: "Cartograph",
+		name: "Project C",
 		description:
 			"Turns an OpenAPI document into a typed client that reads like it was written by hand.",
-		href: "https://github.com/iriscalderon/cartograph",
-		label: "github.com/iriscalderon/cartograph",
+		summary:
+			"Generates clients nobody wants to rewrite, with types that survive a schema change.",
+		href: "https://github.com/iriscalderon/project-c",
+		label: "github.com/project-c",
+		mark: "triangle",
+		period: "2023",
 		stack: ["TypeScript", "Codegen"],
-		period: "2023",
-	},
-	{
-		name: "Reverb",
-		description:
-			"A 2 kB state machine for multi-step forms, built after the fourth checkout flow went wrong in the same way.",
-		href: "https://github.com/iriscalderon/reverb",
-		label: "github.com/iriscalderon/reverb",
-		stack: ["TypeScript", "React"],
-		period: "2023",
-	},
-	{
-		name: "Northwind design system",
-		description:
-			"The component library and token pipeline behind six internal products. Closed source, but the token format is the interesting part.",
-		stack: ["React", "Design tokens", "Storybook"],
-		period: "2022 – 2024",
 	},
 ];

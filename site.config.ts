@@ -60,13 +60,10 @@ export const site = {
 	],
 
 	/**
-	 * What mobile browsers paint behind the address bar. Keep these matching
-	 * `page` in yumma.config.mjs.
+	 * What mobile browsers paint behind the address bar. Keep it matching the
+	 * page background.
 	 */
-	themeColor: {
-		light: "#fbfdfc",
-		dark: "#07100f",
-	},
+	themeColor: "#fbfdfc",
 
 	/**
 	 * A file in `public/`, shown in the About section and published as your
