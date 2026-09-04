@@ -22,9 +22,17 @@ export function Layout({
 	 * seam where the tint begins.
 	 */
 	backdrop,
+	/**
+	 * Turn the footer off for a page that ends on something of its own. The
+	 * home page does: it closes on the signature, and a rule and a copyright
+	 * line printed underneath would make the signature not the last thing on
+	 * the page, which is the only thing a signature is for.
+	 */
+	footer = true,
 }: {
 	children: ReactNode;
 	backdrop?: string;
+	footer?: boolean;
 }) {
 	return (
 		<div className="p-r min-h-dvh o-h bg-page c-text s::bg-accent/25">
@@ -33,7 +41,7 @@ export function Layout({
 			<div className="p-r zi-10 max-w-168 mx-auto px-6 pb-20 @sm:px-8 @sm:pb-24">
 				<SiteNav />
 				{children}
-				<SiteFooter />
+				{footer && <SiteFooter />}
 			</div>
 		</div>
 	);

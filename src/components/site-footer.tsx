@@ -1,35 +1,23 @@
-import Link from "next/link";
 import { site } from "../../site.config.ts";
 import { MONO_STYLE } from "../lib/fonts.ts";
 
 /**
- * The footer: a copyright line and the feed.
+ * The footer: one line.
  *
- * The social links used to live here and now sit at the end of the About
- * section, where a reader who has just finished reading about you is already
- * looking. Repeating them down here would only give the same four links a
- * second, quieter home, and it would put something after the signature — which
- * is meant to be the last thing on the page.
+ * The social links live at the end of the About section, in the sentence that
+ * mentions them, and the feed link lives on the blog where somebody would go
+ * looking for it. Neither belongs down here — a footer is where links go to be
+ * ignored.
  *
- * What is left is the two things a footer is genuinely for: who owns this, and
- * how a machine subscribes to it.
+ * That leaves the one thing a footer is genuinely for. The home page does not
+ * render it at all: it closes on the signature.
  */
 export function SiteFooter() {
 	return (
 		<footer className="mt-24 pt-8 btw-1 bs-s bc-border">
-			<div className="d-f fd-c g-3 @sm:fd-r @sm:ai-c @sm:jc-sb">
-				<p className="m-0 fs-xs c-text-dim" style={MONO_STYLE}>
-					© {new Date().getFullYear()} {site.name}
-				</p>
-
-				<Link
-					href="/feed.xml"
-					className="fs-xs td-none c-text-dim h:c-text tp-c tdu-150 fv:os-s fv:oo-2 fv:oc-accent"
-					style={MONO_STYLE}
-				>
-					RSS
-				</Link>
-			</div>
+			<p className="m-0 fs-xs c-text-dim" style={MONO_STYLE}>
+				© {new Date().getFullYear()} {site.name}
+			</p>
 		</footer>
 	);
 }

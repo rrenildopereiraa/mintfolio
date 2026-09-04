@@ -82,10 +82,17 @@ headline: {
 site. Anchors like `/#projects` point at sections in `app/page.tsx`; anything
 else is treated as a route.
 
-Each social's `label` is also how the footer finds its mark in
-`src/components/icons.tsx`. GitHub, LinkedIn, X and Email ship with one; add a
-social with no mark and the footer falls back to printing its label, so nothing
-ever disappears silently.
+`socials` renders as a sentence at the end of the About section — "You can
+find me on GitHub, LinkedIn, X or Email" — with each name carrying its mark
+inline. The sentence is built from the list, so adding or removing an entry
+rewrites it and no component needs editing. Each `label` is also how the mark
+is found in `src/components/icons.tsx`: GitHub, LinkedIn, X and Email ship with
+one, and anything else falls back to its name, so a link can never disappear
+silently.
+
+There is no strip of social icons anywhere. A grouped row of logos reads as a
+widget rather than as something you wrote, and four unlabelled glyphs make the
+reader decode them one at a time.
 
 ### Adding a project
 
@@ -200,6 +207,11 @@ It draws above the rule. The slot keeps its height either way, so filling it in
 never moves anything below it. Vector rather than a photo of ink: it stays
 crisp at any size and on any screen. If you would rather not have one at all,
 delete `<Signature />` from `app/page.tsx`.
+
+The home page renders no footer, so the signature is the last thing on it — the
+only position a signature makes sense in. Other pages get a footer with the
+copyright line; the feed link lives on `/blog`, where somebody looking for it
+would actually go.
 
 ### Your CV
 
