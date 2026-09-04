@@ -5,10 +5,10 @@
  * the footer, the metadata, the social cards, the RSS feed, the sitemap and
  * the structured data, so a name changed here changes everywhere.
  *
- * Your projects, experience, skills and CV live in their own files:
+ * Your projects, experience, stack and CV live in their own files:
  *   content/projects.ts
  *   content/experience.ts
- *   content/skills.ts
+ *   content/stack.ts
  *   cv.config.ts
  */
 export const site = {
@@ -69,8 +69,9 @@ export const site = {
 	themeColor: "#fbfdfc",
 
 	/**
-	 * A file in `public/`, shown in the About section and published as your
-	 * avatar. Set it to an empty string to drop the photo entirely.
+	 * A file in `public/`. No page shows it: it is published as your `image` in
+	 * the structured data, where search results and link previews look for it.
+	 * Set it to an empty string to publish none.
 	 */
 	avatar: "/avatar.svg",
 

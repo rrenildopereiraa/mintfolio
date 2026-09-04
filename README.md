@@ -7,7 +7,7 @@ not components: your name, your projects, your roles, your stack, your posts.
 The pages, the metadata, the social cards, the RSS feed, the sitemap and the
 downloadable PDF CV all follow from that.
 
-- Home page with hero, projects, experience, tech stack, recent posts and contact
+- Home page with hero, projects, experience, tech stack, recent posts and about
 - Blog with MDX posts and Shiki syntax highlighting
 - A CV rendered to a real PDF at `/cv.pdf`, laid out to parse cleanly in an
   applicant tracking system
@@ -73,15 +73,20 @@ markup:
 
 ```ts
 headline: {
-  lead: "I build tools that get",
-  accent: "out of the way",
-  tail: ".",
+  greeting: "Hey there.",
+  intro: "I'm",
+  accent: "Ada",
 },
 ```
 
 `nav` and `socials` are plain lists. Remove an entry and it disappears from the
-site. Anchors like `/#work` point at sections in `app/page.tsx`; anything else
-is treated as a route.
+site. Anchors like `/#projects` point at sections in `app/page.tsx`; anything
+else is treated as a route.
+
+Each social's `label` is also how the footer finds its mark in
+`src/components/icons.tsx`. GitHub, LinkedIn, X and Email ship with one; add a
+social with no mark and the footer falls back to printing its label, so nothing
+ever disappears silently.
 
 ### Adding a project
 
@@ -136,8 +141,16 @@ neither.
 `content/stack.ts` holds groups rather than one long list. Three or four groups
 of five or six items reads best. Delete a group and it disappears.
 
-Every entry renders at the same weight and colour, deliberately. A stack list
-stops being information the moment one item is dressed up.
+Every entry gets its brand mark and then the same weight, colour and size as
+every other one. A stack list stops being information the moment one item is
+dressed up.
+
+The marks live in `src/components/stack-icons.tsx`, copied in from
+[Simple Icons](https://simple-icons.github.io) (CC0) rather than installed, and
+keyed by the exact name you use in `content/stack.ts`. Add a tool with no mark
+there and it still renders — it gets the outlined square instead, which is the
+point: your stack should not be limited to the things that happen to have a
+logo.
 
 ### Adding a blog post
 
@@ -181,9 +194,11 @@ Put files in `public/` and reference them from the root:
 ![A build graph](/build-graph.png)
 ```
 
-The avatar is `site.avatar`, a path in `public/`. Replace `public/avatar.svg`
-with your own photo and point `avatar` at it, or set it to `""` to drop the
-photo entirely. `public/favicon.svg` is the browser tab icon.
+`site.avatar` is a path in `public/`. No page shows it — it is published as
+your `image` in the JSON-LD, which is what search results and link previews
+pick up. Replace `public/avatar.svg` with your own photo and point `avatar` at
+it, or set it to `""` to publish none. `public/favicon.svg` is the browser tab
+icon.
 
 ### Your CV
 
@@ -288,14 +303,15 @@ site.config.ts          You: name, links, headline, About
 cv.config.ts            The PDF CV
 yumma.config.mjs        Colour palette and breakpoints
 content/
-  projects.ts           Work section
+  projects.ts           Projects section
   experience.ts         Experience section
-  skills.ts             Skills section
+  stack.ts              Tech stack section
   posts/*.mdx           Blog posts
 app/                    Routes, metadata, feed, sitemap, social cards
 src/components/         The pieces the pages are built from
-src/components/icons.tsx  Brand marks and the project shapes
-src/lib/                Post loading, structured data, fonts, theme
+src/components/icons.tsx        Social marks and the project shapes
+src/components/stack-icons.tsx  Brand marks for the tech stack
+src/lib/                Post loading, structured data, fonts
 public/                 Images, avatar, favicon
 ```
 

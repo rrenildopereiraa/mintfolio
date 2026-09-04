@@ -1,4 +1,11 @@
-import { ArrowRight } from "iconoir-react";
+import {
+	ArrowRight,
+	Component,
+	PathArrow,
+	Post,
+	Suitcase,
+	UserLove,
+} from "iconoir-react";
 import Link from "next/link";
 import { experience } from "../content/experience.ts";
 import { projects } from "../content/projects.ts";
@@ -63,6 +70,7 @@ export default async function Home() {
 				<SectionHeading
 					label="Projects"
 					number="01"
+					icon={Suitcase}
 					description="Things I built, maintain, or broke and then fixed."
 				/>
 				<div className="mt-6">
@@ -76,6 +84,7 @@ export default async function Home() {
 				<SectionHeading
 					label="Experience"
 					number="02"
+					icon={PathArrow}
 					description="The short version. The full history is in the CV."
 				/>
 				<div className="mt-6">
@@ -87,6 +96,7 @@ export default async function Home() {
 				<SectionHeading
 					label="Tech stack"
 					number="03"
+					icon={Component}
 					description="What I reach for, not everything I have touched."
 				/>
 				<div className="mt-8">
@@ -99,6 +109,7 @@ export default async function Home() {
 					<SectionHeading
 						label="Writing"
 						number="04"
+						icon={Post}
 						description="Some notes, when I have the time."
 						action={
 							<Link
@@ -118,7 +129,7 @@ export default async function Home() {
 			)}
 
 			<section id="about" className={SECTION}>
-				<SectionHeading label="About" number="05" />
+				<SectionHeading label="About" number="05" icon={UserLove} />
 
 				<div className="mt-6">
 					{site.about.map((paragraph) => (
@@ -144,7 +155,7 @@ export default async function Home() {
 									className="d-if ai-c g-2 td-none c-zinc-9 fv:os-s fv:oo-2 fv:oc-mint"
 								>
 									<GitHub width={15} height={15} className="fs-0" />
-									<span className="bbw-1 bs-s bc-silver-3">GitHub</span>
+									<span className="fw-500 h:c-mint-7 tp-c tdu-150">GitHub</span>
 								</a>
 							</HoverCard>
 						) : (

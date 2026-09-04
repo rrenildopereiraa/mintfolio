@@ -16,7 +16,7 @@ export type StackGroup = {
 export const stack: StackGroup[] = [
 	{
 		title: "Language",
-		items: ["TypeScript", "Go", "SQL"],
+		items: ["TypeScript", "Python", "SQL"],
 	},
 	{
 		title: "Frontend",

@@ -1,13 +1,15 @@
 import type { StackGroup } from "../../content/stack.ts";
 import { MONO_STYLE } from "../lib/fonts.ts";
+import { StackMark } from "./stack-icons.tsx";
 
 /**
  * The tech stack, grouped.
  *
- * Every entry is plain text at the same weight and the same colour. No logos,
- * no proficiency bars, and nothing highlighted, including the CSS framework
- * this template happens to be built with: a stack list stops being information
- * the moment one item is dressed up, and starts being an advertisement.
+ * Every entry gets its mark and then the same weight, the same colour and the
+ * same size as every other. No proficiency bars, and nothing highlighted —
+ * including the CSS framework this template happens to be built with: a stack
+ * list stops being information the moment one item is dressed up, and starts
+ * being an advertisement.
  */
 export function StackGroups({ groups }: { groups: StackGroup[] }) {
 	return (
@@ -25,7 +27,8 @@ export function StackGroups({ groups }: { groups: StackGroup[] }) {
 						style={{ listStyle: "none" }}
 					>
 						{group.items.map((item) => (
-							<li key={item} className="fs-sm c-zinc-9">
+							<li key={item} className="d-f ai-c g-2 fs-sm c-zinc-9">
+								<StackMark name={item} />
 								{item}
 							</li>
 						))}

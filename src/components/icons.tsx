@@ -50,13 +50,58 @@ export function X(props: SVGProps<SVGSVGElement>) {
 	);
 }
 
-/** Every brand mark the footer and the About prose can reach for. */
+/**
+ * The LinkedIn mark.
+ *
+ * The badge, not the bare wordmark, because that is the only form LinkedIn
+ * publishes. It sits a shade heavier than the other two at the same size,
+ * which is a property of the mark rather than something to correct.
+ */
+export function LinkedIn(props: SVGProps<SVGSVGElement>) {
+	return (
+		<svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
+			<path
+				fill="currentColor"
+				d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286ZM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124Zm1.782 13.019H3.555V9h3.564v11.452ZM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0Z"
+			/>
+		</svg>
+	);
+}
+
+/**
+ * Email.
+ *
+ * Not a brand, so it gets an interface icon rather than a logo: an envelope
+ * drawn to the same weight as the rest of the site's Iconoir set, so the four
+ * footer marks read as one row instead of three logos and a stray.
+ */
+export function Email(props: SVGProps<SVGSVGElement>) {
+	return (
+		<svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
+			<path
+				d="M2.5 6.5h19v11a1.5 1.5 0 0 1-1.5 1.5H4a1.5 1.5 0 0 1-1.5-1.5v-11ZM2.5 7 12 13.5 21.5 7"
+				stroke="currentColor"
+				strokeWidth="1.9"
+				strokeLinecap="round"
+				strokeLinejoin="round"
+			/>
+		</svg>
+	);
+}
+
+/**
+ * Every mark the footer can reach for, keyed by the `label` in
+ * `site.config.ts`. Add a social there and add its mark here; anything with no
+ * mark falls back to its label, so the footer never silently drops a link.
+ */
 export const socialMarks: Record<
 	string,
 	(props: SVGProps<SVGSVGElement>) => React.ReactElement
 > = {
 	GitHub,
+	LinkedIn,
 	X,
+	Email,
 };
 
 /**

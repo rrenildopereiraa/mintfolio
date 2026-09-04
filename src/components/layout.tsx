@@ -38,24 +38,41 @@ export function Layout({
 	);
 }
 
+/** The shape a section icon has to be: sized and coloured by the heading. */
+export type SectionIcon = (props: {
+	width: number;
+	height: number;
+	strokeWidth: number;
+	className: string;
+}) => ReactNode;
+
 /**
- * A section heading: a square marker, the label, a ruled run of squares, and
- * the section number.
+ * A section heading: an icon, the label, a ruled run of squares, and the
+ * section number.
  *
  * The rule is squares rather than a line because the same shape carries the
  * whole identity, from the mesh behind the hero down to this. It is one
- * alphabet used at three sizes, which is what stops the page needing borders
- * to feel structured.
+ * alphabet used at two sizes, which is what stops the page needing borders to
+ * feel structured.
+ *
+ * Everything in the row is aligned on the text baseline rather than centred on
+ * the row. Centring puts the rule through the middle of the label's x-height,
+ * where it reads as struck through the words; on the baseline it reads as a
+ * rule the words are sitting on, and it stays there at any type size, because
+ * the baseline is the thing that moves with the text.
  */
 export function SectionHeading({
 	label,
 	number,
+	icon: Icon,
 	description,
 	action,
 }: {
 	label: string;
 	/** Shown at the right end of the rule, e.g. "01". */
 	number: string;
+	/** The section's mark, usually an Iconoir icon. */
+	icon: SectionIcon;
 	/** One line under the heading. Optional. */
 	description?: string;
 	/** A link pinned to the right of the description row. */
@@ -63,29 +80,24 @@ export function SectionHeading({
 }) {
 	return (
 		<div>
-			<div className="d-f ai-c g-3">
-				{/* Two offset squares: the smaller one is the mesh, scaled up. */}
-				<span aria-hidden="true" className="p-r d-b w-3 h-3 fs-0">
-					<span className="p-a t-0 l-0 w-3 h-3 bg-mint" />
-					{/* Offset inline: Yumma has no transform utility. */}
-					<span
-						className="p-a t-0 l-0 w-3 h-3 bg-mint/30"
-						style={{ transform: "translate(4px, -4px)" }}
-					/>
+			<div className="d-f ai-b g-3">
+				<span aria-hidden="true" className="d-f fs-0 c-mint-7">
+					<Icon width={17} height={17} strokeWidth={1.7} className="d-b fs-0" />
 				</span>
 
 				<h2 className="m-0 fs-sm fw-600 ls-1 c-zinc-9">{label}</h2>
 
+				{/* A block flex item baselines on its bottom edge, so a 4px strip of
+				    squares lands directly on the label's baseline. */}
 				<span
 					aria-hidden="true"
-					className="d-b h-2"
+					className="d-b h-1"
 					style={{
 						flexGrow: 1,
 						backgroundImage:
 							"linear-gradient(to right, #bfe6d8 0 4px, transparent 4px 9px)",
 						backgroundSize: "9px 4px",
 						backgroundRepeat: "repeat-x",
-						backgroundPosition: "0 2px",
 					}}
 				/>
 
