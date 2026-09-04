@@ -18,10 +18,10 @@ import { MONO_STYLE } from "../lib/fonts.ts";
  */
 export function Signature() {
 	return (
-		<div className="mt-10 d-if fd-c" style={{ minWidth: 200 }}>
+		<div className="mt-8 d-if fd-c" style={{ minWidth: 200 }}>
 			{/* The box keeps its height whether or not there is a signature in it,
 			    so adding one never moves the rule or the name below it. */}
-			<div className="d-f ai-fe h-12 pb-1">
+			<div className="d-f ai-fe h-10 pb-1">
 				{site.signature && (
 					// biome-ignore lint/performance/noImgElement: an SVG has nothing for next/image to optimise, and a layout wrapper is all it would add.
 					<img

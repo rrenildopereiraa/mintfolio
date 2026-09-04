@@ -37,9 +37,9 @@ export function ThemeToggle() {
 				// No hover background: it sits inside the nav pill, and a second
 				// shape appearing inside the first is exactly what the pill exists
 				// to avoid. Hovering changes the ink, like the links beside it.
-				className="d-f ai-c jc-c w-6 h-6 bg-transparent bw-0 br-9999 c-p c-text-dim h:c-text fv:os-s fv:oo-2 fv:oc-accent tp-c tdu-150"
+				className="d-f ai-c jc-c w-7 h-7 bg-transparent bw-0 br-9999 c-p c-text-dim h:c-text fv:os-s fv:oo-2 fv:oc-accent tp-c tdu-150"
 			>
-				<Icon width={14} height={14} strokeWidth={2} />
+				<Icon width={17} height={17} strokeWidth={1.9} />
 			</Button>
 		</Tooltip>
 	);

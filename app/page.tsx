@@ -1,17 +1,22 @@
-import { ArrowRight, PathArrow, Post, Suitcase, UserLove } from "iconoir-react";
+import {
+	ArrowRight,
+	Download,
+	PathArrow,
+	Post,
+	Suitcase,
+	UserLove,
+} from "iconoir-react";
 import Link from "next/link";
 import { experience } from "../content/experience.ts";
 import { projects } from "../content/projects.ts";
 import { site } from "../site.config.ts";
-import { Contributions } from "../src/components/contributions.tsx";
 import { ExperienceList } from "../src/components/experience-list.tsx";
-import { HoverCard } from "../src/components/hover-card.tsx";
-import { GitHub } from "../src/components/icons.tsx";
 import { JsonLd } from "../src/components/json-ld.tsx";
 import { Layout, SectionHeading } from "../src/components/layout.tsx";
 import { PostList } from "../src/components/post-card.tsx";
 import { ProjectRow } from "../src/components/project-row.tsx";
 import { Signature } from "../src/components/signature.tsx";
+import { SocialLinks } from "../src/components/social-links.tsx";
 import { MONO_STYLE, SERIF_ITALIC } from "../src/lib/fonts.ts";
 import { getPosts } from "../src/lib/posts.ts";
 import { homeSchema } from "../src/lib/schema.ts";
@@ -25,7 +30,6 @@ const SECTION = "pt-20 @sm:pt-24";
 export default async function Home() {
 	const posts = await getPosts();
 	const recent = posts.slice(0, RECENT_POSTS);
-	const github = site.socials.find((s) => s.label === "GitHub");
 
 	return (
 		<Layout backdrop="h-140">
@@ -45,17 +49,6 @@ export default async function Home() {
 				</h1>
 
 				<p className="mt-6 mb-0 fs-lg lh-6 c-text-dim">{site.intro}</p>
-
-				<p className="mt-5 mb-0 fs-sm lh-5 c-text-dim">
-					Hiring, or just curious? Here&rsquo;s{" "}
-					<a
-						href="/cv.pdf"
-						className="td-none bbw-1 bs-s bc-border-strong c-text h:bc-accent tp-c tdu-150 fv:os-s fv:oo-2 fv:oc-accent"
-					>
-						my CV
-					</a>
-					.
-				</p>
 			</header>
 
 			<section id="projects" className={SECTION}>
@@ -78,6 +71,19 @@ export default async function Home() {
 					number="02"
 					icon={PathArrow}
 					description="The short version. The full history is in the CV."
+					action={
+						// The one download on the page, put where the sentence beside
+						// it already says to look. In the hero it was a third line
+						// competing with the introduction.
+						<a
+							href="/cv.pdf"
+							className="d-if ai-c g-2 fs-0 px-3 py-1 br-9999 bw-1 bs-s bc-border bg-surface fs-xs td-none c-text h:bc-accent h:c-accent tp-a tdu-150 fv:os-s fv:oo-2 fv:oc-accent"
+							style={MONO_STYLE}
+						>
+							My CV
+							<Download width={12} height={12} strokeWidth={2.2} />
+						</a>
+					}
 				/>
 				<div className="mt-6">
 					<ExperienceList roles={experience} />
@@ -121,28 +127,7 @@ export default async function Home() {
 						</p>
 					))}
 
-					{/* The contribution graph hangs off the GitHub link rather than
-					    taking a section of its own: it is a detail worth finding, not
-					    a headline. */}
-					<p className="mt-0 mb-0 fs-sm lh-6 c-text-dim">
-						You can find me on{" "}
-						{github ? (
-							<HoverCard width={500} card={<Contributions total={1284} />}>
-								<a
-									href={github.href}
-									target="_blank"
-									rel="noreferrer"
-									className="d-if ai-c g-2 td-none c-text fv:os-s fv:oo-2 fv:oc-accent"
-								>
-									<GitHub width={15} height={15} className="fs-0" />
-									<span className="fw-500 h:c-accent tp-c tdu-150">GitHub</span>
-								</a>
-							</HoverCard>
-						) : (
-							"GitHub"
-						)}
-						, or say hello over email.
-					</p>
+					<SocialLinks contributions={1284} />
 
 					<Signature />
 				</div>
