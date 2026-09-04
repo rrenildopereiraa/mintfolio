@@ -76,6 +76,15 @@ export const site = {
 	avatar: "/avatar.svg",
 
 	/**
+	 * Your signature, as a file in `public/`. Empty by default: the About
+	 * section draws the dotted line and your name under it either way, and a
+	 * signature that isn't yours is worse than no signature at all.
+	 *
+	 * An SVG of your own handwriting works best — it stays crisp at any size.
+	 */
+	signature: "",
+
+	/**
 	 * Header links. Each is an anchor on the home page or a route of its own.
 	 * Remove one and it disappears; the sections live in `app/page.tsx`.
 	 */

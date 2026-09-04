@@ -5,8 +5,12 @@ import { MONO_STYLE } from "../lib/fonts.ts";
  * Roles down a rail.
  *
  * The rail is a left border on each row rather than one long absolute element,
- * so it can never fall out of step with the content next to it, and the dot is
- * pulled onto the line with a negative margin.
+ * so it can never fall out of step with the content next to it, and the marker
+ * is pulled onto the line with a negative margin.
+ *
+ * The marker is a diamond rather than a dot: a dot on a rail is the default
+ * timeline everyone draws, and a square turned forty-five degrees keeps the
+ * page in the one shape it uses everywhere else.
  */
 export function ExperienceList({ roles }: { roles: Role[] }) {
 	return (
@@ -18,9 +22,11 @@ export function ExperienceList({ roles }: { roles: Role[] }) {
 						index === roles.length - 1 ? "pb-0" : "pb-8"
 					}`}
 				>
+					{/* Rotated inline: Yumma has no transform utility. */}
 					<span
 						aria-hidden="true"
-						className="p-a l-0 t-1 d-b w-2 h-2 ml--1 br-9999 bg-mint"
+						className="p-a l-0 t-1 d-b w-2 h-2 ml--1 bg-mint"
+						style={{ transform: "rotate(45deg)" }}
 					/>
 
 					<div className="d-f fd-c g-1 @sm:fd-r @sm:ai-b @sm:jc-sb @sm:g-4">

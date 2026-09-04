@@ -7,7 +7,7 @@ not components: your name, your projects, your roles, your stack, your posts.
 The pages, the metadata, the social cards, the RSS feed, the sitemap and the
 downloadable PDF CV all follow from that.
 
-- Home page with hero, projects, experience, tech stack, recent posts and about
+- Home page with hero, projects, experience, stack, recent posts and about
 - Blog with MDX posts and Shiki syntax highlighting
 - A CV rendered to a real PDF at `/cv.pdf`, laid out to parse cleanly in an
   applicant tracking system
@@ -38,10 +38,10 @@ and none of them need you to know React.
 
 | File | What it holds |
 | --- | --- |
-| `site.config.ts` | Your name, URL, role, headline, intro, About text, avatar, nav links, social links |
+| `site.config.ts` | Your name, URL, role, headline, intro, About text, avatar, signature, nav links, social links |
 | `content/projects.ts` | The Projects section |
 | `content/experience.ts` | The Experience section |
-| `content/stack.ts` | The Tech stack section |
+| `content/stack.ts` | The My stack section |
 | `cv.config.ts` | Everything printed on the PDF CV |
 
 Posts live as `.mdx` files in `content/posts/`. Images and the favicon live in
@@ -95,13 +95,13 @@ Append to the array in `content/projects.ts`. Order is the order on the page:
 ```ts
 {
   name: "Project A",
-  description: "A task runner for monorepos that keeps its cache honest.",
+  description: "One sentence. What it is, not how it was built.",
   summary: "The longer line, shown in the hover card.",
   href: "https://github.com/you/project-a",
   label: "github.com/project-a",
   mark: "circle",      // circle | square | triangle
   period: "Ongoing",   // free text: "2024", "2023 – 2024", "Ongoing"
-  stack: ["Go", "TypeScript", "CLI"],
+  stack: ["TypeScript", "Go", "CLI"],
 },
 ```
 
@@ -136,10 +136,13 @@ This is deliberately separate from `cv.config.ts`: the page wants one line per
 role and the PDF wants bullet points, and one list trying to serve both serves
 neither.
 
-### Adding to the tech stack
+### Adding to My stack
 
-`content/stack.ts` holds groups rather than one long list. Three or four groups
-of five or six items reads best. Delete a group and it disappears.
+`content/stack.ts` is one flat list of names, and a deliberately short one.
+Eight or nine answers "what would this person reach for on Monday" better than
+thirty, because thirty makes the reader guess which ones you actually meant. A
+good filter: if you would not be happy being asked about it in an interview
+tomorrow, leave it out.
 
 Every entry gets its brand mark and then the same weight, colour and size as
 every other one. A stack list stops being information the moment one item is
@@ -200,6 +203,24 @@ pick up. Replace `public/avatar.svg` with your own photo and point `avatar` at
 it, or set it to `""` to publish none. `public/favicon.svg` is the browser tab
 icon.
 
+### Your signature
+
+The About section ends with a signature line: a dotted rule with your name
+under it, the way a form leaves you room to sign. The template ships the slot
+and not the signature, because a stranger's handwriting under your own words is
+worse than none.
+
+To add yours, put an SVG of it in `public/` and point `signature` at it:
+
+```ts
+signature: "/signature.svg",
+```
+
+It draws above the rule. The slot keeps its height either way, so filling it in
+never moves anything below it. Vector rather than a photo of ink: it stays
+crisp at any size and on any screen. If you would rather not have one at all,
+delete `<Signature />` from `app/page.tsx`.
+
 ### Your CV
 
 `cv.config.ts` is the whole PDF: profile, experience, projects, education,
@@ -253,8 +274,27 @@ variant of its own, so using the default palette rules dark mode out. If you
 want it, add a `theme.colors` block with paired values and swap the stock class
 names back to your own token names.
 
-There is no custom stylesheet to keep in sync: `app/globals.css` is two font
+There is no custom stylesheet to keep in sync: `app/globals.css` is the font
 imports and one `@yummacss` directive.
+
+### Type
+
+Three faces, all from Fontsource, all self-hosted:
+
+| Face | Where |
+| --- | --- |
+| Geist | Everything, set once on `<body>` |
+| Instrument Serif Italic | One word in the headline, and nowhere else |
+| IBM Plex Mono | Dates, tags, section numbers, the nav |
+
+Only the serif has any character, which is the point: it is used for your name
+and lets the rest of the page stay quiet. The mono is a text mono rather than a
+code mono, so the small labels read as typed rather than compiled.
+
+To change any of them, swap the `@import` in `app/globals.css` and the matching
+family in `src/lib/fonts.ts`. Yumma's `theme` takes colours and screens but not
+families, which is why the families live in a TypeScript file and get applied
+as inline styles.
 
 ## Local development
 
@@ -305,12 +345,12 @@ yumma.config.mjs        Colour palette and breakpoints
 content/
   projects.ts           Projects section
   experience.ts         Experience section
-  stack.ts              Tech stack section
+  stack.ts              My stack section
   posts/*.mdx           Blog posts
 app/                    Routes, metadata, feed, sitemap, social cards
 src/components/         The pieces the pages are built from
 src/components/icons.tsx        Social marks and the project shapes
-src/components/stack-icons.tsx  Brand marks for the tech stack
+src/components/stack-icons.tsx  Brand marks for the stack
 src/lib/                Post loading, structured data, fonts
 public/                 Images, avatar, favicon
 ```

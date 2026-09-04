@@ -1,33 +1,27 @@
 /**
- * The Tech stack section.
+ * The My stack section.
  *
- * Grouped, because a flat wall of thirty names tells a reader nothing. Keep
- * each group to five or six and the section stays scannable.
+ * One flat list, and a short one. A stack section is not an inventory: it is
+ * the answer to "what would this person reach for on Monday", and eight names
+ * answer that better than thirty, because thirty means the reader has to guess
+ * which ones you actually meant.
  *
- * List what you actually reach for. A stack that claims everything reads as
- * a stack that claims nothing, and the one thing a reader can verify in ten
- * seconds is whether your site uses what you say it does.
+ * The rule of thumb: if you would not be happy being asked about it in an
+ * interview tomorrow, leave it out.
+ *
+ * Each name is matched against the brand marks in
+ * `src/components/stack-icons.tsx`. Anything with no mark there still renders —
+ * it gets the outlined square — so never leave a tool out just because it has
+ * no logo.
  */
-export type StackGroup = {
-	title: string;
-	items: string[];
-};
-
-export const stack: StackGroup[] = [
-	{
-		title: "Language",
-		items: ["TypeScript", "Python", "SQL"],
-	},
-	{
-		title: "Frontend",
-		items: ["React", "Next.js", "Astro", "Yumma CSS", "Base UI"],
-	},
-	{
-		title: "Data",
-		items: ["PostgreSQL", "Neon", "Supabase", "Drizzle"],
-	},
-	{
-		title: "Tooling",
-		items: ["Vite", "pnpm", "Turborepo", "Playwright", "Biome"],
-	},
+export const stack: string[] = [
+	"TypeScript",
+	"React",
+	"Next.js",
+	"Astro",
+	"Yumma CSS",
+	"PostgreSQL",
+	"Drizzle",
+	"Vite",
+	"Biome",
 ];

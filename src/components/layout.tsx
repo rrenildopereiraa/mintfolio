@@ -81,8 +81,21 @@ export function SectionHeading({
 	return (
 		<div>
 			<div className="d-f ai-b g-3">
-				<span aria-hidden="true" className="d-f fs-0 c-mint-7">
-					<Icon width={17} height={17} strokeWidth={1.7} className="d-b fs-0" />
+				{/* The icon sits on a white disc, the same treatment as the nav
+				    pill: where the grid runs behind a heading the disc lifts the
+				    mark off it, and where it doesn't the ring still reads as a
+				    deliberate plate rather than a floating glyph. Centred rather
+				    than baselined, since a 30px disc hung off a 14px baseline
+				    would tower over the label. */}
+				<span
+					aria-hidden="true"
+					className="d-f ai-c jc-c fs-0 w-8 h-8 br-9999 bw-1 bs-s bc-silver-2 bg-white c-mint-7"
+					style={{
+						alignSelf: "center",
+						boxShadow: "0 1px 2px rgba(48, 48, 53, 0.05)",
+					}}
+				>
+					<Icon width={16} height={16} strokeWidth={1.7} className="d-b fs-0" />
 				</span>
 
 				<h2 className="m-0 fs-sm fw-600 ls-1 c-zinc-9">{label}</h2>

@@ -30,37 +30,37 @@ export const projects: Project[] = [
 	{
 		name: "Mend Labs",
 		description:
-			"A task runner for monorepos that keeps its cache honest. Rebuilds only what actually changed, and tells you why when it disagrees with you.",
+			"The design system three product teams actually share. Tokens, docs and a release process that stops everyone forking the same button.",
 		summary:
-			"Cuts a cold monorepo build from eleven minutes to under three, and explains every cache decision it makes.",
+			"One source for colour, type and spacing, with a changelog people read because breaking changes arrive with a codemod.",
 		href: "https://github.com/iriscalderon/mend-labs",
 		label: "github.com/mend-labs",
 		mark: "circle",
 		period: "Ongoing",
-		stack: ["Go", "TypeScript", "CLI"],
+		stack: ["TypeScript", "Style Dictionary", "Docs"],
 	},
 	{
 		name: "Mend UI",
 		description:
-			"A local-first sync engine for React apps that have to survive a train tunnel. Conflict resolution you can read and reason about.",
+			"Forty React components built on unstyled primitives. Accessible before it is pretty, and themeable without a prop for every pixel.",
 		summary:
-			"Offline-first storage with a conflict model you can actually explain to the rest of the team.",
+			"Keyboard behaviour and focus handling come from the primitives underneath, so the components only have to get the styling right.",
 		href: "https://github.com/iriscalderon/mend-ui",
 		label: "github.com/mend-ui",
 		mark: "square",
 		period: "2024",
-		stack: ["TypeScript", "IndexedDB", "CRDT"],
+		stack: ["React", "TypeScript", "Base UI"],
 	},
 	{
 		name: "Mend Icons",
 		description:
-			"Turns an OpenAPI document into a typed client that reads like it was written by hand.",
+			"Six hundred icons drawn on one grid, so they sit on a line together. Shipped as plain SVGs and as a package that tree-shakes.",
 		summary:
-			"Generates clients nobody wants to rewrite, with types that survive a schema change.",
+			"Every icon is optimised at build time and exported both ways, because half the teams using them are not running a bundler.",
 		href: "https://github.com/iriscalderon/mend-icons",
 		label: "github.com/mend-icons",
 		mark: "triangle",
 		period: "2023",
-		stack: ["TypeScript", "Codegen"],
+		stack: ["SVG", "TypeScript", "SVGO"],
 	},
 ];

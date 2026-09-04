@@ -19,7 +19,8 @@ import { JsonLd } from "../src/components/json-ld.tsx";
 import { Layout, SectionHeading } from "../src/components/layout.tsx";
 import { PostList } from "../src/components/post-card.tsx";
 import { ProjectRow } from "../src/components/project-row.tsx";
-import { StackGroups } from "../src/components/stack-groups.tsx";
+import { Signature } from "../src/components/signature.tsx";
+import { StackList } from "../src/components/stack-list.tsx";
 import { MONO_STYLE, SERIF_ITALIC } from "../src/lib/fonts.ts";
 import { getPosts } from "../src/lib/posts.ts";
 import { homeSchema } from "../src/lib/schema.ts";
@@ -94,13 +95,13 @@ export default async function Home() {
 
 			<section id="stack" className={SECTION}>
 				<SectionHeading
-					label="Tech stack"
+					label="My stack"
 					number="03"
 					icon={Component}
 					description="What I reach for, not everything I have touched."
 				/>
-				<div className="mt-8">
-					<StackGroups groups={stack} />
+				<div className="mt-6">
+					<StackList items={stack} />
 				</div>
 			</section>
 
@@ -163,6 +164,8 @@ export default async function Home() {
 						)}
 						, or say hello over email.
 					</p>
+
+					<Signature />
 				</div>
 			</section>
 		</Layout>
