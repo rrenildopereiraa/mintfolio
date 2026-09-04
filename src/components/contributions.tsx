@@ -1,3 +1,4 @@
+import { CONTRIBUTION_LEVELS } from "../lib/colors.ts";
 import { MONO_STYLE } from "../lib/fonts.ts";
 
 /**
@@ -34,15 +35,12 @@ function sample(): number[][] {
 	);
 }
 
-/** Empty, then four steps of mint. Matches Yumma's default `mint` ramp. */
-const LEVELS = ["#eef1f4", "#b7ead9", "#53cda4", "#10b981", "#0c855d"];
-
 export function Contributions({ total }: { total: number }) {
 	const weeks = sample();
 
 	return (
 		<div>
-			<p className="m-0 pb-2 fs-xs c-slate" style={MONO_STYLE}>
+			<p className="m-0 pb-2 fs-xs c-text-dim" style={MONO_STYLE}>
 				{total.toLocaleString("en-US")} contributions this year
 			</p>
 
@@ -63,7 +61,7 @@ export function Contributions({ total }: { total: number }) {
 							width={SIZE}
 							height={SIZE}
 							rx={1.5}
-							fill={LEVELS[level]}
+							style={{ fill: CONTRIBUTION_LEVELS[level] }}
 						/>
 					)),
 				)}

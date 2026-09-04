@@ -18,7 +18,7 @@ export function ExperienceList({ roles }: { roles: Role[] }) {
 			{roles.map((role, index) => (
 				<li
 					key={`${role.company}-${role.title}`}
-					className={`p-r pl-6 blw-1 bs-s bc-silver-2 ${
+					className={`p-r pl-6 blw-1 bs-s bc-border ${
 						index === roles.length - 1 ? "pb-0" : "pb-8"
 					}`}
 				>
@@ -29,35 +29,35 @@ export function ExperienceList({ roles }: { roles: Role[] }) {
 					    a vertex does not. */}
 					<span
 						aria-hidden="true"
-						className="p-a l-0 t-1 d-b w-2 h-2 bg-mint"
+						className="p-a l-0 t-1 d-b w-2 h-2 bg-accent"
 						style={{
 							transform: "translateX(calc(-50% - 0.5px)) rotate(45deg)",
 						}}
 					/>
 
 					<div className="d-f fd-c g-1 @sm:fd-r @sm:ai-b @sm:jc-sb @sm:g-4">
-						<h3 className="m-0 fw-600 fs-md lh-3 c-zinc-9">
+						<h3 className="m-0 fw-600 fs-md lh-3 c-text">
 							{role.title}
-							<span className="c-slate">{" · "}</span>
+							<span className="c-text-dim">{" · "}</span>
 							{role.href ? (
 								<a
 									href={role.href}
 									target="_blank"
 									rel="noreferrer"
-									className="td-none c-mint-7 h:c-mint tp-c tdu-150"
+									className="td-none c-accent h:c-accent-hover tp-c tdu-150"
 								>
 									{role.company}
 								</a>
 							) : (
-								<span className="c-mint-7">{role.company}</span>
+								<span className="c-accent">{role.company}</span>
 							)}
 						</h3>
-						<span className="fs-0 fs-xs c-slate" style={MONO_STYLE}>
+						<span className="fs-0 fs-xs c-text-dim" style={MONO_STYLE}>
 							{role.start} – {role.end}
 						</span>
 					</div>
 
-					<p className="mt-2 mb-0 max-w-176 fs-sm lh-5 c-slate">
+					<p className="mt-2 mb-0 max-w-176 fs-sm lh-5 c-text-dim">
 						{role.summary}
 					</p>
 				</li>

@@ -1,4 +1,5 @@
 import { site } from "../../site.config.ts";
+import { COLOR } from "../lib/colors.ts";
 import { MONO_STYLE } from "../lib/fonts.ts";
 
 /**
@@ -17,10 +18,10 @@ import { MONO_STYLE } from "../lib/fonts.ts";
  */
 export function Signature() {
 	return (
-		<div className="mt-10 d-if fd-c" style={{ minWidth: 200 }}>
+		<div className="mt-8 d-if fd-c" style={{ minWidth: 200 }}>
 			{/* The box keeps its height whether or not there is a signature in it,
 			    so adding one never moves the rule or the name below it. */}
-			<div className="d-f ai-fe h-12 pb-1">
+			<div className="d-f ai-fe h-10 pb-1">
 				{site.signature && (
 					// biome-ignore lint/performance/noImgElement: an SVG has nothing for next/image to optimise, and a layout wrapper is all it would add.
 					<img
@@ -35,13 +36,12 @@ export function Signature() {
 				aria-hidden="true"
 				className="d-b h-px"
 				style={{
-					backgroundImage:
-						"linear-gradient(to right, #cbd3d1 0 2px, transparent 2px 6px)",
+					backgroundImage: `linear-gradient(to right, ${COLOR.leader} 0 2px, transparent 2px 6px)`,
 					backgroundSize: "6px 1px",
 				}}
 			/>
 
-			<span className="mt-2 fs-xs c-slate" style={MONO_STYLE}>
+			<span className="mt-2 fs-xs c-text-dim" style={MONO_STYLE}>
 				{site.name}
 			</span>
 		</div>

@@ -1,7 +1,9 @@
+import { COLOR } from "../lib/colors.ts";
+
 /**
- * The technical grid behind the hero and the contact card.
+ * The technical grid behind the hero.
  *
- * Two repeating gradients draw the ruled lines, a soft mint wash sits under
+ * Two repeating gradients draw the ruled lines, a soft accent wash sits under
  * them, and one mask fades the whole thing out before it reaches the text, so
  * the grid reads as paper rather than as a pattern sitting on the content.
  *
@@ -10,8 +12,8 @@
  * atmosphere and starts looking like a box.
  *
  * All inline, because gradients and masks are the kind of thing no utility
- * class can carry. Everything else is a Yumma utility. The colours are picked
- * to sit alongside Yumma's default `mint`.
+ * class can carry. The colours come from `src/lib/colors.ts` so they follow
+ * the theme like everything else.
  */
 
 const FADE =
@@ -22,21 +24,21 @@ const LINES = {
 	backgroundImage: `
 		repeating-linear-gradient(
 			to right,
-			#d9ede5 0 1px,
+			${COLOR.gridLine} 0 1px,
 			transparent 1px 32px
 		),
 		repeating-linear-gradient(
 			to bottom,
-			#d9ede5 0 1px,
+			${COLOR.gridLine} 0 1px,
 			transparent 1px 32px
 		)`,
 } as const;
 
-/** Two diffuse mint glows, off-centre so neither reads as a spotlight. */
+/** Two diffuse glows, off-centre so neither reads as a spotlight. */
 const WASH = {
 	backgroundImage: `
-		radial-gradient(55% 70% at 15% 0%, #e2f6ee 0%, transparent 72%),
-		radial-gradient(45% 55% at 85% 8%, #eef3fb 0%, transparent 75%)`,
+		radial-gradient(55% 70% at 15% 0%, ${COLOR.gridWash} 0%, transparent 72%),
+		radial-gradient(45% 55% at 85% 8%, ${COLOR.gridWash} 0%, transparent 75%)`,
 } as const;
 
 export function GridBackdrop({

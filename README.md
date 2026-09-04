@@ -3,16 +3,16 @@
 A developer portfolio, blog and CV in one Next.js project.
 
 Everything a visitor reads comes from a handful of config files. You edit data,
-not components: your name, your projects, your roles, your stack, your posts.
-The pages, the metadata, the social cards, the RSS feed, the sitemap and the
-downloadable PDF CV all follow from that.
+not components: your name, your projects, your roles, your writing. The pages,
+the metadata, the social cards, the RSS feed, the sitemap and the downloadable
+PDF CV all follow from that.
 
-- Home page with hero, projects, experience, stack, recent posts and about
+- Home page with hero, projects, experience, recent posts and about
 - Blog with MDX posts and Shiki syntax highlighting
 - A CV rendered to a real PDF at `/cv.pdf`, laid out to parse cleanly in an
   applicant tracking system
-- One light theme, built entirely on Yumma's default palette, so every class in
-  the markup is one you can look up
+- Light and dark, from one set of paired colours, every pair checked against
+  WCAG AA
 - Generated social cards, RSS, sitemap, `robots.txt` and JSON-LD structured
   data
 - No database, no CMS, no account to sign up for
@@ -33,7 +33,7 @@ Then open http://localhost:3000.
 
 ## Configuration
 
-Five files hold everything you need to change. None of them import a component,
+Four files hold everything you need to change. None of them import a component,
 and none of them need you to know React.
 
 | File | What it holds |
@@ -41,7 +41,6 @@ and none of them need you to know React.
 | `site.config.ts` | Your name, URL, role, headline, intro, About text, avatar, signature, nav links, social links |
 | `content/projects.ts` | The Projects section |
 | `content/experience.ts` | The Experience section |
-| `content/stack.ts` | The My stack section |
 | `cv.config.ts` | Everything printed on the PDF CV |
 
 Posts live as `.mdx` files in `content/posts/`. Images and the favicon live in
@@ -135,29 +134,6 @@ Append to `content/experience.ts`, newest first:
 This is deliberately separate from `cv.config.ts`: the page wants one line per
 role and the PDF wants bullet points, and one list trying to serve both serves
 neither.
-
-### Adding to My stack
-
-`content/stack.ts` is one flat list of names, and a deliberately short one.
-Eight or nine answers "what would this person reach for on Monday" better than
-thirty, because thirty makes the reader guess which ones you actually meant. A
-good filter: if you would not be happy being asked about it in an interview
-tomorrow, leave it out.
-
-Every entry gets its brand mark and then the same weight, colour and size as
-every other one. A stack list stops being information the moment one item is
-dressed up.
-
-The marks live in `src/components/stack-icons.tsx`, keyed by the exact name you
-use in `content/stack.ts`. Most are copied in from
-[Simple Icons](https://simple-icons.github.io) (CC0) rather than installed,
-since a dependency that ships three thousand marks to use fifteen is not a
-trade worth making; anything Simple Icons does not carry comes from the
-project's own logo.
-
-Add a tool with no mark there and it still renders — it gets the outlined
-square instead, which is the point: your stack should not be limited to the
-things that happen to have a logo.
 
 ### Adding a blog post
 
@@ -260,23 +236,38 @@ There is nothing to configure here beyond getting `site.url` right.
 
 ## Theming
 
-There is no `theme.colors` block in `yumma.config.mjs`. Every colour is a stock
-[Yumma CSS](https://yummacss.com) utility from its default palette, so a class
-you see in the markup is one you can look up and reuse unchanged. The accent is
-`mint`, which Yumma ships as a first-class hue; the neutrals are `zinc` and
-`slate`.
+Every colour lives in the `theme.colors` block of `yumma.config.mjs`, as a
+`{ light, dark }` pair:
 
-To change the accent, search for `mint` across `app/` and `src/` and pick
-another Yumma hue: `c-mint-7` becomes `c-blue-7`, `bg-mint` becomes `bg-blue`,
-and so on. Also update `site.themeColor` and the two hex values in
-`src/components/grid-backdrop.tsx`, which are gradients and therefore cannot be
-utilities.
+```js
+accent: { light: "#0f766e", dark: "#5eead4" },
+text:   { light: "#0d1b19", dark: "#e4f1ee" },
+```
 
-**On dark mode.** This template is light only. Paired `{ light, dark }` theme
-colours are what compile to CSS `light-dark()`, and Yumma 3.29 has no dark-mode
-variant of its own, so using the default palette rules dark mode out. If you
-want it, add a `theme.colors` block with paired values and swap the stock class
-names back to your own token names.
+[Yumma CSS](https://yummacss.com) compiles each pair into CSS `light-dark()`,
+so `c-accent` is one class that resolves to the right value in either theme.
+There is no second palette, no `dark:` prefix on anything, and no way for the
+two themes to drift apart.
+
+The names are roles rather than hues — `accent`, `text`, `text-dim`, `surface`,
+`border` — so changing the identity is changing `accent` and nothing else. The
+surfaces are almost neutral and only the accent is saturated, which is what
+keeps a mint theme from reading as a novelty.
+
+**Contrast.** Every pair is checked against WCAG AA in both themes: body copy
+and links at 4.5:1, the marks at 3:1. If you swap the accent, keep it dark
+enough in light mode to clear 4.5:1 on `surface` — a bright mint looks right on
+a swatch and is unreadable as 14px type. This is the most common way a
+good-looking palette turns into an inaccessible one.
+
+**Dark mode** follows the reader's system by default, and the toggle in the nav
+cycles light → dark → system. The choice is stored per browser and applied by a
+small inline script before first paint, so nobody sees the wrong palette flash
+on load.
+
+A handful of colours are not properties Yumma has a class for — gradient stops,
+box-shadow tints, an SVG `fill`. Those live in `src/lib/colors.ts`, still as
+`light-dark()` pairs, so there is exactly one other file to touch.
 
 There is no custom stylesheet to keep in sync: `app/globals.css` is the font
 imports and one `@yummacss` directive.
@@ -349,12 +340,10 @@ yumma.config.mjs        Colour palette and breakpoints
 content/
   projects.ts           Projects section
   experience.ts         Experience section
-  stack.ts              My stack section
   posts/*.mdx           Blog posts
 app/                    Routes, metadata, feed, sitemap, social cards
 src/components/         The pieces the pages are built from
 src/components/icons.tsx        Social marks and the project shapes
-src/components/stack-icons.tsx  Brand marks for the stack
 src/lib/                Post loading, structured data, fonts
 public/                 Images, avatar, favicon
 ```
