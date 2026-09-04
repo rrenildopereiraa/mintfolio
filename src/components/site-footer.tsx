@@ -12,9 +12,9 @@ import { socialMarks } from "./icons.tsx";
  */
 export function SiteFooter() {
 	return (
-		<footer className="mt-24 pt-8 btw-1 bs-s bc-silver-2">
+		<footer className="mt-24 pt-8 btw-1 bs-s bc-border">
 			<div className="d-f fd-c g-4 @sm:fd-r @sm:ai-c @sm:jc-sb">
-				<p className="m-0 fs-xs c-slate" style={MONO_STYLE}>
+				<p className="m-0 fs-xs c-text-dim" style={MONO_STYLE}>
 					© {new Date().getFullYear()} {site.name}
 				</p>
 
@@ -28,7 +28,7 @@ export function SiteFooter() {
 								href={social.href}
 								aria-label={social.label}
 								title={social.label}
-								className="d-if ai-c jc-c p-2 br-9999 fs-xs td-none c-slate h:c-zinc-9 tp-c tdu-150 fv:os-s fv:oo-2 fv:oc-mint"
+								className="d-if ai-c jc-c p-2 br-9999 fs-xs td-none c-text-dim h:c-text tp-c tdu-150 fv:os-s fv:oo-2 fv:oc-accent"
 								style={MONO_STYLE}
 							>
 								{Mark ? (

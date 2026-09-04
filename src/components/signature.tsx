@@ -1,4 +1,5 @@
 import { site } from "../../site.config.ts";
+import { COLOR } from "../lib/colors.ts";
 import { MONO_STYLE } from "../lib/fonts.ts";
 
 /**
@@ -35,13 +36,12 @@ export function Signature() {
 				aria-hidden="true"
 				className="d-b h-px"
 				style={{
-					backgroundImage:
-						"linear-gradient(to right, #cbd3d1 0 2px, transparent 2px 6px)",
+					backgroundImage: `linear-gradient(to right, ${COLOR.leader} 0 2px, transparent 2px 6px)`,
 					backgroundSize: "6px 1px",
 				}}
 			/>
 
-			<span className="mt-2 fs-xs c-slate" style={MONO_STYLE}>
+			<span className="mt-2 fs-xs c-text-dim" style={MONO_STYLE}>
 				{site.name}
 			</span>
 		</div>

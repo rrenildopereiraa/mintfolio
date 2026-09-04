@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { COLOR } from "../lib/colors.ts";
 import { MONO_STYLE } from "../lib/fonts.ts";
 import { GridBackdrop } from "./grid-backdrop.tsx";
 import { SiteFooter } from "./site-footer.tsx";
@@ -26,7 +27,7 @@ export function Layout({
 	backdrop?: string;
 }) {
 	return (
-		<div className="p-r min-h-dvh o-h bg-white c-zinc-9 s::bg-mint/25">
+		<div className="p-r min-h-dvh o-h bg-page c-text s::bg-accent/25">
 			{backdrop && <GridBackdrop height={backdrop} />}
 
 			<div className="p-r zi-10 max-w-168 mx-auto px-6 pb-20 @sm:px-8 @sm:pb-24">
@@ -93,14 +94,16 @@ export function SectionHeading({
 				    deliberate plate rather than a floating glyph. */}
 				<span
 					aria-hidden="true"
-					className="d-f ai-c jc-c fs-0 w-8 h-8 br-9999 bw-1 bs-s bc-silver-2 bg-white c-mint-7"
-					style={{ boxShadow: "0 1px 2px rgba(48, 48, 53, 0.05)" }}
+					className="d-f ai-c jc-c fs-0 w-8 h-8 br-9999 bw-1 bs-s bc-border bg-surface c-accent"
+					style={{
+						boxShadow: `0 1px 2px ${COLOR.lift}`,
+					}}
 				>
 					<Icon width={16} height={16} strokeWidth={1.7} className="d-b fs-0" />
 				</span>
 
 				<div className="d-f ai-b g-3" style={{ flexGrow: 1 }}>
-					<h2 className="m-0 fs-sm fw-600 ls-1 c-zinc-9">{label}</h2>
+					<h2 className="m-0 fs-sm fw-600 ls-1 c-text">{label}</h2>
 
 					{/* A block flex item baselines on its bottom edge, so a 4px strip
 					    of squares lands directly on the label's baseline. */}
@@ -109,14 +112,13 @@ export function SectionHeading({
 						className="d-b h-1"
 						style={{
 							flexGrow: 1,
-							backgroundImage:
-								"linear-gradient(to right, #bfe6d8 0 4px, transparent 4px 9px)",
+							backgroundImage: `linear-gradient(to right, ${COLOR.sectionRule} 0 4px, transparent 4px 9px)`,
 							backgroundSize: "9px 4px",
 							backgroundRepeat: "repeat-x",
 						}}
 					/>
 
-					<span className="fs-xs c-slate fs-0" style={MONO_STYLE}>
+					<span className="fs-xs c-text-dim fs-0" style={MONO_STYLE}>
 						{number}
 					</span>
 				</div>
@@ -125,7 +127,7 @@ export function SectionHeading({
 			{(description || action) && (
 				<div className="d-f ai-b jc-sb g-4 mt-4">
 					{description && (
-						<p className="m-0 fs-sm lh-5 c-slate">{description}</p>
+						<p className="m-0 fs-sm lh-5 c-text-dim">{description}</p>
 					)}
 					{action}
 				</div>

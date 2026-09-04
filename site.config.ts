@@ -5,31 +5,30 @@
  * the footer, the metadata, the social cards, the RSS feed, the sitemap and
  * the structured data, so a name changed here changes everywhere.
  *
- * Your projects, experience, stack and CV live in their own files:
+ * Your projects, experience and CV live in their own files:
  *   content/projects.ts
  *   content/experience.ts
- *   content/stack.ts
  *   cv.config.ts
  */
 export const site = {
 	/** Used as the author name and as the wordmark in the header. */
-	name: "Iris Calderon",
+	name: "Eva Calderon",
 
 	/**
 	 * No trailing slash. Set this before deploying: the links in your feed,
 	 * sitemap and social cards are absolute and built from it.
 	 */
-	url: "https://iriscalderon.dev",
+	url: "https://evacalderon.dev",
 
 	/** Shown under your name, and published as your job title. */
 	role: "Product engineer",
 
 	location: "Rotterdam, Netherlands",
 
-	email: "hello@iriscalderon.dev",
+	email: "hello@evacalderon.dev",
 
 	/** The browser tab, and the default social card title. */
-	title: "Iris Calderon",
+	title: "Eva Calderon",
 
 	/**
 	 * One or two sentences, used wherever a page doesn't supply its own
@@ -49,7 +48,7 @@ export const site = {
 	headline: {
 		greeting: "Hey there.",
 		intro: "I'm",
-		accent: "Iris",
+		accent: "Eva",
 	},
 
 	/** The paragraph under the headline. Two or three lines reads best. */
@@ -63,10 +62,11 @@ export const site = {
 	],
 
 	/**
-	 * What mobile browsers paint behind the address bar. Keep it matching the
-	 * page background.
+	 * What mobile browsers paint behind the address bar, one value per theme.
+	 * Keep them matching the `page` pair in `yumma.config.mjs`, or the strip
+	 * above the page will be a shade off it.
 	 */
-	themeColor: "#fbfdfc",
+	themeColor: { light: "#fbfdfc", dark: "#07100f" },
 
 	/**
 	 * A file in `public/`. No page shows it: it is published as your `image` in
@@ -99,9 +99,9 @@ export const site = {
 	 * your structured data, where `mailto:` links are skipped automatically.
 	 */
 	socials: [
-		{ label: "GitHub", href: "https://github.com/iriscalderon" },
-		{ label: "LinkedIn", href: "https://linkedin.com/in/iriscalderon" },
-		{ label: "X", href: "https://x.com/iriscalderon" },
-		{ label: "Email", href: "mailto:hello@iriscalderon.dev" },
+		{ label: "GitHub", href: "https://github.com/evacalderon" },
+		{ label: "LinkedIn", href: "https://linkedin.com/in/evacalderon" },
+		{ label: "X", href: "https://x.com/evacalderon" },
+		{ label: "Email", href: "mailto:hello@evacalderon.dev" },
 	],
 };

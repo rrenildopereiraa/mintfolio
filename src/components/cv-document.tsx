@@ -20,10 +20,18 @@ import type { CvPerson } from "../lib/cv.ts";
  * that tint reads as warmth; through a printer it reads as a grey box with
  * toner around the margins.
  */
+/**
+ * The light half of the palette in `yumma.config.mjs`, spelled out.
+ *
+ * A PDF has no `color-scheme` to follow and prints on white either way, so the
+ * CV is always the light theme. The values are copied rather than imported
+ * because Yumma's config is CSS, not something react-pdf can read — keep them
+ * in step by hand if you change the accent.
+ */
 const COLOR = {
 	text: "#0d1b19",
 	dim: "#5a706b",
-	accent: "#0d9488",
+	accent: "#0f766e",
 	border: "#dde8e5",
 };
 
@@ -33,18 +41,18 @@ const COLOR = {
  * server bundle.
  */
 Font.register({
-	family: "Manrope",
+	family: "Geist",
 	fonts: [
 		{
-			src: path.join(process.cwd(), "src/assets/fonts/manrope-400.ttf"),
+			src: path.join(process.cwd(), "src/assets/fonts/geist-400.ttf"),
 			fontWeight: 400,
 		},
 		{
-			src: path.join(process.cwd(), "src/assets/fonts/manrope-500.ttf"),
+			src: path.join(process.cwd(), "src/assets/fonts/geist-500.ttf"),
 			fontWeight: 500,
 		},
 		{
-			src: path.join(process.cwd(), "src/assets/fonts/manrope-700.ttf"),
+			src: path.join(process.cwd(), "src/assets/fonts/geist-700.ttf"),
 			fontWeight: 700,
 		},
 	],
@@ -61,7 +69,7 @@ const styles = StyleSheet.create({
 		paddingTop: 38,
 		paddingBottom: 26,
 		paddingHorizontal: 46,
-		fontFamily: "Manrope",
+		fontFamily: "Geist",
 		fontSize: 9.5,
 		lineHeight: 1.36,
 		color: COLOR.text,
