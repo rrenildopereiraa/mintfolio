@@ -1,77 +1,71 @@
-import { ArrowRight, Download, MapPin } from "iconoir-react";
-import Image from "next/image";
+import { ArrowRight } from "iconoir-react";
 import Link from "next/link";
 import { experience } from "../content/experience.ts";
 import { projects } from "../content/projects.ts";
 import { stack } from "../content/stack.ts";
 import { site } from "../site.config.ts";
+import { Contributions } from "../src/components/contributions.tsx";
 import { ExperienceList } from "../src/components/experience-list.tsx";
-import { GridBackdrop } from "../src/components/grid-backdrop.tsx";
+import { HoverCard } from "../src/components/hover-card.tsx";
+import { GitHub } from "../src/components/icons.tsx";
 import { JsonLd } from "../src/components/json-ld.tsx";
 import { Layout, SectionHeading } from "../src/components/layout.tsx";
 import { PostList } from "../src/components/post-card.tsx";
 import { ProjectRow } from "../src/components/project-row.tsx";
 import { StackGroups } from "../src/components/stack-groups.tsx";
-import { MONO_STYLE } from "../src/lib/fonts.ts";
+import { MONO_STYLE, SERIF_ITALIC } from "../src/lib/fonts.ts";
 import { getPosts } from "../src/lib/posts.ts";
 import { homeSchema } from "../src/lib/schema.ts";
 
 /** How many posts the home page shows before sending you to the archive. */
 const RECENT_POSTS = 3;
 
-const SECTION = "p-r pt-20 smt-20 @sm:pt-28";
+/** One rhythm between sections, set once. */
+const SECTION = "pt-20 @sm:pt-24";
 
 export default async function Home() {
 	const posts = await getPosts();
 	const recent = posts.slice(0, RECENT_POSTS);
+	const github = site.socials.find((s) => s.label === "GitHub");
 
 	return (
-		<Layout backdrop="h-176">
+		<Layout backdrop="h-140">
 			<JsonLd data={homeSchema()} />
 
-			<header id="top" className="p-r pt-16 pb-4 @sm:pt-24">
-				<div className="p-r zi-10">
-					<p className="d-f ai-c g-2 m-0 fs-xs c-slate" style={MONO_STYLE}>
-						<MapPin width={13} height={13} strokeWidth={2} />
-						{site.location}
-					</p>
+			{/* The hero is prose, not a slogan. Two short lines and a paragraph,
+			    with the name carrying the one piece of art direction. */}
+			<header id="top" className="pt-14 @sm:pt-16">
+				<h1 className="m-0 fw-600 ls-1 fs-4xl lh-2 c-zinc-9 @sm:fs-5xl">
+					{site.headline.greeting}
+					<br />
+					{site.headline.intro}{" "}
+					<span className="c-mint-7" style={SERIF_ITALIC}>
+						{site.headline.accent}
+					</span>
+					.
+				</h1>
 
-					<h1 className="mt-5 mb-0 max-w-192 fw-800 ls-2 fs-4xl lh-1 tw-b c-zinc-9 @sm:fs-6xl">
-						{site.headline.lead}{" "}
-						<span className="c-mint-7">{site.headline.accent}</span>
-						{site.headline.tail}
-					</h1>
+				<p className="mt-6 mb-0 fs-lg lh-6 c-slate">{site.intro}</p>
 
-					<p className="mt-6 mb-0 max-w-160 fs-lg lh-5 tw-p c-slate">
-						{site.intro}
-					</p>
-
-					<div className="d-f fw-w ai-c g-3 mt-8">
-						<a
-							href={`mailto:${site.email}`}
-							className="d-if ai-c g-2 px-4 py-2 br-9999 bg-mint fs-sm fw-600 td-none c-white h:bg-mint-7 tp-a tdu-150 fv:os-s fv:oo-2 fv:oc-mint"
-						>
-							Get in touch
-						</a>
-						<a
-							href="/cv.pdf"
-							className="d-if ai-c g-2 px-4 py-2 br-9999 bw-1 bs-s bc-silver-2 bg-white fs-sm fw-500 td-none c-zinc-9 h:bc-silver-3 tp-a tdu-150 fv:os-s fv:oo-2 fv:oc-mint"
-						>
-							<Download width={15} height={15} strokeWidth={2} />
-							Download CV
-						</a>
-					</div>
-				</div>
+				<p className="mt-5 mb-0 fs-sm lh-5 c-slate">
+					Hiring, or just curious? Here&rsquo;s{" "}
+					<a
+						href="/cv.pdf"
+						className="td-none bbw-1 bs-s bc-silver-3 c-zinc-9 h:bc-mint tp-c tdu-150 fv:os-s fv:oo-2 fv:oc-mint"
+					>
+						my CV
+					</a>
+					.
+				</p>
 			</header>
 
-			<section id="work" className={SECTION}>
+			<section id="projects" className={SECTION}>
 				<SectionHeading
-					label="Work"
-					title="Selected projects"
+					label="Projects"
+					number="01"
 					description="Things I built, maintain, or broke and then fixed."
 				/>
-
-				<div>
+				<div className="mt-6">
 					{projects.map((project) => (
 						<ProjectRow key={project.name} project={project} />
 					))}
@@ -81,103 +75,83 @@ export default async function Home() {
 			<section id="experience" className={SECTION}>
 				<SectionHeading
 					label="Experience"
-					title="Where I've worked"
+					number="02"
 					description="The short version. The full history is in the CV."
 				/>
-				<ExperienceList roles={experience} />
+				<div className="mt-6">
+					<ExperienceList roles={experience} />
+				</div>
 			</section>
 
 			<section id="stack" className={SECTION}>
 				<SectionHeading
-					label="Stack"
-					title="Tech stack"
-					description="What I reach for. Not everything I have touched, just what I would be comfortable being called at 3am about."
+					label="Tech stack"
+					number="03"
+					description="What I reach for, not everything I have touched."
 				/>
-				<StackGroups groups={stack} />
+				<div className="mt-8">
+					<StackGroups groups={stack} />
+				</div>
 			</section>
 
 			{recent.length > 0 && (
 				<section id="blog" className={SECTION}>
 					<SectionHeading
 						label="Writing"
-						title="Notes"
-						description="Occasional posts about building things and the parts that went wrong."
+						number="04"
+						description="Some notes, when I have the time."
 						action={
 							<Link
 								href="/blog"
-								className="d-if ai-c g-2 fs-xs td-none c-mint-7 h:c-mint tp-c tdu-150"
+								className="d-if ai-c g-2 fs-0 fs-xs td-none c-slate h:c-mint-7 tp-c tdu-150 fv:os-s fv:oo-2 fv:oc-mint"
 								style={MONO_STYLE}
 							>
 								All posts
-								<ArrowRight width={13} height={13} strokeWidth={2.2} />
+								<ArrowRight width={12} height={12} strokeWidth={2.2} />
 							</Link>
 						}
 					/>
-					<PostList posts={recent} />
+					<div className="mt-6">
+						<PostList posts={recent} />
+					</div>
 				</section>
 			)}
 
 			<section id="about" className={SECTION}>
-				<SectionHeading label="About" title="A bit more" />
+				<SectionHeading label="About" number="05" />
 
-				<div className="d-g g-8 gtc-1 @md:gtc-3">
-					<div className="@md:gc-s-2">
-						{site.about.map((paragraph) => (
-							<p
-								key={paragraph.slice(0, 32)}
-								className="mt-0 mb-4 max-w-176 fs-md lh-6 tw-p c-slate"
-							>
-								{paragraph}
-							</p>
-						))}
-					</div>
+				<div className="mt-6">
+					{site.about.map((paragraph) => (
+						<p
+							key={paragraph.slice(0, 32)}
+							className="mt-0 mb-4 fs-sm lh-6 c-slate"
+						>
+							{paragraph}
+						</p>
+					))}
 
-					<div className="p-r p-5 br-lg bw-1 bs-s bc-silver-2 bg-white o-h">
-						<GridBackdrop height="h-40" bleed={false} />
-						<div className="p-r zi-10">
-							{/* Dropped entirely when `site.avatar` is an empty string, which
-							    is how the config offers to leave the photo out. */}
-							{site.avatar && (
-								<Image
-									src={site.avatar}
-									alt={site.name}
-									width={56}
-									height={56}
-									className="d-b mb-4 w-14 h-14 br-9999 bw-1 bs-s bc-silver-2"
-									// Yumma has no object-fit utility, and without it a photo
-									// that isn't square gets squashed rather than cropped.
-									style={{ objectFit: "cover" }}
-								/>
-							)}
-
-							<p className="m-0 fs-xs ls-2 tt-u c-slate" style={MONO_STYLE}>
-								Contact
-							</p>
-							<a
-								href={`mailto:${site.email}`}
-								className="d-b mt-3 fs-sm fw-600 td-none c-zinc-9 h:c-mint-7 tp-c tdu-150"
-							>
-								{site.email}
-							</a>
-
-							<div className="d-f fw-w g-3 mt-5 pt-4 btw-1 bs-s bc-silver-2">
-								{site.socials
-									.filter((social) => social.href.startsWith("http"))
-									.map((social) => (
-										<a
-											key={social.label}
-											href={social.href}
-											target="_blank"
-											rel="noreferrer"
-											className="fs-xs td-none c-slate h:c-mint-7 tp-c tdu-150"
-											style={MONO_STYLE}
-										>
-											{social.label}
-										</a>
-									))}
-							</div>
-						</div>
-					</div>
+					{/* The contribution graph hangs off the GitHub link rather than
+					    taking a section of its own: it is a detail worth finding, not
+					    a headline. */}
+					<p className="mt-0 mb-0 fs-sm lh-6 c-slate">
+						You can find me on{" "}
+						{github ? (
+							<HoverCard width={500} card={<Contributions total={1284} />}>
+								<a
+									href={github.href}
+									target="_blank"
+									rel="noreferrer"
+									className="d-if ai-c g-2 td-none c-zinc-9 fv:os-s fv:oo-2 fv:oc-mint"
+								>
+									<GitHub width={15} height={15} className="fs-0" />
+									<span className="bbw-1 bs-s bc-silver-3">GitHub</span>
+								</a>
+							</HoverCard>
+						) : (
+							"GitHub"
+						)}
+						, or say hello over email.
+					</p>
 				</div>
 			</section>
 		</Layout>

@@ -39,14 +39,17 @@ export const site = {
 		"Product engineer building developer tools, design systems, and the unglamorous infrastructure underneath them.",
 
 	/**
-	 * The home page headline, in pieces, so the accent phrase can be tinted on
-	 * the page and drawn the same way on the social card, which never sees the
-	 * page's markup.
+	 * The home page headline, in pieces.
+	 *
+	 * It renders as two lines: the greeting, then the introduction with your
+	 * name set in the serif italic. Kept as pieces rather than one string so
+	 * the accent can be tinted on the page and drawn the same way on the
+	 * social card, which never sees the page's markup.
 	 */
 	headline: {
-		lead: "I build tools that get",
-		accent: "out of the way",
-		tail: ".",
+		greeting: "Hey there.",
+		intro: "I'm",
+		accent: "Iris",
 	},
 
 	/** The paragraph under the headline. Two or three lines reads best. */
@@ -76,9 +79,9 @@ export const site = {
 	 * Remove one and it disappears; the sections live in `app/page.tsx`.
 	 */
 	nav: [
-		{ label: "Work", href: "/#work" },
-		{ label: "Experience", href: "/#experience" },
-		{ label: "Blog", href: "/blog" },
+		{ label: "Projects", href: "/#projects" },
+		{ label: "Writing", href: "/blog" },
+		{ label: "About", href: "/#about" },
 	],
 
 	/**

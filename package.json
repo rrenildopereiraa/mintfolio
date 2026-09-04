@@ -14,8 +14,10 @@
 	},
 	"dependencies": {
 		"@base-ui/react": "^1.7.0",
+		"@fontsource-variable/instrument-sans": "^5.3.0",
 		"@fontsource-variable/jetbrains-mono": "^5.3.0",
 		"@fontsource-variable/manrope": "^5.3.0",
+		"@fontsource/instrument-serif": "^5.3.0",
 		"@mdx-js/loader": "^3.1.1",
 		"@mdx-js/react": "^3.1.1",
 		"@next/mdx": "^16.3.0",

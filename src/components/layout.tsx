@@ -7,9 +7,9 @@ import { SiteNav } from "./site-nav.tsx";
 /**
  * The page shell: header, content column, footer.
  *
- * The column is wider than a reading measure because the Work grid needs two
- * cards side by side, and narrower than the viewport because prose still has
- * to be readable. Long-form pages narrow themselves further.
+ * The column is a reading measure rather than a layout width. Everything on
+ * the page is text or a row of text, so there is nothing that needs the space
+ * a wider column would buy, and prose set much wider than this gets tiring.
  */
 export function Layout({
 	children,
@@ -18,8 +18,7 @@ export function Layout({
 	 * Omit it for no grid at all.
 	 *
 	 * The grid starts above the header rather than below it, so there is no
-	 * seam where the tint begins. Inner pages use a shorter one than the home
-	 * page: enough to carry the identity, not enough to sit behind the text.
+	 * seam where the tint begins.
 	 */
 	backdrop,
 }: {
@@ -30,7 +29,7 @@ export function Layout({
 		<div className="p-r min-h-dvh o-h bg-white c-zinc-9 s::bg-mint/25">
 			{backdrop && <GridBackdrop height={backdrop} />}
 
-			<div className="p-r zi-10 max-w-232 mx-auto px-5 pb-20 @sm:px-8 @sm:pb-28">
+			<div className="p-r zi-10 max-w-168 mx-auto px-6 pb-20 @sm:px-8 @sm:pb-24">
 				<SiteNav />
 				{children}
 				<SiteFooter />
@@ -40,42 +39,69 @@ export function Layout({
 }
 
 /**
- * A section heading: a small mono label with a mint marker, then the title.
+ * A section heading: a square marker, the label, a ruled run of squares, and
+ * the section number.
  *
- * The label is what gives the page its technical register, and it is why the
- * headings need no rules or numbering to feel structured.
+ * The rule is squares rather than a line because the same shape carries the
+ * whole identity, from the mesh behind the hero down to this. It is one
+ * alphabet used at three sizes, which is what stops the page needing borders
+ * to feel structured.
  */
 export function SectionHeading({
 	label,
-	title,
+	number,
 	description,
 	action,
 }: {
-	/** The small uppercase label above the title. */
 	label: string;
-	title: string;
-	/** One line under the title. Optional. */
+	/** Shown at the right end of the rule, e.g. "01". */
+	number: string;
+	/** One line under the heading. Optional. */
 	description?: string;
-	/** A link or control, pinned right on wide screens. */
+	/** A link pinned to the right of the description row. */
 	action?: ReactNode;
 }) {
 	return (
-		<div className="d-f fd-c g-4 mb-8 @sm:fd-r @sm:ai-fe @sm:jc-sb">
-			<div>
-				<div className="d-f ai-c g-2">
-					<span aria-hidden="true" className="d-b w-2 h-2 br-9999 bg-mint" />
-					<span className="fs-xs fw-500 ls-3 tt-u c-mint-7" style={MONO_STYLE}>
-						{label}
-					</span>
-				</div>
-				<h2 className="mt-3 mb-0 fw-700 ls-1 fs-xxl lh-2 c-zinc-9">{title}</h2>
-				{description && (
-					<p className="mt-2 mb-0 max-w-160 fs-sm lh-5 c-slate">
-						{description}
-					</p>
-				)}
+		<div>
+			<div className="d-f ai-c g-3">
+				{/* Two offset squares: the smaller one is the mesh, scaled up. */}
+				<span aria-hidden="true" className="p-r d-b w-3 h-3 fs-0">
+					<span className="p-a t-0 l-0 w-3 h-3 bg-mint" />
+					{/* Offset inline: Yumma has no transform utility. */}
+					<span
+						className="p-a t-0 l-0 w-3 h-3 bg-mint/30"
+						style={{ transform: "translate(4px, -4px)" }}
+					/>
+				</span>
+
+				<h2 className="m-0 fs-sm fw-600 ls-1 c-zinc-9">{label}</h2>
+
+				<span
+					aria-hidden="true"
+					className="d-b h-2"
+					style={{
+						flexGrow: 1,
+						backgroundImage:
+							"linear-gradient(to right, #bfe6d8 0 4px, transparent 4px 9px)",
+						backgroundSize: "9px 4px",
+						backgroundRepeat: "repeat-x",
+						backgroundPosition: "0 2px",
+					}}
+				/>
+
+				<span className="fs-xs c-slate fs-0" style={MONO_STYLE}>
+					{number}
+				</span>
 			</div>
-			{action}
+
+			{(description || action) && (
+				<div className="d-f ai-b jc-sb g-4 mt-4">
+					{description && (
+						<p className="m-0 fs-sm lh-5 c-slate">{description}</p>
+					)}
+					{action}
+				</div>
+			)}
 		</div>
 	);
 }

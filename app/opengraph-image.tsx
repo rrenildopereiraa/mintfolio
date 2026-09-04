@@ -23,9 +23,9 @@ export default function Image() {
 						rowGap: 4,
 					}}
 				>
-					<span>{site.headline.lead}</span>
+					<span>{`${site.headline.greeting} ${site.headline.intro}`}</span>
 					<span style={{ color: OG_COLOR.accent }}>
-						{`${site.headline.accent}${site.headline.tail}`}
+						{`${site.headline.accent}.`}
 					</span>
 				</span>
 			}

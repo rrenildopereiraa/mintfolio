@@ -33,6 +33,33 @@ export function GitHub(props: SVGProps<SVGSVGElement>) {
 }
 
 /**
+ * The X mark.
+ *
+ * Iconoir ships an `X` too. This one is here so every brand mark on the site
+ * comes from the same file and inherits colour the same way, rather than one
+ * arriving from an icon pack with its own sizing conventions.
+ */
+export function X(props: SVGProps<SVGSVGElement>) {
+	return (
+		<svg viewBox="0 0 16 16" fill="none" aria-hidden="true" {...props}>
+			<path
+				fill="currentColor"
+				d="M9.52 6.77 15.48 0h-1.41L8.9 5.88 4.77 0H0l6.25 8.9L0 16h1.41l5.46-6.21L11.23 16H16L9.52 6.77Zm-1.93 2.2-.63-.89L1.92 1.04h2.17l4.06 5.7.63.89 5.28 7.4h-2.17L7.59 8.97Z"
+			/>
+		</svg>
+	);
+}
+
+/** Every brand mark the footer and the About prose can reach for. */
+export const socialMarks: Record<
+	string,
+	(props: SVGProps<SVGSVGElement>) => React.ReactElement
+> = {
+	GitHub,
+	X,
+};
+
+/**
  * Project marks: a circle, a square and a triangle.
  *
  * The example projects are deliberately shapes rather than invented logos. A

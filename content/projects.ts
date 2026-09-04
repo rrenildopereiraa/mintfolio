@@ -28,37 +28,37 @@ export type Project = {
 
 export const projects: Project[] = [
 	{
-		name: "Project A",
+		name: "Mend Labs",
 		description:
 			"A task runner for monorepos that keeps its cache honest. Rebuilds only what actually changed, and tells you why when it disagrees with you.",
 		summary:
 			"Cuts a cold monorepo build from eleven minutes to under three, and explains every cache decision it makes.",
-		href: "https://github.com/iriscalderon/project-a",
-		label: "github.com/project-a",
+		href: "https://github.com/iriscalderon/mend-labs",
+		label: "github.com/mend-labs",
 		mark: "circle",
 		period: "Ongoing",
 		stack: ["Go", "TypeScript", "CLI"],
 	},
 	{
-		name: "Project B",
+		name: "Mend UI",
 		description:
 			"A local-first sync engine for React apps that have to survive a train tunnel. Conflict resolution you can read and reason about.",
 		summary:
 			"Offline-first storage with a conflict model you can actually explain to the rest of the team.",
-		href: "https://github.com/iriscalderon/project-b",
-		label: "github.com/project-b",
+		href: "https://github.com/iriscalderon/mend-ui",
+		label: "github.com/mend-ui",
 		mark: "square",
 		period: "2024",
 		stack: ["TypeScript", "IndexedDB", "CRDT"],
 	},
 	{
-		name: "Project C",
+		name: "Mend Icons",
 		description:
 			"Turns an OpenAPI document into a typed client that reads like it was written by hand.",
 		summary:
 			"Generates clients nobody wants to rewrite, with types that survive a schema change.",
-		href: "https://github.com/iriscalderon/project-c",
-		label: "github.com/project-c",
+		href: "https://github.com/iriscalderon/mend-icons",
+		label: "github.com/mend-icons",
 		mark: "triangle",
 		period: "2023",
 		stack: ["TypeScript", "Codegen"],
