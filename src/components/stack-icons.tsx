@@ -1,9 +1,11 @@
 /**
- * Brand marks for the tech stack.
+ * Brand marks for the stack.
  *
- * The paths come from Simple Icons (simple-icons.github.io, CC0), copied in
+ * Most paths come from Simple Icons (simple-icons.github.io, CC0), copied in
  * rather than installed: a portfolio needs a dozen of these, and a dependency
- * that ships three thousand to use fourteen is not a trade worth making.
+ * that ships three thousand to use fifteen is not a trade worth making. The
+ * exception is Yumma CSS, which Simple Icons does not carry — that one is
+ * taken from the project's own logo.
  *
  * To add one, find the mark you want, take its `d` attribute and its brand
  * colour, and drop them in below under the exact name you used in
@@ -31,6 +33,10 @@ const BRAND: Record<string, { hex: string; path: string }> = {
 	Astro: {
 		hex: "#BC52EE",
 		path: "M8.358 20.162c-1.186-1.07-1.532-3.316-1.038-4.944.856 1.026 2.043 1.352 3.272 1.535 1.897.283 3.76.177 5.522-.678.202-.098.388-.229.608-.36.166.473.209.95.151 1.437-.14 1.185-.738 2.1-1.688 2.794-.38.277-.782.525-1.175.787-1.205.804-1.531 1.747-1.078 3.119l.044.148a3.158 3.158 0 0 1-1.407-1.188 3.31 3.31 0 0 1-.544-1.815c-.004-.32-.004-.642-.048-.958-.106-.769-.472-1.113-1.161-1.133-.707-.02-1.267.411-1.415 1.09-.012.053-.028.104-.045.165h.002zm-5.961-4.445s3.24-1.575 6.49-1.575l2.451-7.565c.092-.366.36-.614.662-.614.302 0 .57.248.662.614l2.45 7.565c3.85 0 6.491 1.575 6.491 1.575L16.088.727C15.93.285 15.663 0 15.303 0H8.697c-.36 0-.615.285-.784.727l-5.516 14.99z",
+	},
+	"Yumma CSS": {
+		hex: "#413CB8",
+		path: "M1,12C1,5.9,5.9,1,12,1c6.1,0,11,4.9,11,11c0,6.1-4.9,11-11,11C5.9,23,1,18.1,1,12zM12,3c-5,0-9,4-9,9c0,5,4,9,9,9c5,0,9-4,9-9C21,7,17,3,12,3zM16.2,7c-0.4,0-0.8,0.2-1.1,0.5l-7.7,7.7C7.2,15.4,7,15.8,7,16.2c0,0.4,0.2,0.9,0.6,1.2c1.2,1,2.8,1.6,4.4,1.6c1.9,0,3.6-0.7,4.9-2.1c1.3-1.3,2.1-3.1,2.1-4.9c0-1.6-0.6-3.2-1.6-4.4C17.1,7.2,16.7,7,16.2,7z",
 	},
 	"Base UI": {
 		hex: "#303035",

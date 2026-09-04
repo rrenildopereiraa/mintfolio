@@ -148,12 +148,16 @@ Every entry gets its brand mark and then the same weight, colour and size as
 every other one. A stack list stops being information the moment one item is
 dressed up.
 
-The marks live in `src/components/stack-icons.tsx`, copied in from
-[Simple Icons](https://simple-icons.github.io) (CC0) rather than installed, and
-keyed by the exact name you use in `content/stack.ts`. Add a tool with no mark
-there and it still renders — it gets the outlined square instead, which is the
-point: your stack should not be limited to the things that happen to have a
-logo.
+The marks live in `src/components/stack-icons.tsx`, keyed by the exact name you
+use in `content/stack.ts`. Most are copied in from
+[Simple Icons](https://simple-icons.github.io) (CC0) rather than installed,
+since a dependency that ships three thousand marks to use fifteen is not a
+trade worth making; anything Simple Icons does not carry comes from the
+project's own logo.
+
+Add a tool with no mark there and it still renders — it gets the outlined
+square instead, which is the point: your stack should not be limited to the
+things that happen to have a logo.
 
 ### Adding a blog post
 
