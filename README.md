@@ -192,9 +192,8 @@ icon.
 
 ### Your signature
 
-The About section ends with a signature line: a dotted rule with your name
-under it, the way a form leaves you room to sign. The template ships the slot
-and not the signature, because a stranger's handwriting under your own words is
+The About section signs off with your name. The template ships the slot and
+not the signature, because a stranger's handwriting under your own words is
 worse than none.
 
 To add yours, put an SVG of it in `public/` and point `signature` at it:
@@ -203,9 +202,9 @@ To add yours, put an SVG of it in `public/` and point `signature` at it:
 signature: "/signature.svg",
 ```
 
-It draws above the rule. The slot keeps its height either way, so filling it in
-never moves anything below it. Vector rather than a photo of ink: it stays
-crisp at any size and on any screen. If you would rather not have one at all,
+It draws above your name. Vector rather than a photo of ink: it stays crisp at
+any size and on any screen. Nothing is reserved for it, so with no signature
+set the name simply stands on its own. If you would rather not sign off at all,
 delete `<Signature />` from `app/page.tsx`.
 
 The home page renders no footer, so the signature is the last thing on it — the

@@ -5,34 +5,27 @@ import { MONO_STYLE } from "../lib/fonts.ts";
 import { ThemeToggle } from "./theme-toggle.tsx";
 
 /**
- * The header: a wordmark, and the links and theme toggle in one pill.
+ * The header: one centred pill, and nothing else.
  *
- * The pill exists because the grid sits behind this row. Links printed
+ * There is no wordmark. The name is already the largest thing on the page two
+ * lines below it, and a site this size does not need to be told apart from the
+ * seventeen other tabs — printing it twice in the first 200 pixels was
+ * repetition doing the work of branding.
+ *
+ * With nothing on the left the pill has no reason to sit right, so it centres:
+ * a single object, deliberately placed, rather than the leftovers of a row.
+ *
+ * The pill itself exists because the grid runs behind this row. Links printed
  * straight onto the mesh have to compete with it, and a hover background on
  * each link means a second rectangle appearing over a field of rectangles.
- * Lifting the whole group onto one surface settles both: the pill is the only
- * shape, and hovering just changes the ink.
+ * One surface settles both — the pill is the only shape, and hovering just
+ * changes the ink.
  *
- * The toggle goes inside it rather than beside it, so the header stays one
- * object instead of two things that have to be aligned to each other.
- *
- * There is no menu button. Three links fit on a phone, and when they don't the
- * row wraps and the pill drops under the wordmark on its own line.
+ * There is no menu button. Three links and a toggle fit on a phone.
  */
 export function SiteNav() {
 	return (
-		<header className="d-f fw-w ai-c jc-sb g-3 pt-6 @sm:pt-8">
-			<Link
-				href="/"
-				className="d-if ai-c g-2 td-none c-text fv:os-s fv:oo-2 fv:oc-accent"
-			>
-				<span
-					aria-hidden="true"
-					className="d-b w-2 h-2 br-9999 bg-accent fs-0"
-				/>
-				<span className="fw-700 ls-1 fs-sm">{site.name}</span>
-			</Link>
-
+		<header className="d-f jc-c pt-6 @sm:pt-8">
 			<nav
 				className="d-f ai-c g-1 p-1 br-9999 bw-1 bs-s bc-border bg-surface"
 				style={{
