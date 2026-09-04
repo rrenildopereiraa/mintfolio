@@ -1,4 +1,4 @@
-import { ArrowLeft } from "iconoir-react";
+import { ArrowLeft, RssFeed } from "iconoir-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { JsonLd } from "../../src/components/json-ld.tsx";
@@ -34,14 +34,28 @@ export default async function BlogPage() {
 			<JsonLd data={blogSchema(posts)} />
 
 			<article className="pt-16 @sm:pt-20">
-				<Link
-					href="/"
-					className="d-if ai-c g-2 fs-xs td-none c-text-dim h:c-accent tp-c tdu-150"
-					style={MONO_STYLE}
-				>
-					<ArrowLeft width={13} height={13} strokeWidth={2.2} />
-					Home
-				</Link>
+				{/* The feed link belongs on the page it is a feed of, not in a
+				    site-wide footer where nobody looking for it would think to
+				    check. */}
+				<div className="d-f ai-c jc-sb g-4">
+					<Link
+						href="/"
+						className="d-if ai-c g-2 fs-xs td-none c-text-dim h:c-accent tp-c tdu-150 fv:os-s fv:oo-2 fv:oc-accent"
+						style={MONO_STYLE}
+					>
+						<ArrowLeft width={13} height={13} strokeWidth={2.2} />
+						Home
+					</Link>
+
+					<a
+						href="/feed.xml"
+						className="d-if ai-c g-2 fs-0 fs-xs td-none c-text-dim h:c-accent tp-c tdu-150 fv:os-s fv:oo-2 fv:oc-accent"
+						style={MONO_STYLE}
+					>
+						<RssFeed width={13} height={13} strokeWidth={2.2} />
+						RSS
+					</a>
+				</div>
 
 				<h1 className="mt-6 mb-0 fw-800 ls-2 fs-4xl lh-2 tw-b c-text">Blog</h1>
 				<p className="mt-3 mb-10 max-w-160 fs-lg lh-5 tw-p c-text-dim">
