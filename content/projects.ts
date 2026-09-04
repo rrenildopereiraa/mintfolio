@@ -1,71 +1,66 @@
-/**
- * The Work section on the home page.
- *
- * Order matters: the list renders top to bottom. Mark the two or three you
- * actually want people to look at as `featured` and they get the wider card.
- * Anything without a `href` renders as a card without a link, which is useful
- * for closed-source work you can still describe.
- */
+import type { ProjectMark } from "../src/components/icons.tsx";
 
+/**
+ * The Projects section.
+ *
+ * Order is the order on the page. Each project carries a `mark`, which is the
+ * small shape shown beside its name and inside its preview card. Three plain
+ * shapes ship with the template; replace them with your own SVG in
+ * `src/components/icons.tsx` and nothing else has to change.
+ */
 export type Project = {
 	name: string;
 	/** One sentence. What it is, not how it was built. */
 	description: string;
-	/** Where the card links. Omit for work you can't link to. */
+	/** Shown in the preview card. A little more room than the sentence above. */
+	summary: string;
+	/** Where the row links. Omit for work you cannot link to. */
 	href?: string;
-	/** Shown next to the link, e.g. "github.com/you/thing". */
+	/** Shown as the chip on the row, e.g. "github.com/you/thing". */
 	label?: string;
-	/** A handful of tags. Three or four keeps the cards even. */
-	stack: string[];
-	/** Gives the project a full-width card at the top of the grid. */
-	featured?: boolean;
+	/** `circle`, `square` or `triangle`. */
+	mark: ProjectMark;
 	/** Free text: "2024", "2023 – 2024", "Ongoing". */
-	period?: string;
+	period: string;
+	/** A handful of tags, shown in the preview card. */
+	stack: string[];
 };
 
 export const projects: Project[] = [
 	{
-		name: "Halcyon",
+		name: "Mend Labs",
 		description:
-			"A task runner for monorepos that keeps its cache honest. Rebuilds only what actually changed, and tells you why when it disagrees with you.",
-		href: "https://github.com/iriscalderon/halcyon",
-		label: "github.com/iriscalderon/halcyon",
-		stack: ["Go", "TypeScript", "CLI"],
-		featured: true,
+			"The design system three product teams actually share. Tokens, docs and a release process that stops everyone forking the same button.",
+		summary:
+			"One source for colour, type and spacing, with a changelog people read because breaking changes arrive with a codemod.",
+		href: "https://github.com/iriscalderon/mend-labs",
+		label: "github.com/mend-labs",
+		mark: "circle",
 		period: "Ongoing",
+		stack: ["TypeScript", "Style Dictionary", "Docs"],
 	},
 	{
-		name: "Tidepool",
+		name: "Mend UI",
 		description:
-			"A local-first sync engine for React apps that have to survive a train tunnel. Conflict resolution you can read and reason about.",
-		href: "https://github.com/iriscalderon/tidepool",
-		label: "github.com/iriscalderon/tidepool",
-		stack: ["TypeScript", "IndexedDB", "CRDT"],
+			"Forty React components built on unstyled primitives. Accessible before it is pretty, and themeable without a prop for every pixel.",
+		summary:
+			"Keyboard behaviour and focus handling come from the primitives underneath, so the components only have to get the styling right.",
+		href: "https://github.com/iriscalderon/mend-ui",
+		label: "github.com/mend-ui",
+		mark: "square",
 		period: "2024",
+		stack: ["React", "TypeScript", "Base UI"],
 	},
 	{
-		name: "Cartograph",
+		name: "Mend Icons",
 		description:
-			"Turns an OpenAPI document into a typed client that reads like it was written by hand.",
-		href: "https://github.com/iriscalderon/cartograph",
-		label: "github.com/iriscalderon/cartograph",
-		stack: ["TypeScript", "Codegen"],
+			"Six hundred icons drawn on one grid, so they sit on a line together. Shipped as plain SVGs and as a package that tree-shakes.",
+		summary:
+			"Every icon is optimised at build time and exported both ways, because half the teams using them are not running a bundler.",
+		href: "https://github.com/iriscalderon/mend-icons",
+		label: "github.com/mend-icons",
+		mark: "triangle",
 		period: "2023",
-	},
-	{
-		name: "Reverb",
-		description:
-			"A 2 kB state machine for multi-step forms, built after the fourth checkout flow went wrong in the same way.",
-		href: "https://github.com/iriscalderon/reverb",
-		label: "github.com/iriscalderon/reverb",
-		stack: ["TypeScript", "React"],
-		period: "2023",
-	},
-	{
-		name: "Northwind design system",
-		description:
-			"The component library and token pipeline behind six internal products. Closed source, but the token format is the interesting part.",
-		stack: ["React", "Design tokens", "Storybook"],
-		period: "2022 – 2024",
+		stack: ["SVG", "TypeScript", "SVGO"],
 	},
 ];

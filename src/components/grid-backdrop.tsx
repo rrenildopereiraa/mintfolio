@@ -9,9 +9,9 @@
  * it the wash is a hard-edged rectangle, and the backdrop stops looking like
  * atmosphere and starts looking like a box.
  *
- * All inline, because gradients, masks and `light-dark()` colour stops are the
- * kind of thing no utility class can carry. Everything else is a Yumma
- * utility.
+ * All inline, because gradients and masks are the kind of thing no utility
+ * class can carry. Everything else is a Yumma utility. The colours are picked
+ * to sit alongside Yumma's default `mint`.
  */
 
 const FADE =
@@ -22,12 +22,12 @@ const LINES = {
 	backgroundImage: `
 		repeating-linear-gradient(
 			to right,
-			light-dark(#cfe2dd, #162926) 0 1px,
+			#d9ede5 0 1px,
 			transparent 1px 32px
 		),
 		repeating-linear-gradient(
 			to bottom,
-			light-dark(#cfe2dd, #162926) 0 1px,
+			#d9ede5 0 1px,
 			transparent 1px 32px
 		)`,
 } as const;
@@ -35,8 +35,8 @@ const LINES = {
 /** Two diffuse mint glows, off-centre so neither reads as a spotlight. */
 const WASH = {
 	backgroundImage: `
-		radial-gradient(55% 70% at 15% 0%, light-dark(#c4ebe2, #0e2e2a) 0%, transparent 72%),
-		radial-gradient(45% 55% at 85% 8%, light-dark(#d8efe9, #0b2422) 0%, transparent 75%)`,
+		radial-gradient(55% 70% at 15% 0%, #e2f6ee 0%, transparent 72%),
+		radial-gradient(45% 55% at 85% 8%, #eef3fb 0%, transparent 75%)`,
 } as const;
 
 export function GridBackdrop({

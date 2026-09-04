@@ -1,0 +1,73 @@
+import { MONO_STYLE } from "../lib/fonts.ts";
+
+/**
+ * A year of contribution squares, for the card behind the GitHub link.
+ *
+ * The sample below is generated from a fixed seed rather than fetched. A
+ * template that called the GitHub API on every render would need a token, a
+ * cache and an error state before it drew a single square, and none of that is
+ * what a portfolio template is for. Replace `weeks` with real data when you
+ * want it; the shape is one number per day, 0 to 4.
+ */
+const WEEKS = 52;
+const DAYS = 7;
+const CELL = 9;
+const SIZE = 7;
+
+/** Deterministic, so the server and the client draw the same grid. */
+function sample(): number[][] {
+	let seed = 20260101;
+	const next = () => {
+		seed = (seed * 1664525 + 1013904223) % 4294967296;
+		return seed / 4294967296;
+	};
+
+	return Array.from({ length: WEEKS }, () =>
+		Array.from({ length: DAYS }, () => {
+			const v = next();
+			if (v < 0.38) return 0;
+			if (v < 0.62) return 1;
+			if (v < 0.82) return 2;
+			if (v < 0.94) return 3;
+			return 4;
+		}),
+	);
+}
+
+/** Empty, then four steps of mint. Matches Yumma's default `mint` ramp. */
+const LEVELS = ["#eef1f4", "#b7ead9", "#53cda4", "#10b981", "#0c855d"];
+
+export function Contributions({ total }: { total: number }) {
+	const weeks = sample();
+
+	return (
+		<div>
+			<p className="m-0 pb-2 fs-xs c-slate" style={MONO_STYLE}>
+				{total.toLocaleString("en-US")} contributions this year
+			</p>
+
+			<svg
+				width={WEEKS * CELL}
+				height={DAYS * CELL}
+				viewBox={`0 0 ${WEEKS * CELL} ${DAYS * CELL}`}
+				role="img"
+				aria-label={`${total} contributions in the last year`}
+			>
+				{weeks.map((days, w) =>
+					days.map((level, d) => (
+						<rect
+							// biome-ignore lint/suspicious/noArrayIndexKey: the grid is fixed and positional, so the cell's coordinates are its identity.
+							key={`${w}-${d}`}
+							x={w * CELL}
+							y={d * CELL}
+							width={SIZE}
+							height={SIZE}
+							rx={1.5}
+							fill={LEVELS[level]}
+						/>
+					)),
+				)}
+			</svg>
+		</div>
+	);
+}

@@ -5,10 +5,10 @@
  * the footer, the metadata, the social cards, the RSS feed, the sitemap and
  * the structured data, so a name changed here changes everywhere.
  *
- * Your projects, experience, skills and CV live in their own files:
+ * Your projects, experience, stack and CV live in their own files:
  *   content/projects.ts
  *   content/experience.ts
- *   content/skills.ts
+ *   content/stack.ts
  *   cv.config.ts
  */
 export const site = {
@@ -39,14 +39,17 @@ export const site = {
 		"Product engineer building developer tools, design systems, and the unglamorous infrastructure underneath them.",
 
 	/**
-	 * The home page headline, in pieces, so the accent phrase can be tinted on
-	 * the page and drawn the same way on the social card, which never sees the
-	 * page's markup.
+	 * The home page headline, in pieces.
+	 *
+	 * It renders as two lines: the greeting, then the introduction with your
+	 * name set in the serif italic. Kept as pieces rather than one string so
+	 * the accent can be tinted on the page and drawn the same way on the
+	 * social card, which never sees the page's markup.
 	 */
 	headline: {
-		lead: "I build tools that get",
-		accent: "out of the way",
-		tail: ".",
+		greeting: "Hey there.",
+		intro: "I'm",
+		accent: "Iris",
 	},
 
 	/** The paragraph under the headline. Two or three lines reads best. */
@@ -60,28 +63,35 @@ export const site = {
 	],
 
 	/**
-	 * What mobile browsers paint behind the address bar. Keep these matching
-	 * `page` in yumma.config.mjs.
+	 * What mobile browsers paint behind the address bar. Keep it matching the
+	 * page background.
 	 */
-	themeColor: {
-		light: "#fbfdfc",
-		dark: "#07100f",
-	},
+	themeColor: "#fbfdfc",
 
 	/**
-	 * A file in `public/`, shown in the About section and published as your
-	 * avatar. Set it to an empty string to drop the photo entirely.
+	 * A file in `public/`. No page shows it: it is published as your `image` in
+	 * the structured data, where search results and link previews look for it.
+	 * Set it to an empty string to publish none.
 	 */
 	avatar: "/avatar.svg",
+
+	/**
+	 * Your signature, as a file in `public/`. Empty by default: the About
+	 * section draws the dotted line and your name under it either way, and a
+	 * signature that isn't yours is worse than no signature at all.
+	 *
+	 * An SVG of your own handwriting works best — it stays crisp at any size.
+	 */
+	signature: "",
 
 	/**
 	 * Header links. Each is an anchor on the home page or a route of its own.
 	 * Remove one and it disappears; the sections live in `app/page.tsx`.
 	 */
 	nav: [
-		{ label: "Work", href: "/#work" },
-		{ label: "Experience", href: "/#experience" },
-		{ label: "Blog", href: "/blog" },
+		{ label: "Projects", href: "/#projects" },
+		{ label: "Writing", href: "/blog" },
+		{ label: "About", href: "/#about" },
 	],
 
 	/**

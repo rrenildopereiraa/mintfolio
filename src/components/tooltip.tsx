@@ -31,8 +31,8 @@ export function Tooltip({
 					    from that value instead of from an attribute selector, which
 					    is the one selector shape Yumma's variants can't describe. */}
 					<BaseTooltip.Popup
-						className={`bw-1 bs-s bc-border br-md bg-surface us-none ${
-							popupClassName ?? "px-2 py-1 fs-xs c-text-dim"
+						className={`bw-1 bs-s bc-silver-2 br-md bg-white us-none ${
+							popupClassName ?? "px-2 py-1 fs-xs c-slate"
 						}`}
 						render={(props, state) => {
 							const moving =

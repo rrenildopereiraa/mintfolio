@@ -3,7 +3,6 @@ import type { ReactNode } from "react";
 import { site } from "../site.config.ts";
 import { Providers } from "../src/components/providers.tsx";
 import { SANS } from "../src/lib/fonts.ts";
-import { themeScript } from "../src/lib/theme.ts";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -40,22 +39,12 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-	themeColor: [
-		{ media: "(prefers-color-scheme: light)", color: site.themeColor.light },
-		{ media: "(prefers-color-scheme: dark)", color: site.themeColor.dark },
-	],
+	themeColor: site.themeColor,
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
 	return (
-		// `suppressHydrationWarning` because the inline script below rewrites
-		// the class on <html> before React hydrates, which is the whole point.
-		<html lang="en" className="cs-ld" suppressHydrationWarning>
-			<head>
-				{/* biome-ignore lint/security/noDangerouslySetInnerHtml: must run
-				    inline before first paint, ahead of any bundle. */}
-				<script dangerouslySetInnerHTML={{ __html: themeScript }} />
-			</head>
+		<html lang="en">
 			{/* The family is set here rather than in a stylesheet: Yumma's
 			    `theme` takes colors and screens, not families, so `ff-d` could
 			    only ever be its own built-in stack. Everything inherits this,
