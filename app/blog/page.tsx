@@ -36,24 +36,22 @@ export default async function BlogPage() {
 			<article className="pt-16 @sm:pt-20">
 				<Link
 					href="/"
-					className="d-if ai-c g-2 fs-xs td-none c-slate h:c-mint-7 tp-c tdu-150"
+					className="d-if ai-c g-2 fs-xs td-none c-text-dim h:c-accent tp-c tdu-150"
 					style={MONO_STYLE}
 				>
 					<ArrowLeft width={13} height={13} strokeWidth={2.2} />
 					Home
 				</Link>
 
-				<h1 className="mt-6 mb-0 fw-800 ls-2 fs-4xl lh-2 tw-b c-zinc-9">
-					Blog
-				</h1>
-				<p className="mt-3 mb-10 max-w-160 fs-lg lh-5 tw-p c-slate">
+				<h1 className="mt-6 mb-0 fw-800 ls-2 fs-4xl lh-2 tw-b c-text">Blog</h1>
+				<p className="mt-3 mb-10 max-w-160 fs-lg lh-5 tw-p c-text-dim">
 					{BLOG_DESCRIPTION}
 				</p>
 
 				{posts.length > 0 ? (
 					<PostList posts={posts} />
 				) : (
-					<p className="m-0 fs-sm c-slate">
+					<p className="m-0 fs-sm c-text-dim">
 						Nothing published yet. Add an `.mdx` file to `content/posts`.
 					</p>
 				)}
