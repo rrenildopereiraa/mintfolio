@@ -22,11 +22,17 @@ export function ExperienceList({ roles }: { roles: Role[] }) {
 						index === roles.length - 1 ? "pb-0" : "pb-8"
 					}`}
 				>
-					{/* Rotated inline: Yumma has no transform utility. */}
+					{/* Rotated inline: Yumma has no transform utility.
+					    `left: 0` measures from the padding box, and the rail's border
+					    sits outside it, so centring on the rail is half the marker's
+					    own width plus half the border. A circle hid that half pixel;
+					    a vertex does not. */}
 					<span
 						aria-hidden="true"
-						className="p-a l-0 t-1 d-b w-2 h-2 ml--1 bg-mint"
-						style={{ transform: "rotate(45deg)" }}
+						className="p-a l-0 t-1 d-b w-2 h-2 bg-mint"
+						style={{
+							transform: "translateX(calc(-50% - 0.5px)) rotate(45deg)",
+						}}
 					/>
 
 					<div className="d-f fd-c g-1 @sm:fd-r @sm:ai-b @sm:jc-sb @sm:g-4">
