@@ -80,43 +80,46 @@ export function SectionHeading({
 }) {
 	return (
 		<div>
-			<div className="d-f ai-b g-3">
+			{/* Two rows nested rather than one flat one. The disc is centred on
+			    the text row, and the rule is baselined to the label — and those
+			    are different alignments, so they cannot both come from one
+			    `align-items`. Mixing them with `align-self` looks right until a
+			    32px disc joins a 14px line box and drags the shared baseline
+			    down with it. */}
+			<div className="d-f ai-c g-3">
 				{/* The icon sits on a white disc, the same treatment as the nav
 				    pill: where the grid runs behind a heading the disc lifts the
 				    mark off it, and where it doesn't the ring still reads as a
-				    deliberate plate rather than a floating glyph. Centred rather
-				    than baselined, since a 30px disc hung off a 14px baseline
-				    would tower over the label. */}
+				    deliberate plate rather than a floating glyph. */}
 				<span
 					aria-hidden="true"
 					className="d-f ai-c jc-c fs-0 w-8 h-8 br-9999 bw-1 bs-s bc-silver-2 bg-white c-mint-7"
-					style={{
-						alignSelf: "center",
-						boxShadow: "0 1px 2px rgba(48, 48, 53, 0.05)",
-					}}
+					style={{ boxShadow: "0 1px 2px rgba(48, 48, 53, 0.05)" }}
 				>
 					<Icon width={16} height={16} strokeWidth={1.7} className="d-b fs-0" />
 				</span>
 
-				<h2 className="m-0 fs-sm fw-600 ls-1 c-zinc-9">{label}</h2>
+				<div className="d-f ai-b g-3" style={{ flexGrow: 1 }}>
+					<h2 className="m-0 fs-sm fw-600 ls-1 c-zinc-9">{label}</h2>
 
-				{/* A block flex item baselines on its bottom edge, so a 4px strip of
-				    squares lands directly on the label's baseline. */}
-				<span
-					aria-hidden="true"
-					className="d-b h-1"
-					style={{
-						flexGrow: 1,
-						backgroundImage:
-							"linear-gradient(to right, #bfe6d8 0 4px, transparent 4px 9px)",
-						backgroundSize: "9px 4px",
-						backgroundRepeat: "repeat-x",
-					}}
-				/>
+					{/* A block flex item baselines on its bottom edge, so a 4px strip
+					    of squares lands directly on the label's baseline. */}
+					<span
+						aria-hidden="true"
+						className="d-b h-1"
+						style={{
+							flexGrow: 1,
+							backgroundImage:
+								"linear-gradient(to right, #bfe6d8 0 4px, transparent 4px 9px)",
+							backgroundSize: "9px 4px",
+							backgroundRepeat: "repeat-x",
+						}}
+					/>
 
-				<span className="fs-xs c-slate fs-0" style={MONO_STYLE}>
-					{number}
-				</span>
+					<span className="fs-xs c-slate fs-0" style={MONO_STYLE}>
+						{number}
+					</span>
+				</div>
 			</div>
 
 			{(description || action) && (
