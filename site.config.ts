@@ -1,14 +1,6 @@
 /**
- * Everything about you.
- *
- * This is the first file to edit after cloning Mintfolio. It feeds the header,
- * the footer, the metadata, the social cards, the RSS feed, the sitemap and
- * the structured data, so a name changed here changes everywhere.
- *
- * Your projects, experience and CV live in their own files:
- *   content/projects.ts
- *   content/experience.ts
- *   cv.config.ts
+ * Everything about you, and the first file to edit. Projects, experience and
+ * the CV live in `content/` and `cv.config.ts`.
  */
 export const site = {
 	/** Used as the author name and as the wordmark in the header. */
@@ -38,12 +30,8 @@ export const site = {
 		"Product engineer building developer tools, design systems, and the unglamorous infrastructure underneath them.",
 
 	/**
-	 * The home page headline, in pieces.
-	 *
-	 * It renders as two lines: the greeting, then the introduction with your
-	 * name set in the serif italic. Kept as pieces rather than one string so
-	 * the accent can be tinted on the page and drawn the same way on the
-	 * social card, which never sees the page's markup.
+	 * The headline, in pieces so the accent can be tinted on the page and drawn
+	 * the same way on the social card.
 	 */
 	headline: {
 		greeting: "Hey there.",
@@ -62,25 +50,20 @@ export const site = {
 	],
 
 	/**
-	 * What mobile browsers paint behind the address bar, one value per theme.
-	 * Keep them matching the `page` pair in `yumma.config.mjs`, or the strip
-	 * above the page will be a shade off it.
+	 * Behind the address bar on a phone. Keep it matching `page` in
+	 * `yumma.config.mjs`.
 	 */
 	themeColor: { light: "#fbfdfc", dark: "#07100f" },
 
 	/**
-	 * A file in `public/`. No page shows it: it is published as your `image` in
-	 * the structured data, where search results and link previews look for it.
-	 * Set it to an empty string to publish none.
+	 * A file in `public/`. No page shows it; it is your `image` in the
+	 * structured data. Empty publishes none.
 	 */
 	avatar: "/avatar.svg",
 
 	/**
-	 * Your signature, as a file in `public/`. Empty by default: the About
-	 * section signs off with your name either way, and a signature that isn't
-	 * yours is worse than no signature at all.
-	 *
-	 * An SVG of your own handwriting works best. It stays crisp at any size.
+	 * Your signature, as an SVG in `public/`. Empty by default; About signs off
+	 * with your name either way.
 	 */
 	signature: "",
 
@@ -95,9 +78,8 @@ export const site = {
 	],
 
 	/**
-	 * Rendered as a sentence at the end of the About section, each name with
-	 * its mark beside it, and published as `sameAs` in your structured data,
-	 * where `mailto:` links are skipped automatically.
+	 * Rendered as a sentence at the end of About, and as `sameAs` in the
+	 * structured data.
 	 */
 	socials: [
 		{ label: "LinkedIn", href: "https://linkedin.com/in/abigailchandler" },

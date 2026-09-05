@@ -3,17 +3,8 @@
 import { useEffect, useState } from "react";
 
 /**
- * A media query as a value.
- *
- * Yumma CSS has variants for pseudo-classes, pseudo-elements and
- * breakpoints, but none for `prefers-reduced-motion` or `hover`, and an
- * inline style can't carry a media query either. So the query is read here and the answer becomes
- * something a component can branch on.
- *
- * `initial` is what the server renders, and the first client render has to
- * match it, so each caller picks the answer that is safe to be wrong about for
- * one frame. For reduced motion that is `false`: a frame of animation is a
- * smaller mistake than a frame of missing content.
+ * A media query as a value, for the ones Yumma CSS has no variant for.
+ * `initial` is what the server renders, so pick the safe answer to be wrong.
  */
 export function useMediaQuery(query: string, initial = false) {
 	const [matches, setMatches] = useState(initial);

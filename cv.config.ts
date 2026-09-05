@@ -1,16 +1,8 @@
 import type { Cv } from "./src/lib/cv.ts";
 
 /**
- * Your CV, as data.
- *
- * `pnpm build` renders this into a PDF at /cv.pdf, and the About section links
- * to it. Nothing here touches the rest of the site, so editing this file can't
- * change the pages.
- *
- * It is laid out to survive an applicant tracking system, which is what reads
- * a CV before a person does: one column, real text rather than an image of
- * text, and section headings with the plain names those parsers look for. Keep
- * it that way and it will keep parsing cleanly.
+ * Your CV, as data. `pnpm build` renders it to /cv.pdf, laid out to parse
+ * cleanly in an applicant tracking system.
  */
 export const cv: Cv = {
 	person: {

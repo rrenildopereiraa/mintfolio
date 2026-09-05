@@ -1,19 +1,8 @@
 import { COLOR } from "../lib/colors.ts";
 
 /**
- * The technical grid behind the hero.
- *
- * Two repeating gradients draw the ruled lines, a soft accent wash sits under
- * them, and one mask fades the whole thing out before it reaches the text, so
- * the grid reads as paper rather than as a pattern sitting on the content.
- *
- * The mask is on the wrapper rather than on the lines, which matters: without
- * it the wash is a hard-edged rectangle, and the backdrop stops looking like
- * atmosphere and starts looking like a box.
- *
- * All inline, because gradients and masks are the kind of thing no utility
- * class can carry. The colors come from `src/lib/colors.ts` so they follow
- * the theme like everything else.
+ * The ruled grid behind the hero: lines, a wash, and a mask that fades both
+ * out before they reach the text. Inline, since no utility carries gradients.
  */
 
 const FADE =

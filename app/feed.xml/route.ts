@@ -14,11 +14,7 @@ function escapeXml(value: string) {
 		.replace(/"/g, "&quot;");
 }
 
-/**
- * RSS, because a reader is still how a fair number of people keep up with a
- * blog, and because feed aggregators are one of the few places a new site gets
- * picked up without having to ask anyone.
- */
+/** RSS. Readers and aggregators are free distribution. */
 export async function GET() {
 	const posts = await getPosts();
 

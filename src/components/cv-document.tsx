@@ -13,17 +13,8 @@ import { cv } from "../../cv.config.ts";
 import type { CvPerson } from "../lib/cv.ts";
 
 /**
- * The light half of the palette in `yumma.config.mjs`, spelled out.
- *
- * Print only, so there is no dark half: a PDF has no `color-scheme` to follow,
- * and a CV is looked at on white, half the time on paper. The values are
- * copied rather than imported because the Yumma CSS config is CSS, not
- * something react-pdf can read. Keep them in step by hand if you change the
- * accent.
- *
- * The page itself is left pure white rather than the site's #fbfdfc. On screen
- * that tint reads as warmth; through a printer it reads as a gray box with
- * toner around the margins.
+ * The light palette, copied by hand because react-pdf cannot read CSS. Print
+ * only, on pure white rather than the site's tint.
  */
 const COLOR = {
 	text: "#0d1b19",
@@ -32,11 +23,7 @@ const COLOR = {
 	border: "#dde8e5",
 };
 
-/**
- * Paths are spelled out one per weight so Turbopack can resolve them
- * statically; a composed path makes it trace the whole project into the
- * server bundle.
- */
+/** One path per weight: a composed one makes Turbopack trace the whole project. */
 Font.register({
 	family: "Geist",
 	fonts: [
@@ -92,11 +79,8 @@ const styles = StyleSheet.create({
 
 	section: { marginTop: 8 },
 
-	// Tracking is deliberately absent, for the same reason as the name above:
-	// it splits the run, and "EDUCATION" then extracts as "E D U C AT I O N".
-	// Section headings are the strings an applicant tracking system looks for,
-	// so they have to survive copy and paste intact. Uppercase and weight carry
-	// the hierarchy instead.
+	// No tracking: it splits the run, and "EDUCATION" extracts as
+	// "E D U C AT I O N", which is what a parser reads.
 	sectionTitle: {
 		fontSize: 8.5,
 		fontWeight: 700,
@@ -185,11 +169,7 @@ function Contact({ person }: { person: CvPerson }) {
 	);
 }
 
-/**
- * Headings are the plain nouns an applicant tracking system expects to find,
- * not clever ones. This is the one place in the project where being
- * predictable is the whole point.
- */
+/** Plain nouns, because a CV parser looks for these exact strings. */
 function Section({ title, children }: { title: string; children: ReactNode }) {
 	return (
 		<View style={styles.section} minPresenceAhead={40}>

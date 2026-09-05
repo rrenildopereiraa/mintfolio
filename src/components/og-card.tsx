@@ -7,14 +7,8 @@ import type { ReactNode } from "react";
 export const OG_SIZE = { width: 1200, height: 630 };
 
 /**
- * The dark half of the palette, as plain hex.
- *
- * Satori resolves neither CSS variables nor `light-dark()`, so the card can't
- * read `yumma.config.mjs` and carries its own copy. Dark on purpose: the card
- * is judged in a feed, and a dark rectangle holds its edges instead of
- * dissolving into the surrounding page.
- *
- * If you change the accent in `yumma.config.mjs`, change it here too.
+ * The dark palette as plain hex: Satori reads neither CSS variables nor
+ * `light-dark()`. Change it here too if you change the accent.
  */
 const COLOR = {
 	page: "#07100f",
@@ -24,12 +18,7 @@ const COLOR = {
 	line: "#16292600",
 };
 
-/**
- * The same ruled grid the hero uses, as an image.
- *
- * Satori has no `repeating-linear-gradient`, so the lines are drawn once into
- * an SVG pattern and rasterized through resvg, which does support it.
- */
+/** The hero's grid as an image: Satori has no `repeating-linear-gradient`. */
 function gridUri(width: number, height: number) {
 	const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}"><defs><pattern id="g" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#16292b" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(#g)"/></svg>`;
 
@@ -37,12 +26,8 @@ function gridUri(width: number, height: number) {
 }
 
 /**
- * The shared social card.
- *
- * `title` takes a node rather than a string so the home card can tint part of
- * the headline. There is no font option because none is passed to
- * `ImageResponse`, which falls back to the Geist Regular bundled inside
- * next/og; Fontsource ships woff2, which Satori cannot read.
+ * The shared social card. `title` is a node so the home card can tint part of
+ * the headline; the face is the Geist bundled inside next/og.
  */
 export function OgCard({
 	eyebrow,

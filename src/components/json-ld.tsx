@@ -1,11 +1,6 @@
 /**
- * Renders a structured data block.
- *
- * JSON-LD has to reach the document as a raw script body, so there is no way
- * to write this without `dangerouslySetInnerHTML`. What makes it safe is the
- * serialisation: the value is a JSON string, and the `<` escape means a title
- * containing one can't close the script tag early and put whatever followed it
- * into the page.
+ * A structured data block. `dangerouslySetInnerHTML` is unavoidable here; the
+ * `<` escape below is what stops a title closing the script tag early.
  */
 export function JsonLd({ data }: { data: object }) {
 	return (

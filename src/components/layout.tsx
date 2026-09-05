@@ -5,29 +5,12 @@ import { GridBackdrop } from "./grid-backdrop.tsx";
 import { SiteFooter } from "./site-footer.tsx";
 import { SiteNav } from "./site-nav.tsx";
 
-/**
- * The page shell: header, content column, footer.
- *
- * The column is a reading measure rather than a layout width. Everything on
- * the page is text or a row of text, so there is nothing that needs the space
- * a wider column would buy, and prose set much wider than this gets tiring.
- */
+/** The page shell. The column is a reading measure, not a layout width. */
 export function Layout({
 	children,
-	/**
-	 * How far the ruled grid reaches down the page, as a Yumma CSS height
-	 * utility. Omit it for no grid at all.
-	 *
-	 * The grid starts above the header rather than below it, so there is no
-	 * seam where the tint begins.
-	 */
+	/** How far the grid reaches, as a height utility. Omit for no grid. */
 	backdrop,
-	/**
-	 * Turn the footer off for a page that ends on something of its own. The
-	 * home page does: it closes on the signature, and a rule and a copyright
-	 * line printed underneath would make the signature not the last thing on
-	 * the page, which is the only thing a signature is for.
-	 */
+	/** Off for a page that ends on something of its own, like the signature. */
 	footer = true,
 }: {
 	children: ReactNode;
@@ -56,19 +39,8 @@ export type SectionIcon = (props: {
 }) => ReactNode;
 
 /**
- * A section heading: an icon, the label, a ruled run of squares, and the
- * section number.
- *
- * The rule is squares rather than a line because the same shape carries the
- * whole identity, from the mesh behind the hero down to this. It is one
- * alphabet used at two sizes, which is what stops the page needing borders to
- * feel structured.
- *
- * Everything in the row is aligned on the text baseline rather than centered on
- * the row. Centering puts the rule through the middle of the label's x-height,
- * where it reads as struck through the words; on the baseline it reads as a
- * rule the words are sitting on, and it stays there at any type size, because
- * the baseline is the thing that moves with the text.
+ * An icon, the label, a ruled run of squares, and the number. Baseline-aligned:
+ * centered, the rule reads as struck through the words.
  */
 export function SectionHeading({
 	label,
@@ -89,17 +61,11 @@ export function SectionHeading({
 }) {
 	return (
 		<div>
-			{/* Two rows nested rather than one flat one. The disc is centered on
-			    the text row, and the rule is baselined to the label, and those
-			    are different alignments, so they cannot both come from one
-			    `align-items`. Mixing them with `align-self` looks right until a
-			    32px disc joins a 14px line box and drags the shared baseline
-			    down with it. */}
+			{/* Nested rows: the disc centers on the text, the rule baselines to
+			    it, and one `align-items` cannot do both. */}
 			<div className="d-f ai-c g-3">
-				{/* The icon sits on a white disc, the same treatment as the nav
-				    pill: where the grid runs behind a heading the disc lifts the
-				    mark off it, and where it doesn't the ring still reads as a
-				    deliberate plate rather than a floating glyph. */}
+				{/* The same white plate as the nav pill, so the mark lifts off the
+				    grid where it runs behind a heading. */}
 				<span
 					aria-hidden="true"
 					className="d-f ai-c jc-c fs-0 w-8 h-8 br-9999 bw-1 bs-s bc-border bg-surface c-accent"
@@ -113,8 +79,8 @@ export function SectionHeading({
 				<div className="d-f ai-b g-3" style={{ flexGrow: 1 }}>
 					<h2 className="m-0 fs-sm fw-600 ls-1 c-text">{label}</h2>
 
-					{/* A block flex item baselines on its bottom edge, so a 4px strip
-					    of squares lands directly on the label's baseline. */}
+					{/* A block flex item baselines on its bottom edge, so this strip
+					    lands on the label's baseline. */}
 					<span
 						aria-hidden="true"
 						className="d-b h-1"

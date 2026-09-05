@@ -6,16 +6,8 @@ import { COLOR } from "../lib/colors.ts";
 import { useReducedMotion } from "../lib/use-media-query.ts";
 
 /**
- * An inline mark that opens a small card on hover.
- *
- * Built on Base UI's PreviewCard rather than a CSS `:hover` rule, which buys
- * the things a hover rule cannot do: an open and close delay so the card does
- * not flash as the pointer crosses it, keyboard focus opening it too,
- * collision-aware placement near a viewport edge, and dismissal on Escape.
- *
- * The trigger is deliberately not underlined. The mark plus the weight change
- * is enough to read as interactive, and an underline inside running prose
- * fights the sentence.
+ * An inline mark that opens a card on hover. Base UI handles the delay,
+ * keyboard focus, edge collisions and Escape; a `:hover` rule does none of it.
  */
 export function HoverCard({
 	children,
@@ -36,9 +28,8 @@ export function HoverCard({
 			<PreviewCard.Trigger
 				// In Base UI 1.7 the open delay is a Trigger prop, not a Root one.
 				delay={120}
-				// `d-if` + `ai-c` is what keeps the mark on the text's center line
-				// rather than riding above it, which is the usual fault with an
-				// icon dropped inline.
+				// `d-if` + `ai-c` keeps the mark on the text's center line rather
+				// than riding above it.
 				className="d-if ai-c g-2 va-m c-text c-p"
 				render={<span />}
 			>
@@ -46,9 +37,8 @@ export function HoverCard({
 			</PreviewCard.Trigger>
 
 			<PreviewCard.Portal>
-				{/* The portal mounts on <body>, which puts it below the page's own
-				    `zi-10` content wrapper unless it is lifted explicitly. Without
-				    this the card renders behind the text it is describing. */}
+				{/* The portal mounts on <body>, below the page's `zi-10` wrapper,
+				    so it needs lifting or it renders behind the text. */}
 				<PreviewCard.Positioner sideOffset={10} style={{ zIndex: 50 }}>
 					<PreviewCard.Popup
 						className="p-r p-4 br-lg bw-1 bs-s bc-border bg-surface"
@@ -86,22 +76,8 @@ export function HoverCard({
 }
 
 /**
- * How the card arrives and leaves.
- *
- * It grows a little and rises from the edge it is anchored to, rather than
- * fading in place: the movement is what tells you the card belongs to the word
- * you are pointing at. Small numbers on purpose: this fires on hover, so
- * anything longer than about 150ms feels like the page is thinking.
- *
- * Base UI hands us `transitionStatus`, which is `starting` on the frame before
- * the card opens and `ending` while it closes, so one set of styles covers
- * both directions. It keeps the element mounted for the exit by reading the
- * transition duration off the element, which is why the `transition` has to be
- * declared even in the resting state.
- *
- * `instant` is Base UI telling us this particular change should not animate:
- * a dismissal, or focus arriving by keyboard. Reduced motion is the
- * reader telling us the same thing about all of them.
+ * Grows from the edge it is anchored to. `transitionStatus` covers both
+ * directions, and the resting `transition` is what keeps the exit mounted.
  */
 function motion(
 	state: { transitionStatus?: string; instant?: string; side: string },
@@ -141,19 +117,8 @@ const ARROW_W = 14;
 const ARROW_D = 7;
 
 /**
- * Where the tip sits, and which way it faces.
- *
- * Base UI places the arrow along the anchor's axis. It sets `left` when the
- * card is above or below, `top` when it is beside, and leaves the other axis
- * and the rotation to the stylesheet, which is a stylesheet this project does
- * not have. Without these the arrow lands wherever `top: auto` resolves to,
- * which is inside the card's padding, still pointing down whichever side the
- * card opened on.
- *
- * The offsets push it fully outside the card's border, and the rotations turn
- * a downward tip to face the anchor. Rotating about the center leaves the box
- * 14 wide even when it paints 7 wide, which is why the horizontal sides use
- * half the width plus half the depth rather than the depth alone.
+ * Base UI positions the arrow along one axis only; the other axis and the
+ * rotation are ours. Rotated, the box stays 14 wide while it paints 7.
  */
 function offsetFor(side: string) {
 	const out = ARROW_W / 2 + ARROW_D / 2;
@@ -175,12 +140,7 @@ function offsetFor(side: string) {
 	}
 }
 
-/**
- * The tip itself.
- *
- * One shape drawn twice, filled then stroked, so the card's border carries on
- * around the point instead of stopping at it.
- */
+/** Filled then stroked, so the card's border carries around the point. */
 function Arrow() {
 	return (
 		<svg

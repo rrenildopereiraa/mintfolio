@@ -7,15 +7,8 @@ import { socialMarks } from "./icons.tsx";
 type Social = (typeof site.socials)[number];
 
 /**
- * One link out, set inline in the sentence.
- *
- * The mark sits on the text's center line and the label stays a word in the
- * prose, so the link reads as part of what is being said rather than as a
- * button dropped into it.
- *
- * Marks come from `icons.tsx`, keyed by the social's `label` in
- * `site.config.ts`. A social with no mark still renders, it just gets its
- * label, so adding one to the config can never make a link disappear.
+ * One link, inline in the sentence. Marks come from `icons.tsx` by `label`;
+ * a social without one still renders, just as a word.
  */
 function SocialLink({ social }: { social: Social }) {
 	const Mark = socialMarks[social.label];
@@ -34,19 +27,8 @@ function SocialLink({ social }: { social: Social }) {
 }
 
 /**
- * Where to find me, as a sentence.
- *
- * Deliberately not a row of icons. A grouped strip of logos is the thing every
- * portfolio has, it reads as a widget rather than as something you wrote, and
- * four unlabeled glyphs make the reader decode them one at a time. Set inline,
- * each mark is next to the word it belongs to and the whole thing is still a
- * sentence.
- *
- * The list is built from `site.socials`, so adding or removing one in the
- * config changes the sentence and nothing here needs editing.
- *
- * GitHub carries the contribution graph on hover: a detail worth finding, not
- * a headline that needs its own section.
+ * A sentence rather than a strip of logos, built from `site.socials` so the
+ * config rewrites it. GitHub carries the contribution graph on hover.
  */
 export function SocialProse({
 	/** Shown on the GitHub card. Replace with a real figure when you have one. */

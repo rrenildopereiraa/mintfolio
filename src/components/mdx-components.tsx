@@ -34,17 +34,8 @@ export const mdxComponents: MDXComponents = {
 	hr: () => <hr className="mx-0 my-8 h-px bw-0 bg-border" />,
 
 	/**
-	 * Shiki renders the block and hands it back with its own class and inline
-	 * style, so this merges rather than replaces. The mono family set here is
-	 * inherited by the `code` inside, which is why that case needs nothing.
-	 *
-	 * The theme's own block background is dropped on the way through: the token
-	 * colors are worth keeping, but the slab of gray behind them belongs to
-	 * whichever theme was picked, and it sits badly against a page that is a
-	 * different color. Using the site's surface instead keeps code blocks part
-	 * of the page in both light and dark.
-	 *
-	 * `tabSize` is inline because Yumma CSS has no utility for it.
+	 * Merges with Shiki's own class and style. The theme's block background is
+	 * dropped so code sits on the site's surface in both themes.
 	 */
 	pre: ({ className, style, ...props }) => {
 		const { backgroundColor: _drop, ...rest } = style ?? {};
@@ -59,12 +50,8 @@ export const mdxComponents: MDXComponents = {
 	},
 
 	/**
-	 * Inline code only.
-	 *
-	 * A fenced block arrives as `<pre><code>` holding Shiki's line spans, while
-	 * inline code holds a plain string, and that is the difference used here:
-	 * the block already has its styling from `pre`, and giving it a background
-	 * and padding as well would draw a box inside a box.
+	 * Inline code only. A fenced block holds Shiki's spans and is already styled
+	 * by `pre`; boxing it again would draw a box inside a box.
 	 */
 	code: ({ children, ...props }) =>
 		typeof children === "string" ? (

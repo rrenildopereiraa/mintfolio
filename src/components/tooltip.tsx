@@ -26,10 +26,8 @@ export function Tooltip({
 			<BaseTooltip.Trigger render={children} />
 			<BaseTooltip.Portal>
 				<BaseTooltip.Positioner sideOffset={8} className="zi-90">
-					{/* The fade used to be two `[data-starting-style]` rules. Base UI
-					    reports the same thing as state, so the popup can be styled
-					    from that value instead of from an attribute selector, which
-					    is the one selector shape Yumma CSS's variants can't describe. */}
+					{/* Styled from Base UI's state rather than `[data-starting-style]`,
+					    the one selector shape Yumma CSS cannot describe. */}
 					<BaseTooltip.Popup
 						className={`bw-1 bs-s bc-border br-md bg-surface us-none ${
 							popupClassName ?? "px-2 py-1 fs-xs c-text-dim"
