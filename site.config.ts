@@ -18,7 +18,7 @@ export const site = {
 	 * No trailing slash. Set this before deploying: the links in your feed,
 	 * sitemap and social cards are absolute and built from it.
 	 */
-	url: "https://abigailchandler.dev",
+	url: "https://mintfolio.vercel.app",
 
 	/** Shown under your name, and published as your job title. */
 	role: "Product engineer",
@@ -100,7 +100,7 @@ export const site = {
 	 * where `mailto:` links are skipped automatically.
 	 */
 	socials: [
-		{ label: "LinkedIn", href: "https://linkedin.com/in/evacalderon" },
-		{ label: "Email", href: "mailto:hello@evacalderon.dev" },
+		{ label: "LinkedIn", href: "https://linkedin.com/in/abigailchandler" },
+		{ label: "Email", href: "mailto:hello@abigailchandler.dev" },
 	],
 };
