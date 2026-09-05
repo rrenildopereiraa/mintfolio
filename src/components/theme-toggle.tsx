@@ -34,12 +34,17 @@ export function ThemeToggle() {
 			<Button
 				onClick={cycle}
 				aria-label={LABEL[scheme]}
-				// No hover background. The disc it sits in is already its shape;
-				// a third one appearing under the icon on hover would be one layer
-				// too many. Hovering changes the ink, like the links beside it.
-				className="d-f ai-c jc-c w-6 h-6 bg-transparent bw-0 br-9999 c-p c-text-dim h:c-text fv:os-s fv:oo-2 fv:oc-accent tp-c tdu-150"
+				// `p-0` is load-bearing: a <button> carries the user agent's own
+				// horizontal padding, and with the icon as a flex item that padding
+				// eats into it rather than the box, squashing a 17px glyph to 8px
+				// wide. A crescent survives that; a sun becomes a smear.
+				//
+				// No hover background either. The disc it sits in is already its
+				// shape; a third one appearing under the icon on hover would be one
+				// layer too many. Hovering changes the ink, like the links beside it.
+				className="d-f ai-c jc-c w-6 h-6 p-0 bg-transparent bw-0 br-9999 c-p c-text-dim h:c-text fv:os-s fv:oo-2 fv:oc-accent tp-c tdu-150"
 			>
-				<Icon width={17} height={17} strokeWidth={1.9} />
+				<Icon width={17} height={17} strokeWidth={1.7} className="fs-0" />
 			</Button>
 		</Tooltip>
 	);
