@@ -1,24 +1,11 @@
 import type { SVGProps } from "react";
 
 /**
- * Brand and project marks.
- *
- * Iconoir covers the interface icons, but brand marks are not interface icons:
- * GitHub's mark has a defined shape and X has a defined one too, and drawing
- * an approximation of either is the kind of detail people notice. So the marks
- * that belong to somebody else live here, hand-copied, and everything else
- * comes from Iconoir.
- *
- * Each takes the usual SVG props, so size it with `width`/`height` and color
- * it with `fill="currentColor"` where the mark allows it.
+ * Brand and project marks. Interface icons come from Iconoir; marks that
+ * belong to somebody else are hand-copied here. Size with `width`/`height`.
  */
 
-/**
- * The GitHub mark.
- *
- * `currentColor` rather than a baked-in hex: the mark is monochrome, so it can
- * simply inherit. If dark mode lands, this needs no second variant.
- */
+/** The GitHub mark. Monochrome, so it inherits `currentColor` in both themes. */
 export function GitHub(props: SVGProps<SVGSVGElement>) {
 	return (
 		<svg viewBox="0 0 16 16" fill="none" aria-hidden="true" {...props}>
@@ -32,13 +19,7 @@ export function GitHub(props: SVGProps<SVGSVGElement>) {
 	);
 }
 
-/**
- * The X mark.
- *
- * Iconoir ships an `X` too. This one is here so every brand mark on the site
- * comes from the same file and inherits color the same way, rather than one
- * arriving from an icon pack with its own sizing conventions.
- */
+/** The X mark. Here rather than from Iconoir so every brand mark sizes alike. */
 export function X(props: SVGProps<SVGSVGElement>) {
 	return (
 		<svg viewBox="0 0 16 16" fill="none" aria-hidden="true" {...props}>
@@ -50,13 +31,7 @@ export function X(props: SVGProps<SVGSVGElement>) {
 	);
 }
 
-/**
- * The LinkedIn mark.
- *
- * The badge, not the bare wordmark, because that is the only form LinkedIn
- * publishes. It sits a shade heavier than the other two at the same size,
- * which is a property of the mark rather than something to correct.
- */
+/** The LinkedIn badge, the only form they publish. Heavier than the others. */
 export function LinkedIn(props: SVGProps<SVGSVGElement>) {
 	return (
 		<svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
@@ -68,13 +43,7 @@ export function LinkedIn(props: SVGProps<SVGSVGElement>) {
 	);
 }
 
-/**
- * Email.
- *
- * Not a brand, so it gets an interface icon rather than a logo: an envelope
- * drawn to the same weight as the rest of the site's Iconoir set, so the four
- * footer marks read as one row instead of three logos and a stray.
- */
+/** Email is not a brand, so it gets an envelope at the Iconoir stroke weight. */
 export function Email(props: SVGProps<SVGSVGElement>) {
 	return (
 		<svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
@@ -90,9 +59,8 @@ export function Email(props: SVGProps<SVGSVGElement>) {
 }
 
 /**
- * Every mark the footer can reach for, keyed by the `label` in
- * `site.config.ts`. Add a social there and add its mark here; anything with no
- * mark falls back to its label, so the footer never silently drops a link.
+ * Keyed by the `label` in `site.config.ts`. A social with no mark here falls
+ * back to its label, so a link is never silently dropped.
  */
 export const socialMarks: Record<
 	string,
@@ -105,12 +73,8 @@ export const socialMarks: Record<
 };
 
 /**
- * Project marks: a circle, a square and a triangle.
- *
- * The example projects are deliberately shapes rather than invented logos. A
- * fake wordmark would be one more thing to delete, and a plain shape reads as
- * a placeholder you are meant to replace. Swap in an SVG of your own and the
- * layout does not move: they all draw inside the same 16x16 box.
+ * Plain shapes rather than invented logos, so they read as placeholders. All
+ * draw inside a 16x16 box, so swapping one moves nothing.
  */
 type Mark = (props: SVGProps<SVGSVGElement>) => React.ReactElement;
 

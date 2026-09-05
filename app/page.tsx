@@ -72,9 +72,8 @@ export default async function Home() {
 					icon={PathArrow}
 					description="The short version. The full history is in the CV."
 					action={
-						// The one download on the page, put where the sentence beside
-						// it already says to look. In the hero it was a third line
-						// competing with the introduction.
+						// The one download on the page, where the description already
+						// tells you to look.
 						<a
 							href="/cv.pdf"
 							className="d-if ai-c g-2 fs-0 px-3 py-1 br-9999 bw-1 bs-s bc-border bg-surface fs-xs td-none c-text h:bc-accent h:c-accent tp-a tdu-150 fv:os-s fv:oo-2 fv:oc-accent"

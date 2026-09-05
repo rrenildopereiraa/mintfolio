@@ -5,27 +5,8 @@ import { MONO_STYLE } from "../lib/fonts.ts";
 import { ThemeToggle } from "./theme-toggle.tsx";
 
 /**
- * The header: one centered pill, and nothing else.
- *
- * There is no wordmark. The name is already the largest thing on the page two
- * lines below it, and a site this size does not need to be told apart from the
- * seventeen other tabs. Printing it twice in the first 200 pixels was
- * repetition doing the work of branding.
- *
- * With nothing on the left the pill has no reason to sit right, so it centers:
- * a single object, deliberately placed, rather than the leftovers of a row.
- *
- * The pill itself exists because the grid runs behind this row. Links printed
- * straight onto the mesh have to compete with it, and a hover background on
- * each link means a second rectangle appearing over a field of rectangles. One
- * surface settles both, and hovering just changes the ink.
- *
- * The toggle is not a link, so it gets its own layer rather than a rule drawn
- * between it and the ones that are: an inset disc, one step darker than the
- * pill and ringed like it. A divider only says "these are different"; a second
- * surface says which of the two you are looking at.
- *
- * There is no menu button. Three links and a toggle fit on a phone.
+ * One centered pill, no wordmark: the grid runs behind this row, and a single
+ * surface beats links competing with it. The toggle gets its own inset disc.
  */
 export function SiteNav() {
 	return (

@@ -8,20 +8,12 @@ type Params = { params: Promise<{ slug: string }> };
 export const size = OG_SIZE;
 export const contentType = "image/png";
 
-/**
- * Without this the card is built on first request instead of at deploy time,
- * and the first request is usually the crawler that decides what the link
- * looks like everywhere it gets pasted.
- */
+/** Built at deploy time, so the first crawler to arrive gets a finished card. */
 export async function generateStaticParams() {
 	return (await getPosts()).map((post) => ({ slug: post.slug }));
 }
 
-/**
- * One card per post, described by that post. A static `alt` export could only
- * ever say something generic, and this is the text a screen reader reads out
- * when the link is shared.
- */
+/** Per-post alt text: what a screen reader reads when the link is shared. */
 export async function generateImageMetadata({ params }: Params) {
 	const { slug } = await params;
 	const post = await loadPost(slug);

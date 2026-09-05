@@ -1,9 +1,6 @@
 /**
- * The shape of `cv.config.ts`.
- *
- * Kept out of the config so that file stays what it looks like: data, with no
- * type machinery in the way. The field notes live here, where an editor still
- * surfaces them on hover while you fill the config in.
+ * The shape of `cv.config.ts`, kept out of it so that file stays plain data.
+ * An editor still surfaces these notes on hover.
  */
 
 export type CvRole = {
@@ -43,11 +40,7 @@ export type CvPerson = {
 	role: string;
 	location: string;
 	email: string;
-	/**
-	 * Optional, and read from the `CV_PHONE` environment variable rather than
-	 * written down: this file goes into a public repository, and leaving it
-	 * unset keeps your number off GitHub while the PDF still renders.
-	 */
+	/** Read from `CV_PHONE`, so your number stays out of a public repository. */
 	phone?: string;
 	linkedin?: string;
 	website?: string;

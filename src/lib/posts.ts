@@ -33,13 +33,8 @@ export function formatPostDate(date: string) {
 }
 
 /**
- * Posts are MDX files that export their own `meta`, so there is no frontmatter
- * to parse and the metadata is type-checked like everything else.
- *
- * The directory is read on the server and each file imported by name. The
- * dynamic import is a template literal on purpose: the bundler turns that into
- * a context over the folder, so dropping a new .mdx file into `content/posts`
- * is all it takes to publish.
+ * Posts export their own `meta`, so it is type-checked. The template-literal
+ * import is deliberate: it makes dropping in a file enough to publish.
  */
 async function slugs(): Promise<string[]> {
 	const entries = await readdir(POSTS_DIR);

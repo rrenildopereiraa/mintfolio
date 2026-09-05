@@ -1,24 +1,8 @@
 import { defineConfig } from "yummacss";
 
 /**
- * Mintfolio's palette.
- *
- * Every color is a `{ light, dark }` pair, which Yumma CSS compiles into CSS
- * `light-dark()` and backs with `color-scheme` on the root element. That
- * pairing is the only thing that makes the site themeable. Yumma CSS 3.29
- * has no `dark:` variant of its own, so a color written as a stock utility like
- * `c-mint-7` can only ever have one value. Change a pair here and both themes
- * follow; there is no second palette to keep in sync.
- *
- * The names are roles, not hues. `accent` is the one to change for a different
- * identity, and nothing else has to move: the surfaces are almost neutral and
- * only the accent is saturated, which is what keeps a mint theme from reading
- * as a novelty.
- *
- * Every pair below is checked against WCAG AA in both themes: body copy and
- * links at 4.5:1, the marks at 3:1. If you swap the accent, keep it dark
- * enough in light mode to clear 4.5:1 on `surface`: a bright mint looks right
- * on a swatch and is unreadable as 14px type.
+ * Each `{ light, dark }` pair compiles to `light-dark()`, so one class covers
+ * both themes. Every pair clears WCAG AA: text 4.5:1, marks 3:1.
  */
 export default defineConfig({
 	source: ["./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}", "./content/**/*.ts"],

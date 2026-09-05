@@ -2,20 +2,8 @@ import type { Role } from "../../content/experience.ts";
 import { MONO_STYLE } from "../lib/fonts.ts";
 
 /**
- * Roles, as a dated list.
- *
- * The dates sit in a gutter on the left rather than trailing the job title on
- * the right. A career is read chronologically, so the years are the column you
- * scan and the titles are what you stop on; putting the dates last makes you
- * read every title to find the one year you were looking for.
- *
- * A hairline above each role does the separating. There is no rail and no bead
- * on it: a vertical line drawn down a list of three things is decoration
- * standing in for structure, and the rule already says where one role ends and
- * the next starts.
- *
- * The gutter collapses under 640px, where 110px of it would leave the summary
- * too narrow to read. Below that the dates sit above the title instead.
+ * Roles with the dates in a left gutter, since a career is scanned by year.
+ * The gutter collapses under 640px, where it would squeeze the summary.
  */
 export function ExperienceList({ roles }: { roles: Role[] }) {
 	return (

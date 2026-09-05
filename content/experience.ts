@@ -1,9 +1,6 @@
 /**
- * The Experience section on the home page.
- *
- * Newest first. This is deliberately separate from `cv.config.ts`: the page
- * wants one line per role, and the PDF wants bullet points, and trying to make
- * one list serve both ends up serving neither well.
+ * The Experience section, newest first. Separate from `cv.config.ts`: the page
+ * wants one line per role, the PDF wants bullets.
  */
 
 export type Role = {

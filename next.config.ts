@@ -15,9 +15,8 @@ const withMDX = createMDX({
 			[
 				"@shikijs/rehype",
 				{
-					// Any two Shiki themes work here. `light-dark()` makes Shiki write
-					// the colour straight onto each token, so code follows the site's
-					// light and dark modes with no stylesheet involved.
+					// Any two Shiki themes. `light-dark()` writes both colors onto each
+					// token, so code follows the theme with no stylesheet.
 					themes: { light: "github-light", dark: "github-dark-dimmed" },
 					defaultColor: "light-dark()",
 				},

@@ -22,9 +22,7 @@ export const metadata: Metadata = {
 		canonical: "/",
 		types: { "application/rss+xml": "/feed.xml" },
 	},
-	// No `images` on either of these: app/opengraph-image.tsx fills in og:image
-	// for every route that doesn't ship its own card, and the Twitter crawler
-	// falls back to og:image when twitter:image is absent.
+	// No `images`: opengraph-image.tsx fills og:image, and Twitter falls back to it.
 	openGraph: {
 		type: "website",
 		url: site.url,
@@ -57,11 +55,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 				{/* biome-ignore lint/security/noDangerouslySetInnerHtml: must run inline before first paint, ahead of any bundle. */}
 				<script dangerouslySetInnerHTML={{ __html: themeScript }} />
 			</head>
-			{/* The family is set here rather than in a stylesheet: the
-			    `theme` block in Yumma CSS takes colors and screens, not families,
-			    so `ff-d` could
-			    only ever be its own built-in stack. Everything inherits this,
-			    which is why no heading names a font. */}
+			{/* Set here, not in a stylesheet: Yumma CSS themes colors and
+			    screens, not families. Everything below inherits it. */}
 			<body
 				className="bg-page"
 				style={{ fontFamily: SANS, WebkitFontSmoothing: "antialiased" }}

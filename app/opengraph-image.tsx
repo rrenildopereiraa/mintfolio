@@ -11,10 +11,8 @@ export default function Image() {
 		<OgCard
 			eyebrow={site.url.replace(/^https?:\/\//, "")}
 			title={
-				// Two boxes with a column gap, rather than one string carrying its
-				// own spaces: Satori lays every text node out as its own flex item,
-				// so a literal space either side of the tinted phrase comes out
-				// wider than the spaces the font sets between the rest.
+				// Two boxes with a column gap: Satori lays each text node out
+				// separately, so literal spaces around the tint come out too wide.
 				<span
 					style={{
 						display: "flex",

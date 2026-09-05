@@ -34,9 +34,7 @@ export default async function BlogPage() {
 			<JsonLd data={blogSchema(posts)} />
 
 			<article className="pt-16 @sm:pt-20">
-				{/* The feed link belongs on the page it is a feed of, not in a
-				    site-wide footer where nobody looking for it would think to
-				    check. */}
+				{/* The feed belongs on the page it is a feed of, not in a footer. */}
 				<div className="d-f ai-c jc-sb g-4">
 					<Link
 						href="/"

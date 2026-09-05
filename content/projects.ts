@@ -1,12 +1,8 @@
 import type { ProjectMark } from "../src/components/icons.tsx";
 
 /**
- * The Projects section.
- *
- * Order is the order on the page. Each project carries a `mark`, which is the
- * small shape shown beside its name and inside its preview card. Three plain
- * shapes ship with the template; replace them with your own SVG in
- * `src/components/icons.tsx` and nothing else has to change.
+ * The Projects section. Order here is order on the page; `mark` picks a shape
+ * from `src/components/icons.tsx`.
  */
 export type Project = {
 	name: string;

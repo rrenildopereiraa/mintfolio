@@ -22,17 +22,8 @@ function apply(scheme: ColorScheme) {
 }
 
 /**
- * Reads and cycles the color scheme.
- *
- * Deliberately does *not* apply the class in an effect. The inline script in
- * the root layout has already put the stored scheme on <html> before first
- * paint, and an effect running with this hook's initial state would overwrite
- * that with `auto` on hydration, flashing the wrong palette on every load for
- * anyone who picked one.
- *
- * So the class is only ever written in response to a click. State exists just
- * to keep the toggle's own icon honest, and starts at `auto` so the first
- * client render matches the server before syncing on mount.
+ * Reads and cycles the scheme. The class is only written on click: an effect
+ * would overwrite what the inline script already set, and flash.
  */
 export function useColorScheme() {
 	const [scheme, setScheme] = useState<ColorScheme>("auto");

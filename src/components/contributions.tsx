@@ -2,13 +2,8 @@ import { CONTRIBUTION_LEVELS } from "../lib/colors.ts";
 import { MONO_STYLE } from "../lib/fonts.ts";
 
 /**
- * A year of contribution squares, for the card behind the GitHub link.
- *
- * The sample below is generated from a fixed seed rather than fetched. A
- * template that called the GitHub API on every render would need a token, a
- * cache and an error state before it drew a single square, and none of that is
- * what a portfolio template is for. Replace `weeks` with real data when you
- * want it; the shape is one number per day, 0 to 4.
+ * A year of contribution squares, generated from a fixed seed rather than
+ * fetched. Swap in real data: one number per day, 0 to 4.
  */
 const WEEKS = 52;
 const DAYS = 7;

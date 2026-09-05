@@ -6,15 +6,8 @@ import { HoverCard } from "./hover-card.tsx";
 import { projectMarks } from "./icons.tsx";
 
 /**
- * One project, as a row.
- *
- * A row rather than a card: a grid of bordered boxes is the single most copied
- * portfolio pattern there is, and at this width a wide card is mostly empty
- * anyway. The name, a dotted leader and the repository chip share one line,
- * with the sentence underneath.
- *
- * The name is also the preview-card trigger, so hovering it shows the longer
- * summary and the stack without spending page height on either.
+ * One project as a row, not a card. The name is the preview-card trigger, so
+ * the summary and stack cost no page height.
  */
 export function ProjectRow({ project }: { project: Project }) {
 	const Mark = projectMarks[project.mark];

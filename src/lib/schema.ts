@@ -2,14 +2,8 @@ import { site } from "../../site.config.ts";
 import type { Post } from "./posts.ts";
 
 /**
- * Structured data.
- *
- * Meta tags say what a page contains; this says who and what it is *about*, in
- * a vocabulary search engines already agree on. The fixed `@id` is the point:
- * the person writing the posts and the person the home page is about resolve
- * to one node, rather than two people who happen to share a name.
- *
- * Nothing here needs editing. It reads from `site.config.ts`.
+ * Structured data, read from `site.config.ts`. The fixed `@id` is the point:
+ * the author and the subject resolve to one person, not two.
  */
 const PERSON_ID = `${site.url}/#person`;
 const SITE_ID = `${site.url}/#website`;

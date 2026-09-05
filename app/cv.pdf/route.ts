@@ -6,12 +6,7 @@ import { CvDocument } from "../../src/components/cv-document.tsx";
 export const dynamic = "force-static";
 
 /**
- * The CV, as a file rather than a page.
- *
- * There is deliberately no route that renders it as HTML. The portfolio is the
- * thing to look at; this is the thing to attach to an application, and keeping
- * them apart means the CV can be laid out for print and for parsers without
- * either concern leaking into the site.
+ * The CV as a file, not a page: laid out for print and for parsers.
  */
 export async function GET() {
 	const pdf = await renderToBuffer(CvDocument());
@@ -19,9 +14,7 @@ export async function GET() {
 	return new Response(pdf as unknown as BodyInit, {
 		headers: {
 			"content-type": "application/pdf",
-			// `attachment` so the link downloads rather than opening a viewer,
-			// under a name that reads properly in someone's downloads folder.
-			// Swap it for `inline` to preview it in the browser instead.
+			// `attachment` downloads it; swap for `inline` to preview in the browser.
 			"content-disposition": `attachment; filename="${cv.fileName}.pdf"`,
 		},
 	});

@@ -1,19 +1,6 @@
 /**
- * The colors Yumma CSS cannot express as a class.
- *
- * Almost everything on the site is a `c-*` / `bg-*` / `bc-*` utility built from
- * the pairs in `yumma.config.mjs`. A few things are not colors in a property
- * Yumma CSS has a utility for: gradient stops, box-shadow tints, an SVG
- * `fill`. Those live here so there is exactly one other place to look, rather than
- * a hex buried in a `style` prop in six components.
- *
- * They are still themed: `light-dark()` is a CSS color function, so it works
- * anywhere a color is valid, including inside a gradient or a shadow. It reads
- * the `color-scheme` the theme toggle sets, which is the same switch the
- * utilities follow, so these and the classes can never disagree.
- *
- * If you change the accent in `yumma.config.mjs`, change the tinted values
- * here to match.
+ * Colors no utility can reach: gradient stops, shadow tints, an SVG `fill`.
+ * Still `light-dark()`, so they follow the theme like the classes do.
  */
 
 /** `light-dark(a, b)`, for use in any inline style. */
@@ -23,10 +10,8 @@ export function lightDark(light: string, dark: string) {
 
 export const COLOR = {
 	/**
-	 * `surface` and `border` again, for the two SVG paths that draw the preview
-	 * card's arrow. A path's fill is not a property Yumma CSS has a class for, so
-	 * these have to mirror `yumma.config.mjs` by hand. They are the only pair
-	 * here that duplicates a token; change them together.
+	 * `surface` and `border` again, for the preview card's arrow paths. The only
+	 * duplicated tokens here; change them with the config.
 	 */
 	surface: lightDark("#ffffff", "#0c1817"),
 	border: lightDark("#dde8e5", "#1c302c"),
@@ -47,10 +32,8 @@ export const COLOR = {
 } as const;
 
 /**
- * The contribution heatmap: empty, then four steps toward the accent.
- *
- * A ramp rather than one color with five opacities, because opacity over a
- * tinted page shifts hue as it fades and the low steps end up looking gray.
+ * The heatmap ramp. Five colors rather than one at five opacities, which would
+ * shift hue over a tinted page.
  */
 export const CONTRIBUTION_LEVELS = [
 	lightDark("#e8efed", "#15211f"),

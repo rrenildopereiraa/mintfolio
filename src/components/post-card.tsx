@@ -2,12 +2,7 @@ import Link from "next/link";
 import { MONO_STYLE } from "../lib/fonts.ts";
 import { formatPostDate, type Post } from "../lib/posts.ts";
 
-/**
- * One post in a list.
- *
- * The whole row is the target rather than the title alone, which is a much
- * easier thing to hit on a phone.
- */
+/** One post. The whole row is the target, which is easier to hit on a phone. */
 export function PostCard({ post }: { post: Post }) {
 	return (
 		<Link
