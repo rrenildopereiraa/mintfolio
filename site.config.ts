@@ -100,9 +100,7 @@ export const site = {
 	 * where `mailto:` links are skipped automatically.
 	 */
 	socials: [
-		{ label: "GitHub", href: "https://github.com/abigailchandler" },
-		{ label: "LinkedIn", href: "https://linkedin.com/in/abigailchandler" },
-		{ label: "Twitter (X)", href: "https://x.com/abigailchandler" },
-		{ label: "Email", href: "mailto:hello@abigailchandler.dev" },
+		{ label: "LinkedIn", href: "https://linkedin.com/in/evacalderon" },
+		{ label: "Email", href: "mailto:hello@evacalderon.dev" },
 	],
 };
