@@ -18,7 +18,7 @@ export type Project = {
 	mark: ProjectMark;
 	/** Free text: "2024", "2023 – 2024", "Ongoing". */
 	period: string;
-	/** A handful of tags, shown in the preview card. */
+	/** Shown as marks in the preview card. Names come from `brand-marks.tsx`. */
 	stack: string[];
 };
 
@@ -33,7 +33,7 @@ export const projects: Project[] = [
 		label: "github.com/mend-labs",
 		mark: "circle",
 		period: "Ongoing",
-		stack: ["TypeScript", "Style Dictionary", "Docs"],
+		stack: ["TypeScript", "Figma", "Storybook"],
 	},
 	{
 		name: "Mend UI",
@@ -57,6 +57,6 @@ export const projects: Project[] = [
 		label: "github.com/mend-icons",
 		mark: "triangle",
 		period: "2023",
-		stack: ["SVG", "TypeScript", "SVGO"],
+		stack: ["TypeScript", "React", "Vite"],
 	},
 ];
