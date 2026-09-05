@@ -57,8 +57,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 				{/* biome-ignore lint/security/noDangerouslySetInnerHtml: must run inline before first paint, ahead of any bundle. */}
 				<script dangerouslySetInnerHTML={{ __html: themeScript }} />
 			</head>
-			{/* The family is set here rather than in a stylesheet: Yumma's
-			    `theme` takes colors and screens, not families, so `ff-d` could
+			{/* The family is set here rather than in a stylesheet: the
+			    `theme` block in Yumma CSS takes colors and screens, not families,
+			    so `ff-d` could
 			    only ever be its own built-in stack. Everything inherits this,
 			    which is why no heading names a font. */}
 			<body

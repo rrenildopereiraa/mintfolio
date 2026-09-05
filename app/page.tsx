@@ -16,7 +16,7 @@ import { Layout, SectionHeading } from "../src/components/layout.tsx";
 import { PostList } from "../src/components/post-card.tsx";
 import { ProjectRow } from "../src/components/project-row.tsx";
 import { Signature } from "../src/components/signature.tsx";
-import { SocialLinks } from "../src/components/social-links.tsx";
+import { SocialProse } from "../src/components/social-prose.tsx";
 import { MONO_STYLE, SERIF_ITALIC } from "../src/lib/fonts.ts";
 import { getPosts } from "../src/lib/posts.ts";
 import { homeSchema } from "../src/lib/schema.ts";
@@ -32,7 +32,7 @@ export default async function Home() {
 	const recent = posts.slice(0, RECENT_POSTS);
 
 	return (
-		<Layout backdrop="h-140">
+		<Layout backdrop="h-140" footer={false}>
 			<JsonLd data={homeSchema()} />
 
 			{/* The hero is prose, not a slogan. Two short lines and a paragraph,
@@ -127,7 +127,7 @@ export default async function Home() {
 						</p>
 					))}
 
-					<SocialLinks contributions={1284} />
+					<SocialProse contributions={1284} />
 
 					<Signature />
 				</div>

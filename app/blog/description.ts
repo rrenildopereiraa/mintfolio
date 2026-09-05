@@ -3,4 +3,4 @@
  * and a page can only export the handful of names Next reserves.
  */
 export const BLOG_DESCRIPTION =
-	"Occasional posts about building things and the parts that went wrong.";
+	"Walkthroughs of the template these posts are written in. Delete them and write your own — that is rather the point.";

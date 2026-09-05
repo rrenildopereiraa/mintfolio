@@ -3,10 +3,10 @@ import { defineConfig } from "yummacss";
 /**
  * Mintfolio's palette.
  *
- * Every colour is a `{ light, dark }` pair, which Yumma compiles into CSS
+ * Every colour is a `{ light, dark }` pair, which Yumma CSS compiles into CSS
  * `light-dark()` and backs with `color-scheme` on the root element. That
- * pairing is the only thing that makes the site themeable — Yumma 3.29 has no
- * `dark:` variant of its own, so a colour written as a stock utility like
+ * pairing is the only thing that makes the site themeable — Yumma CSS 3.29
+ * has no `dark:` variant of its own, so a colour written as a stock utility like
  * `c-mint-7` can only ever have one value. Change a pair here and both themes
  * follow; there is no second palette to keep in sync.
  *

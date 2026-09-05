@@ -42,7 +42,7 @@ const WASH = {
 } as const;
 
 export function GridBackdrop({
-	/** How far down the page the grid reaches. A Yumma height utility. */
+	/** How far down the page the grid reaches. A Yumma CSS height utility. */
 	height = "h-140",
 	/**
 	 * Stretch past the content column to the edges of the viewport. Turn it off

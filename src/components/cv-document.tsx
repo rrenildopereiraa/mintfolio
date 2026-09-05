@@ -13,20 +13,17 @@ import { cv } from "../../cv.config.ts";
 import type { CvPerson } from "../lib/cv.ts";
 
 /**
- * Mintfolio's light palette. Print only, so there is no dark half: a CV is
- * looked at on white, and half the time on paper.
+ * The light half of the palette in `yumma.config.mjs`, spelled out.
+ *
+ * Print only, so there is no dark half: a PDF has no `color-scheme` to follow,
+ * and a CV is looked at on white, half the time on paper. The values are
+ * copied rather than imported because the Yumma CSS config is CSS, not
+ * something react-pdf can read — keep them in step by hand if you change the
+ * accent.
  *
  * The page itself is left pure white rather than the site's #fbfdfc. On screen
  * that tint reads as warmth; through a printer it reads as a grey box with
  * toner around the margins.
- */
-/**
- * The light half of the palette in `yumma.config.mjs`, spelled out.
- *
- * A PDF has no `color-scheme` to follow and prints on white either way, so the
- * CV is always the light theme. The values are copied rather than imported
- * because Yumma's config is CSS, not something react-pdf can read — keep them
- * in step by hand if you change the accent.
  */
 const COLOR = {
 	text: "#0d1b19",

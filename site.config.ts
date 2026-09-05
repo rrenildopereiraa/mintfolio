@@ -95,8 +95,9 @@ export const site = {
 	],
 
 	/**
-	 * Shown in the contact block and the footer, and published as `sameAs` in
-	 * your structured data, where `mailto:` links are skipped automatically.
+	 * Rendered as a sentence at the end of the About section, each name with
+	 * its mark beside it, and published as `sameAs` in your structured data,
+	 * where `mailto:` links are skipped automatically.
 	 */
 	socials: [
 		{ label: "GitHub", href: "https://github.com/evacalderon" },

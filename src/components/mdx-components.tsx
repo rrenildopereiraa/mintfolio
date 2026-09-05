@@ -44,7 +44,7 @@ export const mdxComponents: MDXComponents = {
 	 * different colour. Using the site's surface instead keeps code blocks part
 	 * of the page in both light and dark.
 	 *
-	 * `tabSize` is inline because Yumma has no utility for it.
+	 * `tabSize` is inline because Yumma CSS has no utility for it.
 	 */
 	pre: ({ className, style, ...props }) => {
 		const { backgroundColor: _drop, ...rest } = style ?? {};

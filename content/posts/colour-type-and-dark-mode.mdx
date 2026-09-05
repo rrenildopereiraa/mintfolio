@@ -1,0 +1,78 @@
+export const meta = {
+	title: "Colour, type, and how dark mode works here",
+	description:
+		"One set of paired values, checked against WCAG AA, with no second palette to keep in step.",
+	date: "2026-01-19",
+	published: true,
+};
+
+Change the accent and the whole site follows, in both themes, without touching a component. Here is how that is wired.
+
+## Every colour is a pair
+
+`yumma.config.mjs` holds the palette, and each entry is a `{ light, dark }` pair:
+
+```js
+theme: {
+	colors: {
+		accent: { light: "#0f766e", dark: "#5eead4" },
+		text:   { light: "#0d1b19", dark: "#e4f1ee" },
+		page:   { light: "#fbfdfc", dark: "#07100f" },
+	},
+},
+```
+
+[Yumma CSS](https://yummacss.com) compiles each pair into CSS `light-dark()`, so `c-accent` is **one class** that resolves to the right value in whichever theme is active. There is no `dark:` prefix on anything, no second palette, and no way for the two to drift apart — because there is only one place either value is written.
+
+The names are roles, not hues: `accent`, `text`, `text-dim`, `surface`, `surface-2`, `border`, `page`. Swapping the identity means changing `accent` and nothing else. The surfaces are almost neutral by design; only the accent is saturated, which is what stops a mint theme reading as a novelty.
+
+## Contrast is the part people get wrong
+
+Every pair is checked against WCAG AA in both themes — body copy and links at 4.5:1, marks at 3:1:
+
+| | light | dark |
+| --- | --- | --- |
+| `accent` on `surface` | 5.47:1 | 12.25:1 |
+| `text-dim` on `page` | 5.19:1 | 7.47:1 |
+| `text` on `page` | 17.31:1 | 16.62:1 |
+
+If you swap the accent, keep it dark enough in light mode to clear **4.5:1 on `surface`**. This is the single most common way a good-looking palette becomes an unreadable one: a bright mint looks perfect on a swatch and fails badly as 14px type. Paste both values into any contrast checker before you commit them.
+
+## The theme toggle
+
+Dark mode follows the reader's system by default. The toggle in the nav cycles light → dark → system, and it is three states rather than two on purpose — a two-state switch has no way back to "whatever the OS says", so one tap pins you forever.
+
+The choice is stored per browser and applied by a small inline script before first paint, so nobody sees the wrong palette flash on load.
+
+## The colours no class can reach
+
+A few things are not properties Yumma CSS has a utility for: gradient stops, box-shadow tints, an SVG `fill`. Those live in `src/lib/colors.ts`, still as `light-dark()` pairs:
+
+```ts
+export const COLOR = {
+	sectionRule: lightDark("#bfe6d8", "#1f4a44"),
+	leader: lightDark("#cbd3d1", "#31413e"),
+};
+```
+
+So there is exactly one other file to touch, rather than a hex buried in a `style` prop in six components.
+
+## Type
+
+Three faces, all self-hosted from Fontsource:
+
+| Face | Where |
+| --- | --- |
+| Geist | Everything, set once on `<body>` |
+| Instrument Serif Italic | One word in the headline, nowhere else |
+| IBM Plex Mono | Dates, tags, section numbers, the nav |
+
+Only the serif has any character, and it is used for a single word. That is deliberate: the page's voice comes from the serif and the mono, and a display sans competing with both is what makes a portfolio look busy.
+
+The mono is a text mono rather than a code mono. Its terminals give the small labels a typed, ribbon-on-paper feel that an editor face flattens out.
+
+To change any of them, swap the `@import` in `app/globals.css` and the matching family in `src/lib/fonts.ts`. If you change the sans, replace the three TTFs in `src/assets/fonts/` too — that is what the PDF CV is set in, and a CV in a different face from the page linking to it undercuts both.
+
+## What is not here
+
+No custom stylesheet. `app/globals.css` is the font imports and one `@yummacss` directive, and `pnpm validate` checks every class in the project against Yumma CSS so a typo is a build failure rather than a silent no-op.
