@@ -15,8 +15,8 @@ import { SiteNav } from "./site-nav.tsx";
 export function Layout({
 	children,
 	/**
-	 * How far the ruled grid reaches down the page, as a Yumma height utility.
-	 * Omit it for no grid at all.
+	 * How far the ruled grid reaches down the page, as a Yumma CSS height
+	 * utility. Omit it for no grid at all.
 	 *
 	 * The grid starts above the header rather than below it, so there is no
 	 * seam where the tint begins.

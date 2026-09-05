@@ -22,7 +22,7 @@ export function ExperienceList({ roles }: { roles: Role[] }) {
 						index === roles.length - 1 ? "pb-0" : "pb-8"
 					}`}
 				>
-					{/* Rotated inline: Yumma has no transform utility.
+					{/* Rotated inline: Yumma CSS has no transform utility.
 					    `left: 0` measures from the padding box, and the rail's border
 					    sits outside it, so centring on the rail is half the marker's
 					    own width plus half the border. A circle hid that half pixel;

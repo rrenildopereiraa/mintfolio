@@ -1,10 +1,10 @@
 /**
- * The colours Yumma cannot express as a class.
+ * The colours Yumma CSS cannot express as a class.
  *
  * Almost everything on the site is a `c-*` / `bg-*` / `bc-*` utility built from
  * the pairs in `yumma.config.mjs`. A few things are not colours in a property
- * Yumma has a utility for — gradient stops, box-shadow tints, an SVG `fill` —
- * and those live here so there is exactly one other place to look, rather than
+ * Yumma CSS has a utility for — gradient stops, box-shadow tints, an SVG
+ * `fill` — and those live here so there is exactly one other place to look, rather than
  * a hex buried in a `style` prop in six components.
  *
  * They are still themed: `light-dark()` is a CSS colour function, so it works
@@ -24,7 +24,7 @@ export function lightDark(light: string, dark: string) {
 export const COLOR = {
 	/**
 	 * `surface` and `border` again, for the two SVG paths that draw the preview
-	 * card's arrow. A path's fill is not a property Yumma has a class for, so
+	 * card's arrow. A path's fill is not a property Yumma CSS has a class for, so
 	 * these have to mirror `yumma.config.mjs` by hand. They are the only pair
 	 * here that duplicates a token; change them together.
 	 */

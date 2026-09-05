@@ -75,11 +75,11 @@ pnpm dev        # dev server on :3000
 pnpm build      # production build
 pnpm start      # serve the production build
 pnpm lint       # format and lint with Biome
-pnpm validate   # check every class against Yumma
+pnpm validate   # check every class against Yumma CSS
 ```
 
-`pnpm validate` fails on a class Yumma does not recognise, which catches typos
-that would otherwise silently render as nothing.
+`pnpm validate` fails on a class Yumma CSS does not recognise, which catches
+typos that would otherwise silently render as nothing.
 
 ## Production build
 

@@ -58,7 +58,8 @@ export function HoverCard({
 								style={{
 									...props.style,
 									width,
-									// Yumma has no box-shadow utility, so the lift is inline.
+									// Yumma CSS has no box-shadow utility, so the
+									// lift is inline.
 									boxShadow: `0 16px 38px -18px ${COLOR.popup}`,
 									...motion(state, reducedMotion),
 								}}

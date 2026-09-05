@@ -46,7 +46,7 @@ The choice is stored per browser and applied by a small inline script before fir
 
 ## The colours no class can reach
 
-A few things are not properties Yumma has a utility for: gradient stops, box-shadow tints, an SVG `fill`. Those live in `src/lib/colors.ts`, still as `light-dark()` pairs:
+A few things are not properties Yumma CSS has a utility for: gradient stops, box-shadow tints, an SVG `fill`. Those live in `src/lib/colors.ts`, still as `light-dark()` pairs:
 
 ```ts
 export const COLOR = {
@@ -75,4 +75,4 @@ To change any of them, swap the `@import` in `app/globals.css` and the matching 
 
 ## What is not here
 
-No custom stylesheet. `app/globals.css` is the font imports and one `@yummacss` directive, and `pnpm validate` checks every class in the project against Yumma so a typo is a build failure rather than a silent no-op.
+No custom stylesheet. `app/globals.css` is the font imports and one `@yummacss` directive, and `pnpm validate` checks every class in the project against Yumma CSS so a typo is a build failure rather than a silent no-op.

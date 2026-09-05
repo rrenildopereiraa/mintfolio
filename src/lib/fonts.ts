@@ -1,7 +1,8 @@
 /**
  * The three typefaces, as inline styles.
  *
- * Yumma's `theme` takes colors and screens, not families, so `ff-d` and `ff-m`
+ * The `theme` block in Yumma CSS takes colors and screens, not families, so
+ * `ff-d` and `ff-m`
  * are fixed stacks that can't be pointed at Fontsource's faces. Setting the
  * family where it is actually wanted costs a `style` prop and no stylesheet.
  *
