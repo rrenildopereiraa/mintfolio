@@ -2,6 +2,7 @@ import { ArrowUpRight } from "iconoir-react";
 import type { Project } from "../../content/projects.ts";
 import { COLOR } from "../lib/colors.ts";
 import { MONO_STYLE } from "../lib/fonts.ts";
+import { BrandMark } from "./brand-marks.tsx";
 import { HoverCard } from "./hover-card.tsx";
 import { projectMarks } from "./icons.tsx";
 
@@ -25,9 +26,13 @@ export function ProjectRow({ project }: { project: Project }) {
 							<p className="mt-2 mb-0 fs-sm lh-5 c-text-dim">
 								{project.summary}
 							</p>
-							<p className="mt-3 mb-0 fs-xs c-text-dim" style={MONO_STYLE}>
-								{project.stack.join(" · ")}
-							</p>
+							{/* Marks rather than names: three logos read faster than three
+							    words, and each carries its own label. */}
+							<div className="d-f fw-w ai-c g-3 mt-3 pt-3 btw-1 bs-s bc-border">
+								{project.stack.map((tool) => (
+									<BrandMark key={tool} name={tool} />
+								))}
+							</div>
 						</div>
 					}
 				>
