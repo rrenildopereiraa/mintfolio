@@ -1,8 +1,9 @@
 "use client";
 
 import { PreviewCard } from "@base-ui/react/preview-card";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { COLOR } from "../lib/colors.ts";
+import { useReducedMotion } from "../lib/use-media-query.ts";
 
 /**
  * An inline mark that opens a small card on hover.
@@ -28,6 +29,8 @@ export function HoverCard({
 	/** Card width in px. Contribution graphs want more than prose does. */
 	width?: number;
 }) {
+	const reducedMotion = useReducedMotion();
+
 	return (
 		<PreviewCard.Root>
 			<PreviewCard.Trigger
@@ -49,11 +52,18 @@ export function HoverCard({
 				<PreviewCard.Positioner sideOffset={10} style={{ zIndex: 50 }}>
 					<PreviewCard.Popup
 						className="p-r p-4 br-lg bw-1 bs-s bc-border bg-surface"
-						// Yumma has no box-shadow utility, so the lift is inline.
-						style={{
-							width,
-							boxShadow: `0 16px 38px -18px ${COLOR.popup}`,
-						}}
+						render={(props, state) => (
+							<div
+								{...props}
+								style={{
+									...props.style,
+									width,
+									// Yumma has no box-shadow utility, so the lift is inline.
+									boxShadow: `0 16px 38px -18px ${COLOR.popup}`,
+									...motion(state, reducedMotion),
+								}}
+							/>
+						)}
 					>
 						<PreviewCard.Arrow
 							className="d-f"
@@ -73,6 +83,57 @@ export function HoverCard({
 		</PreviewCard.Root>
 	);
 }
+
+/**
+ * How the card arrives and leaves.
+ *
+ * It grows a little and rises from the edge it is anchored to, rather than
+ * fading in place: the movement is what tells you the card belongs to the word
+ * you are pointing at. Small numbers on purpose — this fires on hover, so
+ * anything longer than about 150ms feels like the page is thinking.
+ *
+ * Base UI hands us `transitionStatus`, which is `starting` on the frame before
+ * the card opens and `ending` while it closes, so one set of styles covers
+ * both directions. It keeps the element mounted for the exit by reading the
+ * transition duration off the element, which is why the `transition` has to be
+ * declared even in the resting state.
+ *
+ * `instant` is Base UI telling us this particular change should not animate —
+ * a dismissal, or focus arriving by keyboard — and reduced motion is the
+ * reader telling us the same thing about all of them.
+ */
+function motion(
+	state: { transitionStatus?: string; instant?: string; side: string },
+	reducedMotion: boolean,
+): CSSProperties {
+	if (reducedMotion || state.instant) return {};
+
+	const hidden =
+		state.transitionStatus === "starting" ||
+		state.transitionStatus === "ending";
+
+	const horizontal = state.side === "left" || state.side === "right";
+	const away =
+		state.side === "bottom" || state.side === "inline-start" ? -5 : 5;
+
+	return {
+		transformOrigin: ORIGIN[state.side] ?? "center top",
+		opacity: hidden ? 0 : 1,
+		transform: hidden
+			? `scale(0.96) translate${horizontal ? "X" : "Y"}(${away}px)`
+			: "none",
+		transition:
+			"opacity 120ms ease-out, transform 150ms cubic-bezier(0.2, 0, 0.13, 1)",
+	};
+}
+
+/** Grow from the edge nearest the word, not from the middle of the card. */
+const ORIGIN: Record<string, string> = {
+	top: "center bottom",
+	bottom: "center top",
+	left: "right center",
+	right: "left center",
+};
 
 /** The tip, drawn 14 wide and 7 deep, pointing down. */
 const ARROW_W = 14;

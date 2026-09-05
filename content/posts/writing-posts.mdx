@@ -1,0 +1,84 @@
+export const meta = {
+	title: "Writing posts",
+	description:
+		"Everything MDX gives you here, demonstrated by a post that is made of it.",
+	date: "2026-03-12",
+	published: true,
+};
+
+This post is a file at `content/posts/writing-posts.mdx`. The file name is the URL, so it is served at `/blog/writing-posts`. Add a file, get a post — there is nothing to register and no index to update.
+
+Every post starts with the block above:
+
+```ts
+export const meta = {
+	title: "Writing posts",
+	description: "One line. Used on the card, in search results, and on the social image.",
+	date: "2026-03-12",
+	published: true,
+};
+```
+
+`date` is `YYYY-MM-DD` and sorts the archive newest first. Set `published: false` and the post disappears completely — off the index, out of the feed and the sitemap, and a 404 at its own URL. Run `pnpm dev` and flip it back to read a draft.
+
+## Code
+
+Fenced blocks are highlighted at build time by [Shiki](https://shiki.style), which means the colours are baked into the HTML. No highlighter ships to the browser, and nothing flashes grey before it paints:
+
+```ts
+type Post = {
+	slug: string;
+	title: string;
+	date: string;
+};
+
+export function sortByDate(posts: Post[]): Post[] {
+	return [...posts].sort((a, b) => b.date.localeCompare(a.date));
+}
+```
+
+Name the language after the backticks. A block with no language still renders, just without colour. Long lines scroll inside the block rather than stretching the page.
+
+Both themes are highlighted from one pass — the same markup carries light and dark colours, so switching themes does not re-render anything.
+
+## Tables and lists
+
+GitHub-flavoured markdown is on, so tables work:
+
+| File | What it holds |
+| --- | --- |
+| `site.config.ts` | Your name, links, headline, About |
+| `content/projects.ts` | The Projects section |
+| `cv.config.ts` | Everything printed on the PDF CV |
+
+So do task lists:
+
+- [x] Write the post
+- [x] Check it in both themes
+- [ ] Actually publish it
+
+And ordinary ones:
+
+1. Create the file
+2. Fill in `meta`
+3. Write
+
+## Links and emphasis
+
+Inline `code`, **bold**, *italic*, ~~strikethrough~~, and [links](https://yummacss.com) all behave. Block quotes are set off with a rule:
+
+> The nice thing about a blog you own is that nobody can put an interstitial on it.
+
+## Images
+
+Put the file in `public/` and reference it from the root:
+
+```mdx
+![A build graph](/build-graph.png)
+```
+
+The alt text is not optional. It is what somebody using a screen reader gets instead of the picture, and what everyone gets when the image fails to load.
+
+## Changing how any of this looks
+
+Every element above is rendered by a component in `src/components/mdx-components.tsx`, mapped by tag name. Want wider code blocks, or a different quote style? Edit the one entry. You are not fighting a theme.
