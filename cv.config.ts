@@ -14,15 +14,15 @@ import type { Cv } from "./src/lib/cv.ts";
  */
 export const cv: Cv = {
 	person: {
-		name: "Eva Calderon",
+		name: "Abigail Chandler",
 		role: "Product engineer",
 		location: "Rotterdam, Netherlands",
-		email: "hello@evacalderon.dev",
+		email: "hello@abigailchandler.dev",
 
 		// Read from the environment, never written down. See the README.
 		phone: process.env.CV_PHONE,
-		linkedin: "https://linkedin.com/in/evacalderon",
-		website: "https://evacalderon.dev",
+		linkedin: "https://linkedin.com/in/abigailchandler",
+		website: "https://abigailchandler.dev",
 	},
 
 	summary:
@@ -103,20 +103,20 @@ export const cv: Cv = {
 			name: "Halcyon",
 			description:
 				"A task runner for monorepos with a cache you can actually trust.",
-			url: "https://github.com/evacalderon/halcyon",
+			url: "https://github.com/abigailchandler/halcyon",
 		},
 		{
 			name: "Tidepool",
 			description:
 				"A local-first sync engine for React apps that have to work offline.",
-			url: "https://github.com/evacalderon/tidepool",
+			url: "https://github.com/abigailchandler/tidepool",
 		},
 		{
 			name: "Cartograph",
 			description: "Generates typed API clients from OpenAPI documents.",
-			url: "https://github.com/evacalderon/cartograph",
+			url: "https://github.com/abigailchandler/cartograph",
 		},
 	],
 
-	fileName: "Eva-Calderon-CV",
+	fileName: "Abigail-Chandler-CV",
 };

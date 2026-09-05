@@ -12,23 +12,23 @@
  */
 export const site = {
 	/** Used as the author name and as the wordmark in the header. */
-	name: "Eva Calderon",
+	name: "Abigail Chandler",
 
 	/**
 	 * No trailing slash. Set this before deploying: the links in your feed,
 	 * sitemap and social cards are absolute and built from it.
 	 */
-	url: "https://evacalderon.dev",
+	url: "https://abigailchandler.dev",
 
 	/** Shown under your name, and published as your job title. */
 	role: "Product engineer",
 
 	location: "Rotterdam, Netherlands",
 
-	email: "hello@evacalderon.dev",
+	email: "hello@abigailchandler.dev",
 
 	/** The browser tab, and the default social card title. */
-	title: "Eva Calderon",
+	title: "Abigail Chandler",
 
 	/**
 	 * One or two sentences, used wherever a page doesn't supply its own
@@ -48,7 +48,7 @@ export const site = {
 	headline: {
 		greeting: "Hey there.",
 		intro: "I'm",
-		accent: "Eva",
+		accent: "Abigail",
 	},
 
 	/** The paragraph under the headline. Two or three lines reads best. */
