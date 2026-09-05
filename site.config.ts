@@ -77,10 +77,10 @@ export const site = {
 
 	/**
 	 * Your signature, as a file in `public/`. Empty by default: the About
-	 * section draws the dotted line and your name under it either way, and a
-	 * signature that isn't yours is worse than no signature at all.
+	 * section signs off with your name either way, and a signature that isn't
+	 * yours is worse than no signature at all.
 	 *
-	 * An SVG of your own handwriting works best — it stays crisp at any size.
+	 * An SVG of your own handwriting works best. It stays crisp at any size.
 	 */
 	signature: "",
 

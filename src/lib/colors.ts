@@ -1,16 +1,16 @@
 /**
- * The colours Yumma CSS cannot express as a class.
+ * The colors Yumma CSS cannot express as a class.
  *
  * Almost everything on the site is a `c-*` / `bg-*` / `bc-*` utility built from
- * the pairs in `yumma.config.mjs`. A few things are not colours in a property
- * Yumma CSS has a utility for — gradient stops, box-shadow tints, an SVG
- * `fill` — and those live here so there is exactly one other place to look, rather than
+ * the pairs in `yumma.config.mjs`. A few things are not colors in a property
+ * Yumma CSS has a utility for: gradient stops, box-shadow tints, an SVG
+ * `fill`. Those live here so there is exactly one other place to look, rather than
  * a hex buried in a `style` prop in six components.
  *
- * They are still themed: `light-dark()` is a CSS colour function, so it works
- * anywhere a colour is valid, including inside a gradient or a shadow. It reads
+ * They are still themed: `light-dark()` is a CSS color function, so it works
+ * anywhere a color is valid, including inside a gradient or a shadow. It reads
  * the `color-scheme` the theme toggle sets, which is the same switch the
- * utilities follow — so these and the classes can never disagree.
+ * utilities follow, so these and the classes can never disagree.
  *
  * If you change the accent in `yumma.config.mjs`, change the tinted values
  * here to match.
@@ -49,8 +49,8 @@ export const COLOR = {
 /**
  * The contribution heatmap: empty, then four steps toward the accent.
  *
- * A ramp rather than one colour with five opacities, because opacity over a
- * tinted page shifts hue as it fades and the low steps end up looking grey.
+ * A ramp rather than one color with five opacities, because opacity over a
+ * tinted page shifts hue as it fades and the low steps end up looking gray.
  */
 export const CONTRIBUTION_LEVELS = [
 	lightDark("#e8efed", "#15211f"),

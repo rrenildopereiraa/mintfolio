@@ -3,10 +3,10 @@ import { defineConfig } from "yummacss";
 /**
  * Mintfolio's palette.
  *
- * Every colour is a `{ light, dark }` pair, which Yumma CSS compiles into CSS
+ * Every color is a `{ light, dark }` pair, which Yumma CSS compiles into CSS
  * `light-dark()` and backs with `color-scheme` on the root element. That
- * pairing is the only thing that makes the site themeable — Yumma CSS 3.29
- * has no `dark:` variant of its own, so a colour written as a stock utility like
+ * pairing is the only thing that makes the site themeable. Yumma CSS 3.29
+ * has no `dark:` variant of its own, so a color written as a stock utility like
  * `c-mint-7` can only ever have one value. Change a pair here and both themes
  * follow; there is no second palette to keep in sync.
  *
@@ -15,7 +15,7 @@ import { defineConfig } from "yummacss";
  * only the accent is saturated, which is what keeps a mint theme from reading
  * as a novelty.
  *
- * Every pair below is checked against WCAG AA in both themes — body copy and
+ * Every pair below is checked against WCAG AA in both themes: body copy and
  * links at 4.5:1, the marks at 3:1. If you swap the accent, keep it dark
  * enough in light mode to clear 4.5:1 on `surface`: a bright mint looks right
  * on a swatch and is unreadable as 14px type.

@@ -16,7 +16,7 @@
  */
 
 /**
- * Geist, on <body>, inherited by everything — which is why no heading names a
+ * Geist, on <body>, inherited by everything, which is why no heading names a
  * font. It is deliberately quiet: the page's voice comes from the serif and
  * the mono, and a display sans competing with both is what makes a portfolio
  * look busy.
@@ -35,7 +35,7 @@ export const SERIF_ITALIC = { fontFamily: SERIF, fontStyle: "italic" } as const;
 
 /**
  * IBM Plex Mono, opt-in, for the small technical labels: dates, tags,
- * counters, the section numbers. A mono drawn for text rather than for code —
+ * counters, the section numbers. A mono drawn for text rather than for code:
  * the slab-ish terminals give the labels a typed, ribbon-on-paper feel that a
  * code-editor mono flattens out.
  */

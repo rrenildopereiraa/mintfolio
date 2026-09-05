@@ -13,7 +13,7 @@ PDF CV all follow from that.
 - Blog with MDX posts and Shiki syntax highlighting
 - A CV rendered to a real PDF at `/cv.pdf`, laid out to parse cleanly in an
   applicant tracking system
-- Light and dark, from one set of paired colours, every pair checked against
+- Light and dark, from one set of paired colors, every pair checked against
   WCAG AA
 - Generated social cards, RSS, sitemap, `robots.txt` and JSON-LD structured
   data
@@ -46,7 +46,7 @@ and none of them need you to know React.
 | `cv.config.ts` | Everything printed on the PDF CV |
 
 Posts live as `.mdx` files in `content/posts/`. Images and the favicon live in
-`public/`. Colours live in `yumma.config.mjs`.
+`public/`. Colors live in `yumma.config.mjs`.
 
 Every one of those files is commented at the point it matters, so the answer is
 usually already in the file you have open.
@@ -55,16 +55,16 @@ usually already in the file you have open.
 
 The three posts this template ships with are the documentation. They are
 walkthroughs of the thing they are written in, which means they are also the
-demo — the post about code blocks contains code blocks, the one about the
+demo: the post about code blocks contains code blocks, the one about the
 palette shows its own contrast figures.
 
 Run `pnpm dev` and read them at `/blog`:
 
-- **Writing posts** — the `meta` block, syntax highlighting, tables, task
+- **Writing posts**: the `meta` block, syntax highlighting, tables, task
   lists, images, drafts, and where to change how any of it looks
-- **Making it yours** — the four config files, the projects and CV formats, how
+- **Making it yours**: the four config files, the projects and CV formats, how
   the social sentence is built
-- **Colour, type, and how dark mode works here** — the paired palette, the
+- **Color, type, and how dark mode works here**: the paired palette, the
   contrast floor to respect when you swap the accent, the three typefaces
 
 When you have read them, delete all three and write your own. They live in
@@ -80,7 +80,7 @@ pnpm lint       # format and lint with Biome
 pnpm validate   # check every class against Yumma CSS
 ```
 
-`pnpm validate` fails on a class Yumma CSS does not recognise, which catches
+`pnpm validate` fails on a class Yumma CSS does not recognize, which catches
 typos that would otherwise silently render as nothing.
 
 ## Production build
@@ -115,7 +115,7 @@ feature.
 ```
 site.config.ts          You: name, links, headline, About
 cv.config.ts            The PDF CV
-yumma.config.mjs        Colour palette and breakpoints
+yumma.config.mjs        Color palette and breakpoints
 content/
   projects.ts           Projects section
   experience.ts         Experience section
@@ -127,7 +127,7 @@ src/lib/                Post loading, structured data, fonts
 public/                 Images, avatar, favicon
 ```
 
-## Licence
+## License
 
 MIT. Use it, change it, ship it. Replace the content with your own before you
 do.

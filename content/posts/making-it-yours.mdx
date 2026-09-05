@@ -56,11 +56,11 @@ Order in the array is order on the page:
 },
 ```
 
-Leave out `href` and `label` and the row renders without the repository chip — which is how you show closed-source work you can still describe.
+Leave out `href` and `label` and the row renders without the repository chip, which is how you show closed-source work you can still describe.
 
 `mark` is the shape beside the name. Three plain ones ship with the template; add your own SVG to `src/components/icons.tsx` and put it in `projectMarks`. They all draw inside a 16×16 box, so nothing shifts when you swap one.
 
-Hover a project name and you get a card with `summary` and `stack` in it. That is Base UI's PreviewCard doing the open delay, the keyboard focus, the placement near a viewport edge and the dismissal on Escape — none of which a `:hover` rule can do.
+Hover a project name and you get a card with `summary` and `stack` in it. That is Base UI's PreviewCard doing the open delay, the keyboard focus, the placement near a viewport edge and the dismissal on Escape, none of which a `:hover` rule can do.
 
 ## Social links
 
@@ -71,15 +71,15 @@ socials: [
 ],
 ```
 
-These render as a sentence at the end of About, each name with its mark beside it. The sentence is built from the list — commas, the "or", the full stop — so adding or removing one rewrites it and you never touch a component.
+These render as a sentence at the end of About, each name with its mark beside it. The sentence is built from the list (commas, the "or", the full stop), so adding or removing one rewrites it and you never touch a component.
 
-There is no strip of social icons anywhere, on purpose. A grouped row of logos reads as a widget rather than as something you wrote, and unlabelled glyphs make the reader decode them one at a time.
+There is no strip of social icons anywhere, on purpose. A grouped row of logos reads as a widget rather than as something you wrote, and unlabeled glyphs make the reader decode them one at a time.
 
 ## The CV
 
 `cv.config.ts` is the whole PDF: profile, experience, projects, education, skills. `pnpm build` renders it to `/cv.pdf` and the Experience heading links to it.
 
-It is laid out to survive an applicant tracking system, which is what reads a CV before a person does — one column, real text rather than a picture of text, and section headings with the plain names those parsers look for.
+It is laid out to survive an applicant tracking system, which is what reads a CV before a person does: one column, real text rather than a picture of text, and section headings with the plain names those parsers look for.
 
 Your phone number is the exception. It is read from the environment so it never lands in a public git history:
 
@@ -92,4 +92,4 @@ Leave it unset and the line is simply left off.
 
 ## Signing off
 
-The About section ends with your name. Set `signature` to an SVG in `public/` and it draws above that — your own handwriting, vector so it stays crisp anywhere. The template ships the slot and not the signature, because a stranger's handwriting under your own words is worse than none.
+The About section ends with your name. Set `signature` to an SVG in `public/` and it draws above that: your own handwriting, vector so it stays crisp anywhere. The template ships the slot and not the signature, because a stranger's handwriting under your own words is worse than none.

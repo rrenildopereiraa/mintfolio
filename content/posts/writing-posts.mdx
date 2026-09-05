@@ -6,7 +6,7 @@ export const meta = {
 	published: true,
 };
 
-This post is a file at `content/posts/writing-posts.mdx`. The file name is the URL, so it is served at `/blog/writing-posts`. Add a file, get a post — there is nothing to register and no index to update.
+This post is a file at `content/posts/writing-posts.mdx`. The file name is the URL, so it is served at `/blog/writing-posts`. Add a file, get a post. There is nothing to register and no index to update.
 
 Every post starts with the block above:
 
@@ -19,11 +19,11 @@ export const meta = {
 };
 ```
 
-`date` is `YYYY-MM-DD` and sorts the archive newest first. Set `published: false` and the post disappears completely — off the index, out of the feed and the sitemap, and a 404 at its own URL. Run `pnpm dev` and flip it back to read a draft.
+`date` is `YYYY-MM-DD` and sorts the archive newest first. Set `published: false` and the post disappears completely: off the index, out of the feed and the sitemap, and a 404 at its own URL. Run `pnpm dev` and flip it back to read a draft.
 
 ## Code
 
-Fenced blocks are highlighted at build time by [Shiki](https://shiki.style), which means the colours are baked into the HTML. No highlighter ships to the browser, and nothing flashes grey before it paints:
+Fenced blocks are highlighted at build time by [Shiki](https://shiki.style), which means the colors are baked into the HTML. No highlighter ships to the browser, and nothing flashes gray before it paints:
 
 ```ts
 type Post = {
@@ -37,13 +37,13 @@ export function sortByDate(posts: Post[]): Post[] {
 }
 ```
 
-Name the language after the backticks. A block with no language still renders, just without colour. Long lines scroll inside the block rather than stretching the page.
+Name the language after the backticks. A block with no language still renders, just without color. Long lines scroll inside the block rather than stretching the page.
 
-Both themes are highlighted from one pass — the same markup carries light and dark colours, so switching themes does not re-render anything.
+Both themes are highlighted from one pass, since the same markup carries light and dark colors, so switching themes does not re-render anything.
 
 ## Tables and lists
 
-GitHub-flavoured markdown is on, so tables work:
+GitHub-flavored markdown is on, so tables work:
 
 | File | What it holds |
 | --- | --- |

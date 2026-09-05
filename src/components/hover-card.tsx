@@ -36,7 +36,7 @@ export function HoverCard({
 			<PreviewCard.Trigger
 				// In Base UI 1.7 the open delay is a Trigger prop, not a Root one.
 				delay={120}
-				// `d-if` + `ai-c` is what keeps the mark on the text's centre line
+				// `d-if` + `ai-c` is what keeps the mark on the text's center line
 				// rather than riding above it, which is the usual fault with an
 				// icon dropped inline.
 				className="d-if ai-c g-2 va-m c-text c-p"
@@ -90,7 +90,7 @@ export function HoverCard({
  *
  * It grows a little and rises from the edge it is anchored to, rather than
  * fading in place: the movement is what tells you the card belongs to the word
- * you are pointing at. Small numbers on purpose — this fires on hover, so
+ * you are pointing at. Small numbers on purpose: this fires on hover, so
  * anything longer than about 150ms feels like the page is thinking.
  *
  * Base UI hands us `transitionStatus`, which is `starting` on the frame before
@@ -99,8 +99,8 @@ export function HoverCard({
  * transition duration off the element, which is why the `transition` has to be
  * declared even in the resting state.
  *
- * `instant` is Base UI telling us this particular change should not animate —
- * a dismissal, or focus arriving by keyboard — and reduced motion is the
+ * `instant` is Base UI telling us this particular change should not animate:
+ * a dismissal, or focus arriving by keyboard. Reduced motion is the
  * reader telling us the same thing about all of them.
  */
 function motion(
@@ -143,15 +143,15 @@ const ARROW_D = 7;
 /**
  * Where the tip sits, and which way it faces.
  *
- * Base UI places the arrow along the anchor's axis — it sets `left` when the
- * card is above or below, `top` when it is beside — and leaves the other axis
+ * Base UI places the arrow along the anchor's axis. It sets `left` when the
+ * card is above or below, `top` when it is beside, and leaves the other axis
  * and the rotation to the stylesheet, which is a stylesheet this project does
  * not have. Without these the arrow lands wherever `top: auto` resolves to,
  * which is inside the card's padding, still pointing down whichever side the
  * card opened on.
  *
  * The offsets push it fully outside the card's border, and the rotations turn
- * a downward tip to face the anchor. Rotating about the centre leaves the box
+ * a downward tip to face the anchor. Rotating about the center leaves the box
  * 14 wide even when it paints 7 wide, which is why the horizontal sides use
  * half the width plus half the depth rather than the depth alone.
  */

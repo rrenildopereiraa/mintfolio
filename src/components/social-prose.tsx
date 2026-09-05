@@ -9,13 +9,13 @@ type Social = (typeof site.socials)[number];
 /**
  * One link out, set inline in the sentence.
  *
- * The mark sits on the text's centre line and the label stays a word in the
+ * The mark sits on the text's center line and the label stays a word in the
  * prose, so the link reads as part of what is being said rather than as a
  * button dropped into it.
  *
  * Marks come from `icons.tsx`, keyed by the social's `label` in
- * `site.config.ts`. A social with no mark still renders — it just gets its
- * label — so adding one to the config can never make a link disappear.
+ * `site.config.ts`. A social with no mark still renders, it just gets its
+ * label, so adding one to the config can never make a link disappear.
  */
 function SocialLink({ social }: { social: Social }) {
 	const Mark = socialMarks[social.label];
@@ -38,7 +38,7 @@ function SocialLink({ social }: { social: Social }) {
  *
  * Deliberately not a row of icons. A grouped strip of logos is the thing every
  * portfolio has, it reads as a widget rather than as something you wrote, and
- * four unlabelled glyphs make the reader decode them one at a time. Set inline,
+ * four unlabeled glyphs make the reader decode them one at a time. Set inline,
  * each mark is next to the word it belongs to and the whole thing is still a
  * sentence.
  *
