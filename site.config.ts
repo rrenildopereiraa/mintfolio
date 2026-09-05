@@ -102,7 +102,7 @@ export const site = {
 	socials: [
 		{ label: "GitHub", href: "https://github.com/abigailchandler" },
 		{ label: "LinkedIn", href: "https://linkedin.com/in/abigailchandler" },
-		{ label: "X", href: "https://x.com/abigailchandler" },
+		{ label: "Twitter (X)", href: "https://x.com/abigailchandler" },
 		{ label: "Email", href: "mailto:hello@abigailchandler.dev" },
 	],
 };
