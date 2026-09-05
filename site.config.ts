@@ -18,7 +18,7 @@ export const site = {
 	 * No trailing slash. Set this before deploying: the links in your feed,
 	 * sitemap and social cards are absolute and built from it.
 	 */
-	url: "https://mintfolio.vercel.app",
+	url: "https://mintfolio.renildo.dev",
 
 	/** Shown under your name, and published as your job title. */
 	role: "Product engineer",
