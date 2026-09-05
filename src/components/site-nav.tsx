@@ -17,9 +17,13 @@ import { ThemeToggle } from "./theme-toggle.tsx";
  *
  * The pill itself exists because the grid runs behind this row. Links printed
  * straight onto the mesh have to compete with it, and a hover background on
- * each link means a second rectangle appearing over a field of rectangles.
- * One surface settles both — the pill is the only shape, and hovering just
- * changes the ink.
+ * each link means a second rectangle appearing over a field of rectangles. One
+ * surface settles both, and hovering just changes the ink.
+ *
+ * The toggle is not a link, so it gets its own layer rather than a rule drawn
+ * between it and the ones that are: an inset disc, one step darker than the
+ * pill and ringed like it. A divider only says "these are different"; a second
+ * surface says which of the two you are looking at.
  *
  * There is no menu button. Three links and a toggle fit on a phone.
  */
@@ -43,8 +47,12 @@ export function SiteNav() {
 					</Link>
 				))}
 
-				<span aria-hidden="true" className="d-b w-px h-4 mx-1 bg-border" />
-				<ThemeToggle />
+				<span
+					className="d-f ai-c jc-c ml-1 br-9999 bw-1 bs-s bc-border bg-surface-2"
+					style={{ boxShadow: `inset 0 1px 2px ${COLOR.lift}` }}
+				>
+					<ThemeToggle />
+				</span>
 			</nav>
 		</header>
 	);
