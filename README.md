@@ -2,6 +2,8 @@
 
 A developer portfolio, blog and CV in one Next.js project.
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Frrenildopereiraa%2Fmintfolio&project-name=mintfolio&repository-name=mintfolio)
+
 Everything a visitor reads comes from a handful of config files. You edit data,
 not components: your name, your projects, your roles, your writing. The pages,
 the metadata, the social cards, the RSS feed, the sitemap and the downloadable
