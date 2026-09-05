@@ -5,14 +5,14 @@ import { MONO_STYLE } from "../lib/fonts.ts";
 import { ThemeToggle } from "./theme-toggle.tsx";
 
 /**
- * The header: one centred pill, and nothing else.
+ * The header: one centered pill, and nothing else.
  *
  * There is no wordmark. The name is already the largest thing on the page two
  * lines below it, and a site this size does not need to be told apart from the
- * seventeen other tabs — printing it twice in the first 200 pixels was
+ * seventeen other tabs. Printing it twice in the first 200 pixels was
  * repetition doing the work of branding.
  *
- * With nothing on the left the pill has no reason to sit right, so it centres:
+ * With nothing on the left the pill has no reason to sit right, so it centers:
  * a single object, deliberately placed, rather than the leftovers of a row.
  *
  * The pill itself exists because the grid runs behind this row. Links printed

@@ -22,7 +22,7 @@ function apply(scheme: ColorScheme) {
 }
 
 /**
- * Reads and cycles the colour scheme.
+ * Reads and cycles the color scheme.
  *
  * Deliberately does *not* apply the class in an effect. The inline script in
  * the root layout has already put the stored scheme on <html> before first

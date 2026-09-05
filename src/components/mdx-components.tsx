@@ -39,9 +39,9 @@ export const mdxComponents: MDXComponents = {
 	 * inherited by the `code` inside, which is why that case needs nothing.
 	 *
 	 * The theme's own block background is dropped on the way through: the token
-	 * colours are worth keeping, but the slab of grey behind them belongs to
+	 * colors are worth keeping, but the slab of gray behind them belongs to
 	 * whichever theme was picked, and it sits badly against a page that is a
-	 * different colour. Using the site's surface instead keeps code blocks part
+	 * different color. Using the site's surface instead keeps code blocks part
 	 * of the page in both light and dark.
 	 *
 	 * `tabSize` is inline because Yumma CSS has no utility for it.

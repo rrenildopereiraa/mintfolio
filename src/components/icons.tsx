@@ -9,7 +9,7 @@ import type { SVGProps } from "react";
  * that belong to somebody else live here, hand-copied, and everything else
  * comes from Iconoir.
  *
- * Each takes the usual SVG props, so size it with `width`/`height` and colour
+ * Each takes the usual SVG props, so size it with `width`/`height` and color
  * it with `fill="currentColor"` where the mark allows it.
  */
 
@@ -36,7 +36,7 @@ export function GitHub(props: SVGProps<SVGSVGElement>) {
  * The X mark.
  *
  * Iconoir ships an `X` too. This one is here so every brand mark on the site
- * comes from the same file and inherits colour the same way, rather than one
+ * comes from the same file and inherits color the same way, rather than one
  * arriving from an icon pack with its own sizing conventions.
  */
 export function X(props: SVGProps<SVGSVGElement>) {

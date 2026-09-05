@@ -11,7 +11,7 @@ import { MONO_STYLE } from "../lib/fonts.ts";
  *
  * The template ships the slot and not the signature. A drawn signature is the
  * one piece of a portfolio nobody else can supply for you, and a stranger's
- * handwriting under your own words is worse than none — so set `signature` in
+ * handwriting under your own words is worse than none, so set `signature` in
  * `site.config.ts` to a file in `public/` and it appears here. An SVG of your
  * own handwriting is the right thing: it stays crisp at any size and inherits
  * nothing, so it looks the same everywhere.
@@ -23,7 +23,7 @@ export function Signature() {
 	return (
 		<div className="mt-8 d-f fd-c ai-fs g-2">
 			{site.signature && (
-				// biome-ignore lint/performance/noImgElement: an SVG has nothing for next/image to optimise, and a layout wrapper is all it would add.
+				// biome-ignore lint/performance/noImgElement: an SVG has nothing for next/image to optimize, and a layout wrapper is all it would add.
 				<img
 					src={site.signature}
 					alt={`${site.name}'s signature`}

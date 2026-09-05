@@ -1,5 +1,5 @@
-// biome-ignore-all lint/performance/noImgElement: Satori rasterises this tree,
-// it never reaches a browser, and next/image has nothing to optimise in it.
+// biome-ignore-all lint/performance/noImgElement: Satori rasterizes this tree,
+// it never reaches a browser, and next/image has nothing to optimize in it.
 
 import type { ReactNode } from "react";
 
@@ -28,7 +28,7 @@ const COLOR = {
  * The same ruled grid the hero uses, as an image.
  *
  * Satori has no `repeating-linear-gradient`, so the lines are drawn once into
- * an SVG pattern and rasterised through resvg, which does support it.
+ * an SVG pattern and rasterized through resvg, which does support it.
  */
 function gridUri(width: number, height: number) {
 	const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}"><defs><pattern id="g" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#16292b" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(#g)"/></svg>`;

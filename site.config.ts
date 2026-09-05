@@ -18,7 +18,7 @@ export const site = {
 	 * No trailing slash. Set this before deploying: the links in your feed,
 	 * sitemap and social cards are absolute and built from it.
 	 */
-	url: "https://abigailchandler.dev",
+	url: "https://mintfolio.renildo.dev",
 
 	/** Shown under your name, and published as your job title. */
 	role: "Product engineer",
@@ -77,10 +77,10 @@ export const site = {
 
 	/**
 	 * Your signature, as a file in `public/`. Empty by default: the About
-	 * section draws the dotted line and your name under it either way, and a
-	 * signature that isn't yours is worse than no signature at all.
+	 * section signs off with your name either way, and a signature that isn't
+	 * yours is worse than no signature at all.
 	 *
-	 * An SVG of your own handwriting works best — it stays crisp at any size.
+	 * An SVG of your own handwriting works best. It stays crisp at any size.
 	 */
 	signature: "",
 
@@ -100,7 +100,7 @@ export const site = {
 	 * where `mailto:` links are skipped automatically.
 	 */
 	socials: [
-		{ label: "LinkedIn", href: "https://linkedin.com/in/evacalderon" },
-		{ label: "Email", href: "mailto:hello@evacalderon.dev" },
+		{ label: "LinkedIn", href: "https://linkedin.com/in/abigailchandler" },
+		{ label: "Email", href: "mailto:hello@abigailchandler.dev" },
 	],
 };

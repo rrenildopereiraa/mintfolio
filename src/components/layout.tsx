@@ -47,7 +47,7 @@ export function Layout({
 	);
 }
 
-/** The shape a section icon has to be: sized and coloured by the heading. */
+/** The shape a section icon has to be: sized and colored by the heading. */
 export type SectionIcon = (props: {
 	width: number;
 	height: number;
@@ -64,8 +64,8 @@ export type SectionIcon = (props: {
  * alphabet used at two sizes, which is what stops the page needing borders to
  * feel structured.
  *
- * Everything in the row is aligned on the text baseline rather than centred on
- * the row. Centring puts the rule through the middle of the label's x-height,
+ * Everything in the row is aligned on the text baseline rather than centered on
+ * the row. Centering puts the rule through the middle of the label's x-height,
  * where it reads as struck through the words; on the baseline it reads as a
  * rule the words are sitting on, and it stays there at any type size, because
  * the baseline is the thing that moves with the text.
@@ -89,8 +89,8 @@ export function SectionHeading({
 }) {
 	return (
 		<div>
-			{/* Two rows nested rather than one flat one. The disc is centred on
-			    the text row, and the rule is baselined to the label — and those
+			{/* Two rows nested rather than one flat one. The disc is centered on
+			    the text row, and the rule is baselined to the label, and those
 			    are different alignments, so they cannot both come from one
 			    `align-items`. Mixing them with `align-self` looks right until a
 			    32px disc joins a 14px line box and drags the shared baseline

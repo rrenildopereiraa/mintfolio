@@ -18,11 +18,11 @@ import type { CvPerson } from "../lib/cv.ts";
  * Print only, so there is no dark half: a PDF has no `color-scheme` to follow,
  * and a CV is looked at on white, half the time on paper. The values are
  * copied rather than imported because the Yumma CSS config is CSS, not
- * something react-pdf can read — keep them in step by hand if you change the
+ * something react-pdf can read. Keep them in step by hand if you change the
  * accent.
  *
  * The page itself is left pure white rather than the site's #fbfdfc. On screen
- * that tint reads as warmth; through a printer it reads as a grey box with
+ * that tint reads as warmth; through a printer it reads as a gray box with
  * toner around the margins.
  */
 const COLOR = {

@@ -1,5 +1,5 @@
 export const meta = {
-	title: "Colour, type, and how dark mode works here",
+	title: "Color, type, and how dark mode works here",
 	description:
 		"One set of paired values, checked against WCAG AA, with no second palette to keep in step.",
 	date: "2026-01-19",
@@ -8,7 +8,7 @@ export const meta = {
 
 Change the accent and the whole site follows, in both themes, without touching a component. Here is how that is wired.
 
-## Every colour is a pair
+## Every color is a pair
 
 `yumma.config.mjs` holds the palette, and each entry is a `{ light, dark }` pair:
 
@@ -22,13 +22,13 @@ theme: {
 },
 ```
 
-[Yumma CSS](https://yummacss.com) compiles each pair into CSS `light-dark()`, so `c-accent` is **one class** that resolves to the right value in whichever theme is active. There is no `dark:` prefix on anything, no second palette, and no way for the two to drift apart — because there is only one place either value is written.
+[Yumma CSS](https://yummacss.com) compiles each pair into CSS `light-dark()`, so `c-accent` is **one class** that resolves to the right value in whichever theme is active. There is no `dark:` prefix on anything, no second palette, and no way for the two to drift apart, because there is only one place either value is written.
 
 The names are roles, not hues: `accent`, `text`, `text-dim`, `surface`, `surface-2`, `border`, `page`. Swapping the identity means changing `accent` and nothing else. The surfaces are almost neutral by design; only the accent is saturated, which is what stops a mint theme reading as a novelty.
 
 ## Contrast is the part people get wrong
 
-Every pair is checked against WCAG AA in both themes — body copy and links at 4.5:1, marks at 3:1:
+Every pair is checked against WCAG AA in both themes: body copy and links at 4.5:1, marks at 3:1:
 
 | | light | dark |
 | --- | --- | --- |
@@ -40,11 +40,11 @@ If you swap the accent, keep it dark enough in light mode to clear **4.5:1 on `s
 
 ## The theme toggle
 
-Dark mode follows the reader's system by default. The toggle in the nav cycles light → dark → system, and it is three states rather than two on purpose — a two-state switch has no way back to "whatever the OS says", so one tap pins you forever.
+Dark mode follows the reader's system by default. The toggle in the nav cycles light → dark → system, and it is three states rather than two on purpose. A two-state switch has no way back to "whatever the OS says", so one tap pins you forever.
 
 The choice is stored per browser and applied by a small inline script before first paint, so nobody sees the wrong palette flash on load.
 
-## The colours no class can reach
+## The colors no class can reach
 
 A few things are not properties Yumma CSS has a utility for: gradient stops, box-shadow tints, an SVG `fill`. Those live in `src/lib/colors.ts`, still as `light-dark()` pairs:
 
@@ -71,7 +71,7 @@ Only the serif has any character, and it is used for a single word. That is deli
 
 The mono is a text mono rather than a code mono. Its terminals give the small labels a typed, ribbon-on-paper feel that an editor face flattens out.
 
-To change any of them, swap the `@import` in `app/globals.css` and the matching family in `src/lib/fonts.ts`. If you change the sans, replace the three TTFs in `src/assets/fonts/` too — that is what the PDF CV is set in, and a CV in a different face from the page linking to it undercuts both.
+To change any of them, swap the `@import` in `app/globals.css` and the matching family in `src/lib/fonts.ts`. If you change the sans, replace the three TTFs in `src/assets/fonts/` too. That is what the PDF CV is set in, and a CV in a different face from the page linking to it undercuts both.
 
 ## What is not here
 

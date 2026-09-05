@@ -32,7 +32,7 @@ export const projects: Project[] = [
 		description:
 			"The design system three product teams actually share. Tokens, docs and a release process that stops everyone forking the same button.",
 		summary:
-			"One source for colour, type and spacing, with a changelog people read because breaking changes arrive with a codemod.",
+			"One source for color, type and spacing, with a changelog people read because breaking changes arrive with a codemod.",
 		href: "https://github.com/abigailchandler/mend-labs",
 		label: "github.com/mend-labs",
 		mark: "circle",
@@ -44,7 +44,7 @@ export const projects: Project[] = [
 		description:
 			"Forty React components built on unstyled primitives. Accessible before it is pretty, and themeable without a prop for every pixel.",
 		summary:
-			"Keyboard behaviour and focus handling come from the primitives underneath, so the components only have to get the styling right.",
+			"Keyboard behavior and focus handling come from the primitives underneath, so the components only have to get the styling right.",
 		href: "https://github.com/abigailchandler/mend-ui",
 		label: "github.com/mend-ui",
 		mark: "square",
@@ -56,7 +56,7 @@ export const projects: Project[] = [
 		description:
 			"Six hundred icons drawn on one grid, so they sit on a line together. Shipped as plain SVGs and as a package that tree-shakes.",
 		summary:
-			"Every icon is optimised at build time and exported both ways, because half the teams using them are not running a bundler.",
+			"Every icon is optimized at build time and exported both ways, because half the teams using them are not running a bundler.",
 		href: "https://github.com/abigailchandler/mend-icons",
 		label: "github.com/mend-icons",
 		mark: "triangle",

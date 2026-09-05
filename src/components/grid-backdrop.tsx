@@ -12,7 +12,7 @@ import { COLOR } from "../lib/colors.ts";
  * atmosphere and starts looking like a box.
  *
  * All inline, because gradients and masks are the kind of thing no utility
- * class can carry. The colours come from `src/lib/colors.ts` so they follow
+ * class can carry. The colors come from `src/lib/colors.ts` so they follow
  * the theme like everything else.
  */
 
@@ -34,7 +34,7 @@ const LINES = {
 		)`,
 } as const;
 
-/** Two diffuse glows, off-centre so neither reads as a spotlight. */
+/** Two diffuse glows, off-center so neither reads as a spotlight. */
 const WASH = {
 	backgroundImage: `
 		radial-gradient(55% 70% at 15% 0%, ${COLOR.gridWash} 0%, transparent 72%),
@@ -60,7 +60,7 @@ export function GridBackdrop({
 			style={{
 				maskImage: FADE,
 				WebkitMaskImage: FADE,
-				// Centre a viewport-wide layer regardless of the column it sits in.
+				// Center a viewport-wide layer regardless of the column it sits in.
 				// The parent clips the horizontal overflow this creates.
 				...(bleed
 					? { left: "50%", width: "100vw", transform: "translateX(-50%)" }
